@@ -13,7 +13,7 @@ module.exports = (app) => {
         maxAge: 1000 * 60 * 60 * 24,
       },
       store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/zen-project',
+        mongoUrl: process.env.DB_REMOTE,
       }),
     })
   )
