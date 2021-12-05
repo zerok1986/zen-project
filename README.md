@@ -24,28 +24,30 @@ Desarrollo de componentes siguiendo punto 2.a
     - Desarrollo cliente siguiendo puntos 4
 
 - Usuarios y Privilegios:
-  - USER 
-  - TEACHER 
-  - GOD
+  - USER -> usuario estándar de la app. Puede crear citas y matchearlas con actividades de su interés en su zona/horario elegidas
+  - TEACHER -> Puede crear actividades con horario y zona definida. Puede determinar nº de participantes minimo y puede confirmar actividad completa
+  - GOD -> Puede editar/eliminar usuarios, teachers, actividades, cita, y reviews.
 
 ## Endpoints
 
 | Method | Path              | Description                                          |
 | ------ | ----------------- | ---------------------------------------------------- |
-| get    | /                 | Muestra el index                                     |
-| get    | /users            | Muestra la lista de usuarios                         |
-| get    | /users/:id        | Muestra los detalles de un usuario                   |
-| get    | /users/:id/edit   | Editar usuario (Admin y propio usuario)              |
-| post   | /users/:id/edit   | Edita en la BBDD el usuario                          |
-| get    | /users/:id/delete | Borra usuario (Admin y propio usuario)               |
-| get    | /auth/login       | Muestra formulario login                             |
-| post   | /auth/login       | Envía formulario de login                            |
-| get    | /auth/signup      | Muestra formulario de signup                         |
-| post   | /auth/signup      | Guarda en la BBDD un usuario                         |
-| get    | /auth/logout      | Cierra sesion usuario                                |
-| get    | /comics           | Muestra resultados de la busqueda                    |
-| get    | /comics/:id       | Muestra vista de detalles del comic                  |
-| post   | /comics/:id       | Guarda el comic en el Array de comics de ese usuario |
+| get    | /                 | Muestra la Home con Login/Signup                     |
+| get    | /allActivities    | Muestra la lista de actividades en la Home loggeada  |
+| get    | /activity/:id     | Muestra detalles de una actividad                    |
+| post   | /new Activity     | Crea nueva actividad (TEACHER)                       |
+| put    | /editActivity/:id | Edita en la BBDD la actividad (GOD)                  |
+| delete | /deleteAct/:id    | Borra la actividad (TEACHER, GOD)                    |
+| get    | /allAppointments  | Muestra la lista de citas en la Home loggeada        |
+| post   | /newAppointment   | Crea nueva cita (USER)                               |
+| delete | /deleteApp:id     | Borra la cita (USER, GOD)                            |
+| get    | /profile/:id      | Muestra detalles del perfil (USER, TEACHER)          |
+| put    | /editProfile/:id  | Edita el perfil (USER, TEACHER, GOD)                 |
+| delete | /deleteProf/:id   | Borra al usuario (GOD)                               |
+| post   | /signup           | Guarda el nuevo usuario                              |
+| post   | /login            | Guarda la nueva sesión de usuario loggeado           |
+| get    | /logout           | Borra la sesión de usuario loggeado                  |
+| get    | /isloggedin       | Middleware que comprueba si hay usuario loggeado     |
 
 ## Project Info
 
