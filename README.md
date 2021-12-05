@@ -1,6 +1,7 @@
 # ZEN project   
 
 Una app que pone en común a profesionales y usuarios de actividades ZEN como Yoga, Meditación o Taichí
+¡La mejor app del mundo!
 
 ## Puntos principales 📦
 
