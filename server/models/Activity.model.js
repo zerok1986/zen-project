@@ -26,5 +26,5 @@ const activitySchema = new Schema(
 
   { timestamps: true }
 )
-const Activity = model('Review', activitySchema)
+const Activity = model('Activity', activitySchema)
 module.exports = Activity

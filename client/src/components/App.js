@@ -36,7 +36,7 @@ class App extends Component {
         <main>
           <Switch>
             {this.state.loggedUser ? (
-              <Redirect to="coaster-list" />
+              <Redirect to="/" />
             ) : (
               <>
                 <Route
