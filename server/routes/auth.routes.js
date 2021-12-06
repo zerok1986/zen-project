@@ -4,35 +4,34 @@ const bcrypt = require('bcrypt')
 const bcryptSalt = 10
 
 router.post('/signup', (req, res) => {
-  const { username, pwd } = req.body
+  const { username, email, pwd, role } = req.body
 
-  User.findOne({ username })
-    .then((user) => {
-      if (user) {
-        res.status(400).json({ code: 400, message: 'Username already exixts' })
-        return
-      }
+  User.findOne({ username }).then((user) => {
+    if (user) {
+      res.status(400).json({ code: 400, message: 'Username already exixts' })
+      return
+    }
 
-      const salt = bcrypt.genSaltSync(bcryptSalt)
-      const hashPass = bcrypt.hashSync(pwd, salt)
+    const salt = bcrypt.genSaltSync(bcryptSalt)
+    const hashPass = bcrypt.hashSync(pwd, salt)
 
-      User.create({ username, password: hashPass })
-        .then((user) => res.status(200).json(user))
-        .catch((err) =>
-          res.status(500).json({
-            code: 500,
-            message: 'DB error while creating user',
-            err: err.message,
-          })
-        )
-    })
-    .catch((err) =>
-      res.status(500).json({
-        code: 500,
-        message: 'DB error while fetching user',
-        err: err.message,
-      })
-    )
+    User.create({ username, email, password: hashPass, role })
+      .then((user) => res.status(200).json(user))
+      .catch((err) =>
+        res.status(500).json({
+          code: 500,
+          message: 'DB error while creating user',
+          err: err.message,
+        })
+      )
+  })
+  // .catch((err) =>
+  //   res.status(500).json({
+  //     code: 500,
+  //     message: 'DB error while fetching user',
+  //     err: err.message,
+  //   })
+  // )
 })
 
 router.post('/login', (req, res) => {

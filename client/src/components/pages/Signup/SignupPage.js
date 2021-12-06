@@ -8,7 +8,9 @@ class SignupPage extends Component {
 
     this.state = {
       username: '',
+      email: '',
       pwd: '',
+      role: '',
     }
 
     this.authService = new AuthService()
@@ -18,7 +20,12 @@ class SignupPage extends Component {
     e.preventDefault()
 
     this.authService
-      .signup(this.state.username, this.state.pwd)
+      .signup(
+        this.state.username,
+        this.state.email,
+        this.state.pwd,
+        this.state.role
+      )
       .then((response) => {
         this.props.storeUser(response.data)
       })
@@ -50,6 +57,17 @@ class SignupPage extends Component {
                 />
               </Form.Group>
 
+              <Form.Group className="mb-3" controlId="email">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  onChange={this.handleInputChange}
+                  value={this.state.email}
+                  name="email"
+                  type="email"
+                  placeholder="email@email.com"
+                />
+              </Form.Group>
+
               <Form.Group className="mb-3" controlId="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
@@ -59,6 +77,21 @@ class SignupPage extends Component {
                   type="password"
                   placeholder="Password"
                 />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="role">
+                <Form.Label>Role</Form.Label>
+                <Form.Select
+                  name="role"
+                  type="text"
+                  onChange={this.handleInputChange}
+                  value={this.state.role}
+                  aria-label="Default select example"
+                >
+                  <option>Select your role</option>
+                  <option value="USER">User</option>
+                  <option value="TEACHER">Teacher</option>
+                </Form.Select>
               </Form.Group>
 
               <Button variant="primary" type="submit">

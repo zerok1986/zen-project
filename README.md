@@ -36,7 +36,7 @@ Desarrollo de componentes siguiendo punto 2.a
 | get    | /                 | Muestra la Home con Login/Signup                     |
 | get    | /allActivities    | Muestra la lista de actividades en la Home loggeada  |
 | get    | /activity/:id     | Muestra detalles de una actividad                    |
-| post   | /new Activity     | Crea nueva actividad (TEACHER)                       |
+| post   | /newActivity      | Crea nueva actividad (TEACHER)                       |
 | put    | /editActivity/:id | Edita en la BBDD la actividad (GOD)                  |
 | delete | /deleteAct/:id    | Borra la actividad (TEACHER, GOD)                    |
 | get    | /allAppointments  | Muestra la lista de citas en la Home loggeada        |

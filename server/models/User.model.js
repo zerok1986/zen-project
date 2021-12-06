@@ -7,15 +7,23 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     password: {
       type: String,
       required: true,
     },
-    name: String,
     role: {
       type: String,
       enum: ['USER', 'TEACHER', 'GOD'],
       default: 'USER',
+    },
+    name: {
+      type: String,
+      default: 'New user',
     },
   },
   {
