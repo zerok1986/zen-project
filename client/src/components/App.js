@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Navbar from './layout/Navigation/Navbar'
@@ -6,58 +6,51 @@ import SignupPage from './pages/Signup/SignupPage'
 import LoginPage from './pages/Login/LoginPage'
 import AuthService from '../services/auth.service'
 
-class App extends Component {
-  constructor(props) {
-    super(props)
+const App = () => {
+ 
+  const [loggedUser, setLoggedUser] = useState(undefined)
+  
+  const authService = new AuthService()
 
-    this.state = {
-      loggedUser: undefined,
-    }
-
-    this.authService = new AuthService()
+  const storeUser = (user) => {
+    setLoggedUser(user)
   }
 
-  componentDidMount() {
-    this.authService
+  useEffect(() => {
+    authService
       .isloggedin()
-      .then((response) => this.storeUser(response.data))
-      .catch((err) => this.storeUser(null))
-  }
+      .then((response) => storeUser(response.data))
+      .catch((err) => storeUser(null))
+  }, [])
 
-  storeUser = (user) => {
-    this.setState({ loggedUser: user })
-  }
+  return (
+    <>
+      <Navbar storeUser={storeUser} loggedUser={loggedUser} />
 
-  render() {
-    return (
-      <>
-        <Navbar storeUser={this.storeUser} loggedUser={this.state.loggedUser} />
-
-        <main>
-          <Switch>
-            {this.state.loggedUser ? (
-              <Redirect to="/" />
-            ) : (
-              <>
-                <Route
-                  path="/signup"
-                  render={(props) => (
-                    <SignupPage {...props} storeUser={this.storeUser} />
-                  )}
-                />
-                <Route
-                  path="/login"
-                  render={(props) => (
-                    <LoginPage {...props} storeUser={this.storeUser} />
-                  )}
-                />
-              </>
-            )}
-          </Switch>
-        </main>
-      </>
-    )
-  }
+      <main>
+        <Switch>
+          {loggedUser ? (
+            <Redirect to="/" />
+          ) : (
+            <>
+              <Route
+                path="/signup"
+                render={(props) => (
+                  <SignupPage {...props} storeUser={storeUser} />
+                )}
+              />
+              <Route
+                path="/login"
+                render={(props) => (
+                  <LoginPage {...props} storeUser={storeUser} />
+                )}
+              />
+            </>
+          )}
+        </Switch>
+      </main>
+    </>
+  )
 }
 
 export default App

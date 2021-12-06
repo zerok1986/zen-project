@@ -18,7 +18,7 @@ const LoginPage = (props) => {
       .then((response) => {
         props.storeUser(response.data)
 
-        props.history.push('/')
+        props.history.push('/portal')
       })
       .catch((err) => console.log(err.response.data.message))
   }

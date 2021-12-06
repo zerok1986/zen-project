@@ -2,6 +2,7 @@ import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import AuthService from '../../../services/auth.service'
+import './Navbar.css'
 
 const authService = new AuthService()
 

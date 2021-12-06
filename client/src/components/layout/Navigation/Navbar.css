@@ -1,0 +1,13 @@
+.me-auto {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.me-auto .nav-link {
+    margin-top: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.15rem;
+    text-align: right;
+    margin-right: 5px;
+}
