@@ -7,6 +7,8 @@ import SignupPage from './pages/Signup/SignupPage'
 import LoginPage from './pages/Login/LoginPage'
 import AuthService from '../services/auth.service'
 import Portal from './pages/Portal/Portal'
+import Home from "./pages/Home/Home";
+
 
 const App = (props) => {
   const [loggedUser, setLoggedUser] = useState(undefined)
@@ -32,7 +34,7 @@ const App = (props) => {
         <main>
           <Switch>
             {loggedUser ? (
-              <Redirect to="/" />
+              <Redirect to="/portal" />
             ) : (
               <>
                 <Route
@@ -51,7 +53,8 @@ const App = (props) => {
             )}
           </Switch>
         </main>
-        <Portal></Portal>
+        
+        {loggedUser ? <Portal/> : <Home/>}
       </UserProvider>
     </>
   )
