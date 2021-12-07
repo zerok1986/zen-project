@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
+import UserContext from '../../../context/UserContext'
 import { Link } from 'react-router-dom'
 import AuthService from '../../../services/auth.service'
 import './Navbar.css'
 
 const authService = new AuthService()
 
-const Navigation = ({ loggedUser, storeUser }) => {
+const Navigation = (props) => {
+  const { loggedUser, storeUser } = useContext(UserContext)
+
   const logout = () => {
     authService
       .logout()
