@@ -7,9 +7,8 @@ import LoginPage from './pages/Login/LoginPage'
 import AuthService from '../services/auth.service'
 
 const App = () => {
- 
   const [loggedUser, setLoggedUser] = useState(undefined)
-  
+
   const authService = new AuthService()
 
   const storeUser = (user) => {
