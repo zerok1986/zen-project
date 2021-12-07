@@ -21,7 +21,7 @@ const activitySchema = new Schema(
     price: Number,
     duration: Number,
     teacher: { type: Schema.Types.ObjectId, ref: 'User' },
-    // sacar los asistentes del owner de cada appointment de esa actividad
+    assistants: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   },
 
   { timestamps: true }
