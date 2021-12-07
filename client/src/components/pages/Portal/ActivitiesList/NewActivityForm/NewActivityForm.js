@@ -79,7 +79,7 @@ const NewActivityForm = (props) => {
         <Form.Control
           onChange={handleChange}
           value={formData.date}
-          name="date"
+          name="datetime-local"
           type="date"
         />
       </Form.Group>
