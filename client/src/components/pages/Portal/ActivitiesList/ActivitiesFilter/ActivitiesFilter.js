@@ -9,7 +9,7 @@ const ActivitiesFilter = (props) => {
         date: '',
         location: [[]],
     })
-    
+
     const activityService = new ActivitiesService()
     
     const handleSubmit = (e) => {
