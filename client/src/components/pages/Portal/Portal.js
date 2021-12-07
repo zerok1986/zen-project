@@ -1,11 +1,19 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect,useContext} from 'react'
 import ActivitiesService from "../../../services/activities.service"
 import ActivityList from './ActivitiesList/ActivityList';
 import SearchBar from "../Portal/SearchBar/SearchBar";
 import {  Button, Modal } from "react-bootstrap";
 import "./Portal.css"
+import NewActivityForm from './ActivitiesList/NewActivityForm/NewActivityForm';
+import ActivitiesFilter from "./ActivitiesList/ActivitiesFilter/ActivitiesFilter"
+
+import UserContext from "../../../context/UserContext"
+
 
 function Portal() {
+
+const {loggedUser} = useContext(UserContext)
+
 const service = new ActivitiesService();
 const [activitiesList, setList] = useState([])
 const [activitiesInitial, setListInitial] = useState([]);
@@ -53,14 +61,25 @@ const findActivity = (activity) => {
     return (
       <div className="portal-container">
         <div>
-          <Button onClick={openModal}>Crea una nueva montaña rusa</Button>
-            
+          {loggedUser.role === "TEACHER" ? (
+            <Button onClick={openModal}>Crea una nueva actividad</Button>
+          ) : (
+            <Button onClick={openModal}>Buscar nuevas actividades</Button>
+          )}
+
           <Modal show={showModal} backdrop="static" onHide={closeModal}>
             <Modal.Header closeButton>
-              <Modal.Title>Nueva Coaster</Modal.Title>
+              <Modal.Title>Nueva Actividad</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <h1>Hola</h1>
+              
+                {loggedUser.role === "TEACHER" ? <NewActivityForm closeModal={closeModal} refreshActivities={refreshActivities} /> :
+                 <ActivitiesFilter closeModal={closeModal} refreshActivities={refreshActivities} />
+
+                }
+             
+
+             
             </Modal.Body>
           </Modal>
 
