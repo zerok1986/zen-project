@@ -86,9 +86,7 @@ console.log(filterInputs)
                  <ActivitiesFilter findActivityByFilter = {findActivityByFilter} closeModal={closeModal} refreshActivities={refreshActivities} />
 
                 }
-             
 
-             
             </Modal.Body>
           </Modal>
 

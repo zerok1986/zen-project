@@ -7,8 +7,8 @@ import SignupPage from './pages/Signup/SignupPage'
 import LoginPage from './pages/Login/LoginPage'
 import AuthService from '../services/auth.service'
 import Portal from './pages/Portal/Portal'
-import Home from "./pages/Home/Home";
-
+import Home from './pages/Home/Home'
+import ActivityDetails from './pages/Portal/ActivitiesList/Activity/ActivityDetails/ActivityDetails'
 
 const App = (props) => {
   const [loggedUser, setLoggedUser] = useState(undefined)
@@ -33,6 +33,10 @@ const App = (props) => {
 
         <main>
           <Switch>
+            <Route
+              path="/activities/activity/:id"
+              render={(props) => <ActivityDetails {...props} />}
+            />
             {loggedUser ? (
               <Redirect to="/portal" />
             ) : (
@@ -53,8 +57,8 @@ const App = (props) => {
             )}
           </Switch>
         </main>
-        
-        {loggedUser ? <Portal/> : <Home/>}
+
+        {loggedUser ? <Portal /> : <Home />}
       </UserProvider>
     </>
   )
