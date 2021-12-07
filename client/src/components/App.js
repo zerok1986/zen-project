@@ -6,6 +6,7 @@ import Navbar from './layout/Navigation/Navbar'
 import SignupPage from './pages/Signup/SignupPage'
 import LoginPage from './pages/Login/LoginPage'
 import AuthService from '../services/auth.service'
+import Portal from './pages/Portal/Portal'
 
 const App = (props) => {
   const [loggedUser, setLoggedUser] = useState(undefined)
@@ -50,6 +51,7 @@ const App = (props) => {
             )}
           </Switch>
         </main>
+        <Portal></Portal>
       </UserProvider>
     </>
   )
