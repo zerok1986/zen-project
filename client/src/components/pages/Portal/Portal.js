@@ -73,13 +73,11 @@ const findActivity = (activity) => {
             </Modal.Header>
             <Modal.Body>
               
-                {loggedUser.role === "TEACHER" ? <NewActivityForm closeModal={closeModal} refreshActivities={refreshActivities} /> :
-                 <ActivitiesFilter closeModal={closeModal} refreshActivities={refreshActivities} />
-
+                {loggedUser.role === "TEACHER" ? 
+                  <NewActivityForm closeModal={closeModal} refreshActivities={refreshActivities} /> :
+                  <ActivitiesFilter closeModal={closeModal} refreshActivities={refreshActivities} />
                 }
-             
 
-             
             </Modal.Body>
           </Modal>
 
