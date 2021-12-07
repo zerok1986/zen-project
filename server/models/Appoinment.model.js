@@ -15,7 +15,7 @@ const appointmentSchema = new Schema(
     },
     date: Date,
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
-    matchedActivity: { type: Schema.Types.ObjectId, ref: 'Activity' },
+    matchedActivity: { type: Schema.Types.ObjectId, ref: 'Activity'},
   },
   {
     timestamps: true,
