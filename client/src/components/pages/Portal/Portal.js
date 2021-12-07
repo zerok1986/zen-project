@@ -6,7 +6,6 @@ import {  Button, Modal } from "react-bootstrap";
 import "./Portal.css"
 import NewActivityForm from './ActivitiesList/NewActivityForm/NewActivityForm';
 import ActivitiesFilter from "./ActivitiesList/ActivitiesFilter/ActivitiesFilter"
-
 import UserContext from "../../../context/UserContext"
 
 
@@ -26,12 +25,22 @@ useEffect(() => {
 }, [])
 
 const findActivity = (activity) => {
-  let copy = activitiesInitial.filter((elm) =>  elm.name.toLowerCase().includes(activity.toLowerCase()) || elm.type.toLowerCase().includes(activity.toLowerCase()))
-  ;
+  let copy = activitiesInitial.filter((elm) =>  elm.name.toLowerCase().includes(activity.toLowerCase()) || elm.type.toLowerCase().includes(activity.toLowerCase()))  ;
 
     setList(copy)
 
 }
+
+
+const findActivityByFilter = (filterInputs) => {
+ 
+console.log(filterInputs)
+  let copy = activitiesInitial.filter(elem =>  elem.type === filterInputs.type || elem.date=== filterInputs.date);
+  console.log("The copy", copy)
+  setList(copy);
+};
+
+
 
  const refreshActivities = () => {
    service
@@ -74,7 +83,7 @@ const findActivity = (activity) => {
             <Modal.Body>
               
                 {loggedUser.role === "TEACHER" ? <NewActivityForm closeModal={closeModal} refreshActivities={refreshActivities} /> :
-                 <ActivitiesFilter closeModal={closeModal} refreshActivities={refreshActivities} />
+                 <ActivitiesFilter findActivityByFilter = {findActivityByFilter} closeModal={closeModal} refreshActivities={refreshActivities} />
 
                 }
              

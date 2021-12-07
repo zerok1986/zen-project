@@ -14,15 +14,11 @@ const ActivitiesFilter = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        activityService.createActivity(filterInfo)
-        .then(response => {
-            props.closeModal()
-            props.refreshActivities()
-        })
-        .catch((err) => console.log(err.response.data.message))
-
+        props.closeModal();
+        props.findActivityByFilter(filterInfo);
+       console.log(filterInfo)
     }
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.currentTarget
@@ -48,7 +44,7 @@ const ActivitiesFilter = (props) => {
                     onChange={handleInputChange}
                     value={filterInfo.type}
                     >
-                    <option>Select your role</option>
+                    <option>Select the type</option>
                     <option value="YOGA">Yoga</option>
                     <option value="TAICHI">Taichí</option>
                     <option value="MEDITATION">Meditación</option>
