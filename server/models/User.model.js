@@ -25,7 +25,11 @@ const userSchema = new Schema(
       type: String,
       default: 'New user',
     },
-    image: String
+    image: {
+      type: String,
+      default:
+        'https://www.sinrumbofijo.com/wp-content/uploads/2016/05/default-placeholder.png',
+    },
   },
   {
     timestamps: true,
