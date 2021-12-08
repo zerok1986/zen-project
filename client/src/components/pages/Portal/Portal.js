@@ -9,28 +9,25 @@ import ActivitiesFilter from "./ActivitiesList/ActivitiesFilter/ActivitiesFilter
 import UserContext from "../../../context/UserContext"
 const { formatDate } = require("../../../utils");
 
+const service = new ActivitiesService();
 
 function Portal() {
 
-const {loggedUser} = useContext(UserContext)
+  const {loggedUser} = useContext(UserContext)
 
-const service = new ActivitiesService();
-const [activitiesList, setList] = useState([])
-const [activitiesInitial, setListInitial] = useState([]);
-const [showModal, setModal] = useState(false)
+  const [activitiesList, setList] = useState([])
+  const [activitiesInitial, setListInitial] = useState([]);
+  const [showModal, setModal] = useState(false)
 
-
-
-useEffect(() => {
+  useEffect(() => {
     refreshActivities()
-}, [])
+  }, [])
 
-const findActivity = (activity) => {
-  let copy = activitiesInitial.filter((elm) =>  elm.name.toLowerCase().includes(activity.toLowerCase()) || elm.type.toLowerCase().includes(activity.toLowerCase()))  ;
-
+  const findActivity = (activity) => {
+    let copy = activitiesInitial.filter((elm) =>  elm.name.toLowerCase().includes(activity.toLowerCase()) || elm.type.toLowerCase().includes(activity.toLowerCase()))
     setList(copy)
+  }
 
-}
 
 
 const findActivityByFilter = (filterInputs) => {
@@ -39,23 +36,20 @@ console.log(filterInputs)
   let copy = activitiesInitial.filter(
     (elem) => elem.type === filterInputs.type || formatDate(new Date(elem.date)) === formatDate(new Date(filterInputs.date))
   );
- 
   setList(copy);
 };
 
-
-
  const refreshActivities = () => {
-   service
-     .getAllActivities()
-     .then((response) => {
-       const activities = response.data;
-       setList(activities)
-       setListInitial(activities);
-       
-     })
-     .catch((err) => console.log(err));
- };
+    service
+      .getAllActivities()
+      .then((response) => {
+        const activities = response.data;
+        setList(activities)
+        setListInitial(activities);
+        
+      })
+      .catch((err) => console.log(err));
+  };
 
   const openModal = () => {
     setModal(true)
@@ -65,39 +59,35 @@ console.log(filterInputs)
     setModal(false);
   };
 
+  return (
+    <div className="portal-container">
+      <div>
+        {loggedUser.role === "TEACHER" ? (
+          <Button onClick={openModal}>Crea una nueva actividad</Button>
+        ) : (
+          <Button onClick={openModal}>Buscar nuevas actividades</Button>
+        )}
 
- 
-       
+        <Modal show={showModal} backdrop="static" onHide={closeModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Nueva Actividad</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            
+              {loggedUser.role === "TEACHER" ? 
+              <NewActivityForm closeModal={closeModal} refreshActivities={refreshActivities} /> :
+              <ActivitiesFilter findActivityByFilter = {findActivityByFilter} closeModal={closeModal} refreshActivities={refreshActivities} />
 
+              }
 
-    return (
-      <div className="portal-container">
-        <div>
-          {loggedUser.role === "TEACHER" ? (
-            <Button onClick={openModal}>Crea una nueva actividad</Button>
-          ) : (
-            <Button onClick={openModal}>Buscar nuevas actividades</Button>
-          )}
+          </Modal.Body>
+        </Modal>
 
-          <Modal show={showModal} backdrop="static" onHide={closeModal}>
-            <Modal.Header closeButton>
-              <Modal.Title>Nueva Actividad</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              
-                {loggedUser.role === "TEACHER" ? <NewActivityForm closeModal={closeModal} refreshActivities={refreshActivities} /> :
-                 <ActivitiesFilter findActivityByFilter = {findActivityByFilter} closeModal={closeModal} refreshActivities={refreshActivities} />
-
-                }
-
-            </Modal.Body>
-          </Modal>
-
-          <SearchBar searchActivity={findActivity}></SearchBar>
-          <ActivityList activities={activitiesList} />
-        </div>
+        <SearchBar searchActivity={findActivity}></SearchBar>
+        <ActivityList activities={activitiesList} />
       </div>
-    );
+    </div>
+  );
 }
 
 export default Portal

@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
-import { Container, Form, Button, Row, Col } from 'react-bootstrap'
+import React, { useState, useContext } from 'react'
+import { Form, Button } from 'react-bootstrap'
 import AuthService from '../../../services/auth.service'
+import UserContext from "../../../context/UserContext"
+
+const authService = new AuthService()
 
 const LoginPage = (props) => {
   const [loginInfo, setLoginInfo] = useState({
     username: '',
     pwd: '',
   })
-
-  const authService = new AuthService()
+  const {storeUser} = useContext(UserContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -16,11 +18,12 @@ const LoginPage = (props) => {
     authService
       .login(loginInfo.username, loginInfo.pwd)
       .then((response) => {
-        props.storeUser(response.data)
+        storeUser(response.data)
+        props.closemodal()
 
         props.history.push('/portal')
       })
-      .catch((err) => console.log(err.response.data.message))
+      .catch((err) => console.log(err))
   }
 
   const handleInputChange = (e) => {
@@ -33,43 +36,33 @@ const LoginPage = (props) => {
   }
 
   return (
-    <Container>
-      <Row>
-        <Col md={{ span: 4, offset: 4 }}>
-          <h2>Login</h2>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="username">
+        <Form.Label>Username</Form.Label>
+        <Form.Control
+          onChange={handleInputChange}
+          value={loginInfo.username}
+          name="username"
+          type="text"
+          placeholder="Elige un nombre de usuario"
+        />
+      </Form.Group>
 
-          <hr />
+      <Form.Group className="mb-3" controlId="password">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          onChange={handleInputChange}
+          value={loginInfo.pwd}
+          name="pwd"
+          type="password"
+          placeholder="Password"
+        />
+      </Form.Group>
 
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="username">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                onChange={handleInputChange}
-                value={loginInfo.username}
-                name="username"
-                type="text"
-                placeholder="Elige un nombre de usuario"
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                onChange={handleInputChange}
-                value={loginInfo.pwd}
-                name="pwd"
-                type="password"
-                placeholder="Password"
-              />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
   )
 }
 

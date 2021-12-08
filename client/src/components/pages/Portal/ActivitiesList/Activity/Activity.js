@@ -1,6 +1,6 @@
 import React from 'react'
 import './activity.css'
-import { Card, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 const { formatDate } = require("../../../../../utils");
 

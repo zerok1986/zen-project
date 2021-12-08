@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { Switch, Route, Redirect } from 'react-router-dom'
 import { UserProvider } from '../context/UserContext'
 import Navbar from './layout/Navigation/Navbar'
-import SignupPage from './pages/Signup/SignupPage'
-import LoginPage from './pages/Login/LoginPage'
 import AuthService from '../services/auth.service'
 import Portal from './pages/Portal/Portal'
 import Home from './pages/Home/Home'
+<<<<<<< HEAD
 import ActivityDetails from './pages/Portal/ActivitiesList/Activity/ActivityDetails/ActivityDetails'
+=======
+
+>>>>>>> 75b0f2a55831c9e2ab7f48180411344607646658
+const authService = new AuthService()
 
 const App = (props) => {
   const [loggedUser, setLoggedUser] = useState(undefined)
-
-  const authService = new AuthService()
 
   const storeUser = (user) => {
     setLoggedUser(user)
@@ -23,20 +23,21 @@ const App = (props) => {
     authService
       .isloggedin()
       .then((response) => storeUser(response.data))
-      .catch((err) => storeUser(null))
+      .catch(() => storeUser(null))
   }, [])
 
   return (
     <>
       <UserProvider value={{ loggedUser, storeUser }}>
         <Navbar {...props} />
-
         <main>
+<<<<<<< HEAD
           <Switch>
             <Route
               path="/activities/activity/:id"
               render={(props) => <ActivityDetails {...props} />}
             />
+
             {loggedUser ? (
               <Redirect to="/portal" />
             ) : (
@@ -56,9 +57,10 @@ const App = (props) => {
               </>
             )}
           </Switch>
+=======
+          {loggedUser ? <Portal /> : <Home storeUser = {storeUser}/>}
+>>>>>>> 75b0f2a55831c9e2ab7f48180411344607646658
         </main>
-
-        {loggedUser ? <Portal /> : <Home />}
       </UserProvider>
     </>
   )
