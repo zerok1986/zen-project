@@ -9,6 +9,11 @@ const authService = new AuthService()
 
 const App = (props) => {
   const [loggedUser, setLoggedUser] = useState(undefined)
+  const [detailsClick, setClick] = useState(false)
+
+  const setDetailsClick = () => {
+    setClick(true)
+  }
 
   const storeUser = (user) => {
     setLoggedUser(user)
@@ -23,7 +28,9 @@ const App = (props) => {
 
   return (
     <>
-      <UserProvider value={{ loggedUser, storeUser }}>
+      <UserProvider
+        value={{ loggedUser, storeUser, detailsClick, setDetailsClick }}
+      >
         <Navbar {...props} />
         <main>{loggedUser ? <Portal /> : <Home storeUser={storeUser} />}</main>
       </UserProvider>

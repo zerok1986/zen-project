@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import ProfilePage from "../../../../ProfilePage/ProfilePage";
-import { Switch, Route } from "react-router-dom";
+import ProfilePage from '../../../../ProfilePage/ProfilePage'
+import { Switch, Route } from 'react-router-dom'
 import ActivitiesService from '../../../../../../services/activities.service'
-const { formatDate } = require("../../../../../../utils")
-
+const { formatDate } = require('../../../../../../utils')
 
 const activitiesService = new ActivitiesService()
 
@@ -57,12 +56,6 @@ const ActivityDetails = (props) => {
 
   return (
     <>
-      <Switch>
-        <Route
-          path="/users/user/:id"
-          render={(props) => <ProfilePage {...props} />}
-        />
-      </Switch>
       <Container>
         <h1>Detalles</h1>
 

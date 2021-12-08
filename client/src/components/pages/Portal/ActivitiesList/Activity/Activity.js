@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import UserContext from '../../../../../context/UserContext'
 import './activity.css'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-const { formatDate } = require("../../../../../utils");
+const { formatDate } = require('../../../../../utils')
 
 function Activity(props) {
   let formattedDate = new Date(props.elem.date)
- formattedDate = formatDate(formattedDate)
+  formattedDate = formatDate(formattedDate)
+
+  const { setDetailsClick } = useContext(UserContext)
 
   return (
     <div>
@@ -16,11 +19,13 @@ function Activity(props) {
         <h6>{formattedDate} </h6>
         <br />
         <Link to={`/activities/activity/${props.elem._id}`}>
-          <Button variant="primary">Detalles</Button>
+          <Button onClick={setDetailsClick} variant="primary">
+            Detalles
+          </Button>
         </Link>
       </div>
     </div>
-  );
+  )
 }
 
 export default Activity

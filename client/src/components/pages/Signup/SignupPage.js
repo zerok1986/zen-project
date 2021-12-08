@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import AuthService from '../../../services/auth.service'
-import UserContext from "../../../context/UserContext"
+import UserContext from '../../../context/UserContext'
 
 const authService = new AuthService()
 
@@ -12,7 +12,7 @@ const SignupPage = (props) => {
     pwd: '',
     role: '',
   })
-  const {storeUser} = useContext(UserContext)
+  const { storeUser } = useContext(UserContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -28,7 +28,7 @@ const SignupPage = (props) => {
         storeUser(response.data)
         props.closeModal()
       })
-      .catch((err) => console.log(err.response.data.message))
+      .catch((err) => console.log(err))
   }
 
   const handleInputChange = (e) => {
@@ -36,7 +36,7 @@ const SignupPage = (props) => {
 
     setSignupInfo({
       ...signupInfo,
-      [name]: value
+      [name]: value,
     })
   }
 

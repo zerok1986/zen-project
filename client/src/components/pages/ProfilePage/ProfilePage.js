@@ -45,9 +45,7 @@ const ProfilePage = (props) => {
           <Col>
             <ProfileCard userDetails={userDetails} />
           </Col>
-          <Col>
-            <ActivityList />
-          </Col>
+          <Col>{/* <ActivityList /> */}</Col>
         </Row>
         <Row>
           {/* <Col>
