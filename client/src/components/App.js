@@ -25,9 +25,7 @@ const App = (props) => {
     <>
       <UserProvider value={{ loggedUser, storeUser }}>
         <Navbar {...props} />
-        <main>
-          {loggedUser ? <Portal /> : <Home storeUser = {storeUser}/>}
-        </main>
+        <main>{loggedUser ? <Portal /> : <Home storeUser={storeUser} />}</main>
       </UserProvider>
     </>
   )
