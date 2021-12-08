@@ -18,6 +18,7 @@ function Portal() {
   const [activitiesList, setList] = useState([])
   const [activitiesInitial, setListInitial] = useState([])
   const [showModal, setModal] = useState(false)
+  const { detailsClick } = useContext(UserContext);
 
   useEffect(() => {
     refreshActivities()
@@ -98,7 +99,7 @@ function Portal() {
           </Modal.Body>
         </Modal>
 
-        <SearchBar searchActivity={findActivity}></SearchBar>
+        {!detailsClick && <SearchBar searchActivity={findActivity}></SearchBar>}
         <ActivityList activities={activitiesList} />
       </div>
     </div>

@@ -26,7 +26,7 @@ const ProfilePage = (props) => {
         setUserDetails({ username, email, role, name, image })
       })
       .catch((err) => console.log(err))
-  })
+  },[])
 
   const openModal = () => {
     setModal(true)
