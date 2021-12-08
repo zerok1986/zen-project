@@ -9,11 +9,10 @@ import AuthService from '../services/auth.service'
 import Portal from './pages/Portal/Portal'
 import Home from './pages/Home/Home'
 import ActivityDetails from './pages/Portal/ActivitiesList/Activity/ActivityDetails/ActivityDetails'
+const authService = new AuthService()
 
 const App = (props) => {
   const [loggedUser, setLoggedUser] = useState(undefined)
-
-  const authService = new AuthService()
 
   const storeUser = (user) => {
     setLoggedUser(user)
@@ -37,6 +36,7 @@ const App = (props) => {
               path="/activities/activity/:id"
               render={(props) => <ActivityDetails {...props} />}
             />
+
             {loggedUser ? (
               <Redirect to="/portal" />
             ) : (
