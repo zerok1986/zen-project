@@ -9,8 +9,10 @@ const User = require('../models/User.model')
 
 router.get('/allUsers', (req, res) => {
   User.find()
-    .then((allUsers) => res.json(allUsers))
-    .catch((err) => res.json({ err, errMessage: 'Problema buscando users' }))
+    .then((allUsers) => res.status(200).json(allUsers))
+    .catch((err) =>
+      res.status(401).json({ err, errMessage: 'Problema buscando users' })
+    )
 })
 
 router.get('/user/:id', (req, res) => {
@@ -18,9 +20,11 @@ router.get('/user/:id', (req, res) => {
 
   User.findById(id)
     .then((user) => {
-      res.json(user)
+      res.status(200).json(user)
     })
-    .catch((err) => res.json({ err, errMessage: 'Problema buscando un user' }))
+    .catch((err) =>
+      res.status(401).json({ err, errMessage: 'Problema buscando un user' })
+    )
 })
 
 router.delete(
@@ -31,8 +35,10 @@ router.delete(
     const { id } = req.params
 
     User.findByIdAndRemove(id)
-      .then((user) => res.json(user))
-      .catch((err) => res.json({ err, errMessage: 'Problema eliminando user' }))
+      .then((user) => res.status(200).json(user))
+      .catch((err) =>
+        res.status(405).json({ err, errMessage: 'Problema eliminando user' })
+      )
   }
 )
 
@@ -57,8 +63,10 @@ router.put(
       },
       { new: true }
     )
-      .then((user) => res.json(user))
-      .catch((err) => res.json({ err, errMessage: 'Problema editando user' }))
+      .then((user) => res.status(202).json(user))
+      .catch((err) =>
+        res.status(405).json({ err, errMessage: 'Problema editando user' })
+      )
   }
 )
 

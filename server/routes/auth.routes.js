@@ -25,13 +25,6 @@ router.post('/signup', (req, res) => {
         })
       )
   })
-  // .catch((err) =>
-  //   res.status(500).json({
-  //     code: 500,
-  //     message: 'DB error while fetching user',
-  //     err: err.message,
-  //   })
-  // )
 })
 
 router.post('/login', (req, res) => {
@@ -50,7 +43,7 @@ router.post('/login', (req, res) => {
       }
 
       req.session.currentUser = user
-      res.json(req.session.currentUser)
+      res.status(200).json(req.session.currentUser)
     })
     .catch((err) =>
       res
@@ -67,7 +60,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/isloggedin', (req, res) => {
   req.session.currentUser
-    ? res.json(req.session.currentUser)
+    ? res.status(200).json(req.session.currentUser)
     : res.status(401).json({ code: 401, message: 'Unauthorized' })
 })
 
