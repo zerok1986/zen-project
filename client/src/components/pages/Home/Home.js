@@ -31,13 +31,17 @@ function Home() {
                     <Button onClick={() => {
                         setType('Sign up')
                         openModal()
-                    }} >Regístrate</Button>
+                    }} >
+                    Regístrate
+                    </Button>
                 </Col>
                 <Col>
                     <Button onClick={() => {
                         setType('Log in')
                         openModal()
-                    }}>Inicia Sesión</Button>
+                    }}>
+                    Inicia Sesión
+                    </Button>
                 </Col>
                 {/* MODAL */}
                 <Modal show={showModal} backdrop="static" onHide={closeModal}>

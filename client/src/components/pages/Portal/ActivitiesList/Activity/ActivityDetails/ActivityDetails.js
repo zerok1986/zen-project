@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import React, { useState, useEffect, useContext } from 'react'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import ProfilePage from '../../../../ProfilePage/ProfilePage'
 import { Switch, Route } from 'react-router-dom'
 import ActivitiesService from '../../../../../../services/activities.service'
+import UserContext from '../../../../../../context/UserContext'
 const { formatDate } = require('../../../../../../utils')
 
 const activitiesService = new ActivitiesService()
@@ -20,6 +21,8 @@ const ActivityDetails = (props) => {
     duration: 0,
     teacher: '',
   })
+
+  const {outDetailsClick} = useContext(UserContext)
 
   useEffect(() => {
     const { id } = props.match.params
@@ -83,6 +86,9 @@ const ActivityDetails = (props) => {
                 </p>
               </div>
             </article>
+            <Button onClick={outDetailsClick}>
+            Vuélvame a la lista
+            </Button>
           </Col>
         </Row>
       </Container>

@@ -15,6 +15,10 @@ const App = (props) => {
     setClick(true)
   }
 
+  const outDetailsClick = () => {
+    setClick(false)
+  }
+
   const storeUser = (user) => {
     setLoggedUser(user)
   }
@@ -29,7 +33,7 @@ const App = (props) => {
   return (
     <>
       <UserProvider
-        value={{ loggedUser, storeUser, detailsClick, setDetailsClick }}
+        value={{ loggedUser, storeUser, detailsClick, setDetailsClick, outDetailsClick }}
       >
         <Navbar {...props} />
         <main>{loggedUser ? <Portal /> : <Home storeUser={storeUser} />}</main>

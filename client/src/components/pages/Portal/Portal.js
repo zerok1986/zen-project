@@ -72,12 +72,14 @@ function Portal() {
           <Button onClick={openModal}>Buscar nuevas actividades</Button>
         )}
 
+        {detailsClick &&
         <Switch>
           <Route
             path="/users/user/:id"
             render={(props) => <ProfilePage {...props} />}
           />
         </Switch>
+        }
 
         <Modal show={showModal} backdrop="static" onHide={closeModal}>
           <Modal.Header closeButton>

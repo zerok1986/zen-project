@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Container, Row, Col, Modal, Button } from 'react-bootstrap'
+import UserContext from '../../../context/UserContext'
 import UserService from '../../../services/user.service'
 import ProfileCard from './ProfileCard/ProfileCard'
 import ActivityList from '../Portal/ActivitiesList/ActivityList'
 
+const userService = new UserService()
+
 const ProfilePage = (props) => {
-  const userService = new UserService()
   const [showModal, setModal] = useState(false)
   const [userDetails, setUserDetails] = useState({
     username: '',
@@ -14,6 +16,8 @@ const ProfilePage = (props) => {
     name: '',
     image: '',
   })
+
+  const {outDetailsClick} = useContext(UserContext)
 
   useEffect(() => {
     const { id } = props.match.params
@@ -62,6 +66,11 @@ const ProfilePage = (props) => {
             </Modal.Body>
           </Modal>
         </Col> */}
+        </Row>
+        <Row>
+          <Button onClick={outDetailsClick}>
+            Volver
+          </Button>
         </Row>
       </Container>
     </>
