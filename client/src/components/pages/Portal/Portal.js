@@ -66,11 +66,13 @@ function Portal() {
   return (
     <div className="portal-container">
       <div>
-        {loggedUser.role === 'TEACHER' ? (
+        {!detailsClick &&
+        (loggedUser.role === 'TEACHER' ? (
           <Button onClick={openModal}>Crea una nueva actividad</Button>
         ) : (
           <Button onClick={openModal}>Buscar nuevas actividades</Button>
-        )}
+        ))
+        }
 
         {detailsClick &&
         <Switch>
