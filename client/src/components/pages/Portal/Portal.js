@@ -7,6 +7,7 @@ import "./Portal.css"
 import NewActivityForm from './ActivitiesList/NewActivityForm/NewActivityForm';
 import ActivitiesFilter from "./ActivitiesList/ActivitiesFilter/ActivitiesFilter"
 import UserContext from "../../../context/UserContext"
+const { formatDate } = require("../../../utils");
 
 
 function Portal() {
@@ -35,8 +36,10 @@ const findActivity = (activity) => {
 const findActivityByFilter = (filterInputs) => {
  
 console.log(filterInputs)
-  let copy = activitiesInitial.filter(elem =>  elem.type === filterInputs.type || elem.date=== filterInputs.date);
-  console.log("The copy", copy)
+  let copy = activitiesInitial.filter(
+    (elem) => elem.type === filterInputs.type || formatDate(new Date(elem.date)) === formatDate(new Date(filterInputs.date))
+  );
+ 
   setList(copy);
 };
 
