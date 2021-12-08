@@ -10,14 +10,14 @@ const ActivityList = (props) => {
   return (
     <>
       {detailsClick ? (
-        <main>
+        <section>
           <Switch>
             <Route
               path="/activities/activity/:id"
               render={(props) => <ActivityDetails {...props} />}
             />
           </Switch>
-        </main>
+        </section>
       ) : (
         <div className="activitiesList-card">
           {props.activities.map((elem) => (

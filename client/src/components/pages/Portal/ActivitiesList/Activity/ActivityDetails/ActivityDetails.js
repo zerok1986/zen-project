@@ -76,8 +76,8 @@ const ActivityDetails = (props) => {
                 <p>Longitud: {actDetails.lng}</p>
                 <hr />
                 <br />
-                <p>Precio: {actDetails.price}</p>
-                <p>Duración: {actDetails.duration}</p>
+                <p>Precio: {actDetails.price} €</p>
+                <p>Duración: {actDetails.duration} minutos</p>
                 <p>
                   Profesor:
                   <Link to={`/users/user/${actDetails.teacher._id}`}>
