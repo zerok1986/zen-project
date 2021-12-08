@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 const { formatDate } = require('../../../../../utils')
 
-function Activity(props) {
+const Activity = (props) => {
   let formattedDate = new Date(props.elem.date)
   formattedDate = formatDate(formattedDate)
 

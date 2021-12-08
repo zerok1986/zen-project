@@ -16,10 +16,6 @@ router.get('/allUsers', (req, res) => {
 router.get('/user/:id', (req, res) => {
   const { id } = req.params
 
-  //   if (!checkMongoID(id)) {
-  //     res.json({ err, errMessage: "Problema buscando activities" })
-  //   }
-
   User.findById(id)
     .then((user) => {
       res.json(user)
@@ -39,27 +35,6 @@ router.delete(
       .catch((err) => res.json({ err, errMessage: 'Problema eliminando user' }))
   }
 )
-
-// router.get(
-//   '/:id/edit',
-//   isLoggedIn,
-//   checkRoles('USER', 'ADMIN'),
-//   checkIfCurrUserOrAdmin,
-//   (req, res, next) => {
-//     const { id } = req.params
-
-//     User.findById(id)
-//       .select({ password: 0 })
-//       .then((user) =>
-//         res.render('users/edit-user', {
-//           user,
-//           id,
-//           isAdmin: isAdmin(req.session.currentUser),
-//         })
-//       )
-//       .catch((err) => console.error(err))
-//   }
-// )
 
 router.put(
   '/edit/:id',

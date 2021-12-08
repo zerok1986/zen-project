@@ -1,23 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 
-function SearchBar(props) {
+const SearchBar = (props) => {
+  const [inputText, setInput] = useState('')
 
-    const [inputText, setInput] = useState("");
+  const handleChange = (e) => {
+    let { value } = e.currentTarget
+    setInput(value)
+  }
 
-
-
-
-
-    const handleChange = (e) => {
-          let { value } = e.currentTarget;
-          setInput(value);
-     };
-
-     useEffect(() => {
-        props.searchActivity(inputText);
- 
-     }, [inputText]);
-
+  useEffect(() => {
+    props.searchActivity(inputText)
+  }, [inputText])
 
   return (
     <div className="searchbox-container">
@@ -29,7 +22,7 @@ function SearchBar(props) {
         name="productInput"
       ></input>
     </div>
-  );
+  )
 }
 
-export default SearchBar;
+export default SearchBar

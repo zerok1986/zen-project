@@ -1,6 +1,7 @@
 import React from 'react'
 import './ProfileCard.css'
-function ProfileCard(props) {
+
+const ProfileCard = (props) => {
   return (
     <div>
       <div className="user-card">

@@ -21,7 +21,7 @@ const ActivityList = (props) => {
       ) : (
         <div className="activitiesList-card">
           {props.activities.map((elem) => (
-            <Activity elem={elem} />
+            <Activity elem={elem} key={elem._id} />
           ))}
         </div>
       )}

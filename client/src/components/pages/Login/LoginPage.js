@@ -19,9 +19,9 @@ const LoginPage = (props) => {
       .login(loginInfo.username, loginInfo.pwd)
       .then((response) => {
         storeUser(response.data)
-        props.closemodal()
+        props.closeModal()
 
-        props.history.push('/portal')
+        // props.history.push('/portal')
       })
       .catch((err) => console.error(err))
   }
