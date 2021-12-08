@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import AuthService from '../../../services/auth.service'
-import UserContext from "../../../context/UserContext"
+import UserContext from '../../../context/UserContext'
 
 const authService = new AuthService()
 
@@ -10,7 +10,7 @@ const LoginPage = (props) => {
     username: '',
     pwd: '',
   })
-  const {storeUser} = useContext(UserContext)
+  const { storeUser } = useContext(UserContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -23,7 +23,7 @@ const LoginPage = (props) => {
 
         props.history.push('/portal')
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
   }
 
   const handleInputChange = (e) => {
@@ -31,7 +31,7 @@ const LoginPage = (props) => {
 
     setLoginInfo({
       ...loginInfo,
-      [name]: value
+      [name]: value,
     })
   }
 

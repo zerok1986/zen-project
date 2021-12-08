@@ -22,7 +22,7 @@ const ActivityDetails = (props) => {
     teacher: '',
   })
 
-  const {outDetailsClick} = useContext(UserContext)
+  const { outDetailsClick } = useContext(UserContext)
 
   useEffect(() => {
     const { id } = props.match.params
@@ -54,7 +54,7 @@ const ActivityDetails = (props) => {
           teacher,
         })
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
   }, [])
 
   return (
@@ -86,9 +86,7 @@ const ActivityDetails = (props) => {
                 </p>
               </div>
             </article>
-            <Button onClick={outDetailsClick}>
-            Vuélvame a la lista
-            </Button>
+            <Button onClick={outDetailsClick}>Vuélvame a la lista</Button>
           </Col>
         </Row>
       </Container>

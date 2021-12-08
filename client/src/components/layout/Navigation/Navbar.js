@@ -20,15 +20,15 @@ const Navigation = () => {
   }
 
   const closeModal = () => {
-      setModal(false)
-      setType('')
+    setModal(false)
+    setType('')
   }
 
   const logout = () => {
     authService
       .logout()
       .then((response) => storeUser(null))
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
   }
 
   return (
@@ -50,29 +50,34 @@ const Navigation = () => {
               </Nav.Link>
             ) : (
               <>
-                <Nav.Link onClick={() => {
-                  setType('Sign up')
-                  openModal()
-                }} >
+                <Nav.Link
+                  onClick={() => {
+                    setType('Sign up')
+                    openModal()
+                  }}
+                >
                   Registro
                 </Nav.Link>
-                <Nav.Link onClick={() => {
-                  setType('Log in')
-                  openModal()
-                }}>
+                <Nav.Link
+                  onClick={() => {
+                    setType('Log in')
+                    openModal()
+                  }}
+                >
                   Login
                 </Nav.Link>
                 {/* MODAL */}
                 <Modal show={showModal} backdrop="static" onHide={closeModal}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>{modalType}</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        {modalType === "Sign up" ? 
-                        <SignupPage closeModal={closeModal}/> :
-                        <LoginPage closeModal={closeModal}/>
-                        }
-                    </Modal.Body>
+                  <Modal.Header closeButton>
+                    <Modal.Title>{modalType}</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    {modalType === 'Sign up' ? (
+                      <SignupPage closeModal={closeModal} />
+                    ) : (
+                      <LoginPage closeModal={closeModal} />
+                    )}
+                  </Modal.Body>
                 </Modal>
                 {/* MODAL */}
               </>

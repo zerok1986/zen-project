@@ -28,7 +28,7 @@ const SignupPage = (props) => {
         storeUser(response.data)
         props.closeModal()
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
   }
 
   const handleInputChange = (e) => {

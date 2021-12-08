@@ -37,7 +37,7 @@ router.post('/newActivity', (req, res) => {
     type: 'Point',
     coords: [lat, lng],
   }
-  console.log('object')
+
   Activity.create({
     name,
     type,
@@ -48,9 +48,7 @@ router.post('/newActivity', (req, res) => {
     duration,
     teacher,
   })
-    .then((newActivity) => {
-      console.log('newActivity'), res.json(newActivity)
-    })
+    .then((newActivity) => res.json(newActivity))
     .catch((err) => res.json({ err, errMessage: 'Problema creando Activity' }))
 })
 

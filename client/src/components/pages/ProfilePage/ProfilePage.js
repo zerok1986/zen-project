@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Container, Row, Col, Modal, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import UserContext from '../../../context/UserContext'
 import UserService from '../../../services/user.service'
 import ProfileCard from './ProfileCard/ProfileCard'
-import ActivityList from '../Portal/ActivitiesList/ActivityList'
+// import ActivityList from '../Portal/ActivitiesList/ActivityList'
 
 const userService = new UserService()
 
 const ProfilePage = (props) => {
-  const [showModal, setModal] = useState(false)
+  // const [showModal, setModal] = useState(false)
   const [userDetails, setUserDetails] = useState({
     username: '',
     email: '',
@@ -17,7 +17,7 @@ const ProfilePage = (props) => {
     image: '',
   })
 
-  const {outDetailsClick} = useContext(UserContext)
+  const { outDetailsClick } = useContext(UserContext)
 
   useEffect(() => {
     const { id } = props.match.params
@@ -29,16 +29,16 @@ const ProfilePage = (props) => {
 
         setUserDetails({ username, email, role, name, image })
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
   }, [])
 
-  const openModal = () => {
-    setModal(true)
-  }
+  // const openModal = () => {
+  //   setModal(true)
+  // }
 
-  const closeModal = () => {
-    setModal(false)
-  }
+  // const closeModal = () => {
+  //   setModal(false)
+  // }
 
   return (
     <>
@@ -68,9 +68,7 @@ const ProfilePage = (props) => {
         </Col> */}
         </Row>
         <Row>
-          <Button onClick={outDetailsClick}>
-            Volver
-          </Button>
+          <Button onClick={outDetailsClick}>Volver</Button>
         </Row>
       </Container>
     </>

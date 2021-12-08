@@ -18,7 +18,7 @@ function Portal() {
   const [activitiesList, setList] = useState([])
   const [activitiesInitial, setListInitial] = useState([])
   const [showModal, setModal] = useState(false)
-  const { detailsClick } = useContext(UserContext);
+  const { detailsClick } = useContext(UserContext)
 
   useEffect(() => {
     refreshActivities()
@@ -34,7 +34,6 @@ function Portal() {
   }
 
   const findActivityByFilter = (filterInputs) => {
-    console.log(filterInputs)
     let copy = activitiesInitial.filter(
       (elem) =>
         elem.type === filterInputs.type ||
@@ -52,7 +51,7 @@ function Portal() {
         setList(activities)
         setListInitial(activities)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
   }
 
   const openModal = () => {
@@ -67,21 +66,20 @@ function Portal() {
     <div className="portal-container">
       <div>
         {!detailsClick &&
-        (loggedUser.role === 'TEACHER' ? (
-          <Button onClick={openModal}>Crea una nueva actividad</Button>
-        ) : (
-          <Button onClick={openModal}>Buscar nuevas actividades</Button>
-        ))
-        }
+          (loggedUser.role === 'TEACHER' ? (
+            <Button onClick={openModal}>Crea una nueva actividad</Button>
+          ) : (
+            <Button onClick={openModal}>Buscar nuevas actividades</Button>
+          ))}
 
-        {detailsClick &&
-        <Switch>
-          <Route
-            path="/users/user/:id"
-            render={(props) => <ProfilePage {...props} />}
-          />
-        </Switch>
-        }
+        {detailsClick && (
+          <Switch>
+            <Route
+              path="/users/user/:id"
+              render={(props) => <ProfilePage {...props} />}
+            />
+          </Switch>
+        )}
 
         <Modal show={showModal} backdrop="static" onHide={closeModal}>
           <Modal.Header closeButton>
