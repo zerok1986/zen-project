@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
-import ActivitiesService from '../../../../../services/activities.service'
 
 const ActivitiesFilter = (props) => {
     
@@ -9,8 +8,6 @@ const ActivitiesFilter = (props) => {
         date: '',
         location: [[]],
     })
-
-    const activityService = new ActivitiesService()
     
     const handleSubmit = (e) => {
         e.preventDefault();

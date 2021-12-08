@@ -1,9 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Button, Container, Row, Col, Modal} from 'react-bootstrap'
 import './Home.css'
+import SignupPage from '../Signup/SignupPage'
+import LoginPage from '../Login/LoginPage'
 
 function Home() {
+    const [showModal, setModal] = useState(false)
+    const [modalType, setType] = useState('')
+
+    const openModal = () => {
+        setModal(true)
+      };
+    
+    const closeModal = () => {
+        setModal(false)
+        setType('')
+    };
+
     return (
         <Container>
             <Row className="justify-content-around description">
@@ -15,15 +28,30 @@ function Home() {
             </Row>
             <Row>
                 <Col>
-                    <Link to="/signup">
-                        <Button variant="outline-success">Regístrate</Button>
-                    </Link>
+                    <Button onClick={() => {
+                        setType('Sign up')
+                        openModal()
+                    }} >Regístrate</Button>
                 </Col>
                 <Col>
-                    <Link to="/login">
-                        <Button variant="outline-secondary">Inicia Sesión</Button>
-                    </Link>
+                    <Button onClick={() => {
+                        setType('Log in')
+                        openModal()
+                    }}>Inicia Sesión</Button>
                 </Col>
+                {/* MODAL */}
+                <Modal show={showModal} backdrop="static" onHide={closeModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{modalType}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        {modalType === "Sign up" ? 
+                        <SignupPage closeModal={closeModal}/> :
+                        <LoginPage closeModal={closeModal}/>
+                        }
+                    </Modal.Body>
+                </Modal>
+                {/* MODAL */}
             </Row>
             <Row className="justify-content-around">
                 <Col md={4}>
