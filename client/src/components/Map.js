@@ -1,6 +1,6 @@
 import React from 'react'
-import { GoogleMap, LoadScript } from '@react-google-maps/api'
-//AIzaSyA2EY6nvc3be8-6agfTwW2PNHPH0GX3dg8
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
+
 const containerStyle = {
   width: '400px',
   height: '400px',
@@ -16,8 +16,7 @@ function Map(props) {
   return (
     <LoadScript googleMapsApiKey={API_KEY}>
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={zoom}>
-        {/* Child components, such as markers, info windows, etc. */}
-        <></>
+        <Marker position={center} />
       </GoogleMap>
     </LoadScript>
   )

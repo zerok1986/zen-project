@@ -104,7 +104,7 @@ const ActivityDetails = (props) => {
         <Row className="back-button">
           <Button onClick={outDetailsClick}>Volver</Button>
         </Row>
-        <Row>
+        <Row className="map-container">
           <Map location={actDetails.location} />
         </Row>
       </Container>
