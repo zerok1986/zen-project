@@ -5,10 +5,10 @@ import ProfilePage from '../../../../ProfilePage/ProfilePage'
 import { Switch, Route } from 'react-router-dom'
 import ActivitiesService from '../../../../../../services/activities.service'
 import UserContext from '../../../../../../context/UserContext'
-import "./ActivityDetails.css";
+import './ActivityDetails.css'
+import Map from '../../../../../Map'
 
 const { formatDate } = require('../../../../../../utils')
-
 
 const activitiesService = new ActivitiesService()
 
@@ -18,8 +18,9 @@ const ActivityDetails = (props) => {
     type: '',
     maxAssistants: '',
     date: '',
-    lat: '',
-    lng: '',
+    location: {
+      coordinates: [],
+    },
     price: 0,
     duration: 0,
     teacher: '',
@@ -38,8 +39,7 @@ const ActivityDetails = (props) => {
           type,
           maxAssistants,
           date,
-          lat,
-          lng,
+          location,
           price,
           duration,
           teacher,
@@ -50,8 +50,7 @@ const ActivityDetails = (props) => {
           type,
           maxAssistants,
           date,
-          lat,
-          lng,
+          location,
           price,
           duration,
           teacher,
@@ -59,32 +58,41 @@ const ActivityDetails = (props) => {
       })
       .catch((err) => console.error(err))
   }, [])
-     
 
+  console.log(actDetails)
   return (
-
     <>
-      <Container className ="details-container">
+      <Container className="details-container">
         <h1>Detalles de actividad</h1>
 
         <Row className="justify-content-around">
-          <Col md={6} style={{ overflow: "hidden" }}>
+          <Col md={6} style={{ overflow: 'hidden' }}>
             <article>
               <h2>{actDetails.name}</h2>
               <div>
                 <p>{actDetails.type}</p>
                 <hr />
                 <br />
-                <p> <strong>Nº máximo de asistentes:</strong> {actDetails.maxAssistants}</p>
-                <p><strong>Fecha y Hora: </strong>{formatDate(new Date(actDetails.date))}</p>
-                <p><strong>Latitud:</strong> {actDetails.lat}</p>
-                <p><strong>Longitud: </strong>{actDetails.lng}</p>
+                <p>
+                  {' '}
+                  <strong>Nº máximo de asistentes:</strong>{' '}
+                  {actDetails.maxAssistants}
+                </p>
+                <p>
+                  <strong>Fecha y Hora: </strong>
+                  {formatDate(new Date(actDetails.date))}
+                </p>
                 <hr />
                 <br />
-                <p><strong>Precio: </strong> {actDetails.price} €</p>
-                <p><strong>Duración: </strong>{actDetails.duration} minutos</p>
                 <p>
-                 <strong> Profesor: </strong>
+                  <strong>Precio: </strong> {actDetails.price} €
+                </p>
+                <p>
+                  <strong>Duración: </strong>
+                  {actDetails.duration} minutos
+                </p>
+                <p>
+                  <strong> Profesor: </strong>
                   <Link to={`/users/user/${actDetails.teacher._id}`}>
                     <b>{actDetails.teacher.username}</b>
                   </Link>
@@ -96,9 +104,12 @@ const ActivityDetails = (props) => {
         <Row className="back-button">
           <Button onClick={outDetailsClick}>Volver</Button>
         </Row>
+        <Row>
+          <Map location={actDetails.location} />
+        </Row>
       </Container>
     </>
-  );
+  )
 }
 
 export default ActivityDetails

@@ -37,7 +37,7 @@ router.post('/newActivity', (req, res) => {
   } = req.body
   let location = {
     type: 'Point',
-    coords: [lat, lng],
+    coordinates: [lat, lng],
   }
 
   Activity.create({
