@@ -3,10 +3,12 @@
    text-align: center;
    width: 90%;
    margin: 0 auto;
+   
 }
 .portal-container div{
-    margin: 1rem 0;
+    margin-top: 1rem;
     text-align: center;
+   
 }
 .portal-container input{
     border: 1px solid rgba(11, 20, 104, 0.521);
