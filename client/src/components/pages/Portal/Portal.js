@@ -13,12 +13,12 @@ const { formatDate } = require('../../../utils')
 
 const service = new ActivitiesService()
 
-const Portal = () => {
+function Portal() {
   const { loggedUser } = useContext(UserContext)
   const [activitiesList, setList] = useState([])
   const [activitiesInitial, setListInitial] = useState([])
   const [showModal, setModal] = useState(false)
-  const { detailsClick } = useContext(UserContext)
+  const { detailsClick } = useContext(UserContext);
 
   useEffect(() => {
     refreshActivities()
@@ -34,6 +34,7 @@ const Portal = () => {
   }
 
   const findActivityByFilter = (filterInputs) => {
+    console.log(filterInputs)
     let copy = activitiesInitial.filter(
       (elem) =>
         elem.type === filterInputs.type ||
@@ -51,7 +52,7 @@ const Portal = () => {
         setList(activities)
         setListInitial(activities)
       })
-      .catch((err) => console.error(err))
+      .catch((err) => console.log(err))
   }
 
   const openModal = () => {
@@ -66,11 +67,11 @@ const Portal = () => {
     <div className="portal-container">
       <div>
         {!detailsClick &&
-          (loggedUser.role === 'TEACHER' ? (
-            <Button onClick={openModal}>Crea una nueva actividad</Button>
-          ) : (
-            <Button onClick={openModal}>Buscar nuevas actividades</Button>
-          ))}
+        (loggedUser.role === 'TEACHER' ? (
+          <Button onClick={openModal}>Crea una nueva actividad</Button>
+        ) : (
+          <Button onClick={openModal}>Buscar nuevas actividades</Button>
+        ))}
 
         {detailsClick && (
           <Switch>
