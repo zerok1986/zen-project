@@ -20,6 +20,7 @@ const SearchBar = (props) => {
         value={inputText}
         type="text"
         name="productInput"
+        placeholder="Busca una actividad..."
       ></input>
     </div>
   )
