@@ -43,16 +43,18 @@ const ProfilePage = (props) => {
   return (
     <>
       <Container>
-        <h1>Detalles de {userDetails.username}</h1>
-
-        <Row>
-          <Col>
-            <ProfileCard userDetails={userDetails} />
-          </Col>
-        </Row>
-        <Row>
-          <Col>{/* <ActivityList /> */}</Col>
-          {/* <Col>
+        <div className="profile-container">
+          <div className="profile-title">
+            <h1>Detalles de {userDetails.username}</h1>
+          </div>
+          <Row>
+            <Col>
+              <ProfileCard userDetails={userDetails} />
+            </Col>
+          </Row>
+          <Row>
+            <Col>{/* <ActivityList /> */}</Col>
+            {/* <Col>
           <ReviewList />
         </Col>
         <Col>
@@ -66,13 +68,21 @@ const ProfilePage = (props) => {
             </Modal.Body>
           </Modal>
         </Col> */}
-        </Row>
-        <Row>
-          <Button onClick={outDetailsClick}>Volver</Button>
-        </Row>
+          </Row>
+
+          <Row className="back-button">
+            <Button onClick={outDetailsClick}>Volver</Button>
+          </Row> 
+          {userDetails.role === "TEACHER" && (
+            <Row className="back-button">
+              <Button onClick={outDetailsClick}>Crear Reseña</Button>
+            </Row>
+          )}
+        </div>
+       
       </Container>
     </>
-  )
+  );
 }
 
 export default ProfilePage

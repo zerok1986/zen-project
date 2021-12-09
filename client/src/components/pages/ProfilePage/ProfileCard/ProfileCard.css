@@ -2,3 +2,12 @@
 height: 100%;
 width: 200px;
 }
+.profile-container button{
+width: fit-content;
+text-align: center;
+margin: 1rem 0;
+}
+.back-button{
+   display: flex;
+   justify-content: center;
+}

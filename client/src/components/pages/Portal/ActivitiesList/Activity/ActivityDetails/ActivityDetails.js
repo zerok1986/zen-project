@@ -5,7 +5,10 @@ import ProfilePage from '../../../../ProfilePage/ProfilePage'
 import { Switch, Route } from 'react-router-dom'
 import ActivitiesService from '../../../../../../services/activities.service'
 import UserContext from '../../../../../../context/UserContext'
+import "./ActivityDetails.css";
+
 const { formatDate } = require('../../../../../../utils')
+
 
 const activitiesService = new ActivitiesService()
 
@@ -56,42 +59,46 @@ const ActivityDetails = (props) => {
       })
       .catch((err) => console.error(err))
   }, [])
+     
 
   return (
+
     <>
-      <Container>
-        <h1>Detalles</h1>
+      <Container className ="details-container">
+        <h1>Detalles de actividad</h1>
 
         <Row className="justify-content-around">
-          <Col md={6} style={{ overflow: 'hidden' }}>
+          <Col md={6} style={{ overflow: "hidden" }}>
             <article>
               <h2>{actDetails.name}</h2>
               <div>
                 <p>{actDetails.type}</p>
                 <hr />
                 <br />
-                <p>Nº máximo de asistentes: {actDetails.maxAssistants}</p>
-                <p>Fecha y Hora {formatDate(new Date(actDetails.date))}</p>
-                <p>Latitud: {actDetails.lat}</p>
-                <p>Longitud: {actDetails.lng}</p>
+                <p> <strong>Nº máximo de asistentes:</strong> {actDetails.maxAssistants}</p>
+                <p><strong>Fecha y Hora: </strong>{formatDate(new Date(actDetails.date))}</p>
+                <p><strong>Latitud:</strong> {actDetails.lat}</p>
+                <p><strong>Longitud: </strong>{actDetails.lng}</p>
                 <hr />
                 <br />
-                <p>Precio: {actDetails.price} €</p>
-                <p>Duración: {actDetails.duration} minutos</p>
+                <p><strong>Precio: </strong> {actDetails.price} €</p>
+                <p><strong>Duración: </strong>{actDetails.duration} minutos</p>
                 <p>
-                  Profesor:
+                 <strong> Profesor: </strong>
                   <Link to={`/users/user/${actDetails.teacher._id}`}>
                     <b>{actDetails.teacher.username}</b>
                   </Link>
                 </p>
               </div>
             </article>
-            <Button onClick={outDetailsClick}>Vuélvame a la lista</Button>
           </Col>
+        </Row>
+        <Row className="back-button">
+          <Button onClick={outDetailsClick}>Volver</Button>
         </Row>
       </Container>
     </>
-  )
+  );
 }
 
 export default ActivityDetails

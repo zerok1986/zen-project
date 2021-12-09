@@ -4,3 +4,19 @@
     text-align: center;
     padding: 1rem;
 }
+.back-button{
+   display: flex;
+   justify-content: center;
+}
+
+.profile-container button{
+width: fit-content;
+text-align: center;
+margin: 1rem 0;
+}
+
+.details-container button{
+width: fit-content;
+text-align: center;
+margin: 1rem 0;
+}
