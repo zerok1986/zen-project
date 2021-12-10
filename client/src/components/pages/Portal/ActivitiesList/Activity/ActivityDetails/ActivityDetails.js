@@ -8,7 +8,7 @@ import UserContext from '../../../../../../context/UserContext'
 import './ActivityDetails.css'
 import Map from '../../../../../Map'
 
-const { formatDate } = require('../../../../../../utils')
+const { formatDate,formatDateFull } = require('../../../../../../utils')
 
 const activitiesService = new ActivitiesService()
 
@@ -24,10 +24,13 @@ const ActivityDetails = (props) => {
     price: 0,
     duration: 0,
     teacher: '',
+    assistants : []
   })
 
-  const { outDetailsClick } = useContext(UserContext)
 
+  
+  const {outDetailsClick, loggedUser} = useContext(UserContext)
+  
   useEffect(() => {
     const { id } = props.match.params
 
@@ -43,6 +46,7 @@ const ActivityDetails = (props) => {
           price,
           duration,
           teacher,
+          assistants,
         } = res.data
 
         setActDetails({
@@ -54,36 +58,52 @@ const ActivityDetails = (props) => {
           price,
           duration,
           teacher,
+          assistants
         })
       })
       .catch((err) => console.error(err))
   }, [])
 
-  console.log(actDetails)
+  const updateAssistants = () => {
+    const { id } = props.match.params;
+    activitiesService.addParticipant(id).then((res) => setActDetails({ ...actDetails, assistants: res.data.assistants }));
+  }
+
+  const deleteParticipation = () => {
+    const { id } = props.match.params;
+    activitiesService.deleteParticipant(id)
+    .then((res) => {
+      setActDetails({...actDetails,assistants : res.data.assistants})
+    });
+  }
+ 
+
   return (
     <>
       <Container className="details-container">
-        <h1>Detalles de actividad</h1>
-
         <Row className="justify-content-around">
-          <Col md={6} style={{ overflow: 'hidden' }}>
+          <Col md={6} style={{ overflow: "hidden" }}>
+            <Col className="title-left">
+              <Button className="btn-dark" onClick={outDetailsClick}>
+                Volver
+              </Button>
+            </Col>
             <article>
               <h2>{actDetails.name}</h2>
               <div>
                 <p>{actDetails.type}</p>
-                <hr />
-                <br />
                 <p>
-                  {' '}
-                  <strong>Nº máximo de asistentes:</strong>{' '}
-                  {actDetails.maxAssistants}
-                </p>
-                <p>
-                  <strong>Fecha y Hora: </strong>
-                  {formatDate(new Date(actDetails.date))}
+                  <strong>Fecha:  </strong>
+                  {formatDateFull(new Date(actDetails.date))}
                 </p>
                 <hr />
-                <br />
+
+                <p>
+                  {" "}
+                  <strong>Nº máximo de asistentes:</strong> {actDetails.maxAssistants} <br></br>
+                  <span>(Puestos disponibles: {actDetails.maxAssistants - actDetails.assistants.length})</span>
+                </p>
+
                 <p>
                   <strong>Precio: </strong> {actDetails.price} €
                 </p>
@@ -102,14 +122,23 @@ const ActivityDetails = (props) => {
           </Col>
         </Row>
         <Row className="back-button">
-          <Button onClick={outDetailsClick}>Volver</Button>
+          <Col>
+            {actDetails.assistants.includes(loggedUser._id) ? (
+              <Button className="btn-danger" onClick={() => deleteParticipation()}>
+                Desapuntarse
+              </Button>
+            ) : (
+              <Button onClick={() => updateAssistants(loggedUser)}>Apuntarse</Button>
+            )}
+          </Col>
         </Row>
+
         <Row className="map-container">
           <Map location={actDetails.location} />
         </Row>
       </Container>
     </>
-  )
+  );
 }
 
 export default ActivityDetails
