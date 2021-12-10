@@ -21,7 +21,12 @@ const activitySchema = new Schema(
     price: Number,
     duration: Number,
     teacher: { type: Schema.Types.ObjectId, ref: 'User' },
-    assistants: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    assistants: {
+    type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    default : []
+    }
+        
+
   },
 
   { timestamps: true }

@@ -116,7 +116,7 @@ const NewActivityForm = (props) => {
         Confirmar dirección
       </Button>
 
-      <Form.Group className="mb-3" controlId="lat">
+      <Form.Group className="mb-3" controlId="lat" style={{display: 'none'}}>
         <Form.Label>Latitud</Form.Label>
         <Form.Control
           onChange={handleChange}
@@ -126,7 +126,7 @@ const NewActivityForm = (props) => {
         />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="lng">
+      <Form.Group className="mb-3" controlId="lng" style={{display: 'none'}}>
         <Form.Label>Longitud</Form.Label>
         <Form.Control
           onChange={handleChange}

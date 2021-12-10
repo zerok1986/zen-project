@@ -18,6 +18,9 @@ function Portal() {
   const [activitiesList, setList] = useState([])
   const [activitiesInitial, setListInitial] = useState([])
   const [showModal, setModal] = useState(false)
+  const [userLocation, setUserLocation] = useState({
+    coordinates: [40.416626, -3.704652],
+  })
   const { detailsClick } = useContext(UserContext)
 
   useEffect(() => {
@@ -34,12 +37,22 @@ function Portal() {
   }
 
   const findActivityByFilter = (filterInputs) => {
-    let copy = activitiesInitial.filter(
-      (elem) =>
-        elem.type === filterInputs.type ||
-        formatDate(new Date(elem.date)) ===
+    let copy = activitiesInitial.filter((elem) => {
+      if (!filterInputs.type) {
+        return (
+          formatDate(new Date(elem.date)) ===
           formatDate(new Date(filterInputs.date))
-    )
+        )
+      } else if (!filterInputs.date) {
+        return elem.type === filterInputs.type
+      } else {
+        return (
+          elem.type === filterInputs.type &&
+          formatDate(new Date(elem.date)) ===
+            formatDate(new Date(filterInputs.date))
+        )
+      }
+    })
 
     setList(copy)
   }
@@ -97,13 +110,14 @@ function Portal() {
                 findActivityByFilter={findActivityByFilter}
                 closeModal={closeModal}
                 refreshActivities={refreshActivities}
+                setUserLocation={setUserLocation}
               />
             )}
           </Modal.Body>
         </Modal>
 
         {!detailsClick && <SearchBar searchActivity={findActivity}></SearchBar>}
-        <ActivityList activities={activitiesList} />
+        <ActivityList activities={activitiesList} userLocation={userLocation} />
       </div>
     </div>
   )
