@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import ProfilePage from '../../../../ProfilePage/ProfilePage'
-import { Switch, Route } from 'react-router-dom'
 import ActivitiesService from '../../../../../../services/activities.service'
 import UserContext from '../../../../../../context/UserContext'
 import './ActivityDetails.css'
