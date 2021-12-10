@@ -59,7 +59,6 @@ const ActivityDetails = (props) => {
       .catch((err) => console.error(err))
   }, [])
 
-  console.log(actDetails)
   return (
     <>
       <Container className="details-container">

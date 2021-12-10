@@ -3,12 +3,11 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import UserContext from '../../../context/UserContext'
 import UserService from '../../../services/user.service'
 import ProfileCard from './ProfileCard/ProfileCard'
-// import ActivityList from '../Portal/ActivitiesList/ActivityList'
+import NewReviewForm from './Reviews/NewReviewForm/NewReviewForm'
 
 const userService = new UserService()
 
 const ProfilePage = (props) => {
-  // const [showModal, setModal] = useState(false)
   const [userDetails, setUserDetails] = useState({
     username: '',
     email: '',
@@ -17,11 +16,20 @@ const ProfilePage = (props) => {
     image: '',
   })
 
+  const [showForm, setShowForm] = useState(false)
+  const { id } = props.match.params
+
+  const openForm = () => {
+    setShowForm(true)
+  }
+
+  const closeForm = () => {
+    setShowForm(false)
+  }
+
   const { outDetailsClick } = useContext(UserContext)
 
   useEffect(() => {
-    const { id } = props.match.params
-
     userService
       .getOneUser(id)
       .then((res) => {
@@ -31,14 +39,6 @@ const ProfilePage = (props) => {
       })
       .catch((err) => console.error(err))
   }, [])
-
-  // const openModal = () => {
-  //   setModal(true)
-  // }
-
-  // const closeModal = () => {
-  //   setModal(false)
-  // }
 
   return (
     <>
@@ -52,37 +52,33 @@ const ProfilePage = (props) => {
               <ProfileCard userDetails={userDetails} />
             </Col>
           </Row>
-          <Row>
-            <Col>{/* <ActivityList /> */}</Col>
-            {/* <Col>
-          <ReviewList />
-        </Col>
-        <Col>
-          <Button onClick={openModal}>Crea una nueva review</Button>
-          <Modal show={showModal} backdrop="static" onHide={closeModal}>
-            <Modal.Header closeButton>
-              <Modal.Title>Nueva Review</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <NewReviewForm />
-            </Modal.Body>
-          </Modal>
-        </Col> */}
-          </Row>
 
           <Row className="back-button">
             <Button onClick={outDetailsClick}>Volver</Button>
-          </Row> 
-          {userDetails.role === "TEACHER" && (
-            <Row className="back-button">
-              <Button onClick={outDetailsClick}>Crear Reseña</Button>
-            </Row>
+          </Row>
+          {userDetails.role === 'TEACHER' && (
+            <>
+              <Row className="back-button">
+                <Button onClick={() => openForm()}>Crear Reseña</Button>
+              </Row>
+              <Row>
+                {showForm && (
+                  <NewReviewForm
+                    show={showForm}
+                    closeForm={closeForm}
+                    teacherId={id}
+                  />
+                )}
+              </Row>
+              <Row>
+                <Col>{/* ReviewList con map de cada Review */}</Col>
+              </Row>
+            </>
           )}
         </div>
-       
       </Container>
     </>
-  );
+  )
 }
 
 export default ProfilePage

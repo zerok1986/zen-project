@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Container, Row, Col, Modal } from 'react-bootstrap'
 import './Home.css'
 import SignupPage from '../Signup/SignupPage'
@@ -16,13 +16,13 @@ const Home = () => {
     setModal(false)
     setType('')
   }
-  
+
   useEffect(() => {
     return () => {
       setModal(false)
       setType('')
-    }}, []);
-
+    }
+  }, [])
 
   return (
     <Container>
