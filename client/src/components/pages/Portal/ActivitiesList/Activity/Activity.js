@@ -3,11 +3,11 @@ import UserContext from '../../../../../context/UserContext'
 import './activity.css'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-const { formatDate } = require('../../../../../utils')
+const { formatDate, formatDateFull } = require('../../../../../utils')
 
 const Activity = (props) => {
   let formattedDate = new Date(props.elem.date)
-  formattedDate = formatDate(formattedDate)
+  formattedDate = formatDateFull(formattedDate)
 
   const { setDetailsClick } = useContext(UserContext)
 

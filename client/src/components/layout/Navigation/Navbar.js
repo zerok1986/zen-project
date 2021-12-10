@@ -41,7 +41,7 @@ const Navigation = () => {
             <Nav.Link as={Link} to="/">
               Inicio
             </Nav.Link>
-            <Nav.Link as={Link} to="/user-panel">
+            <Nav.Link as={Link} to="/home">
               Lista de actividades
             </Nav.Link>
             {loggedUser ? (

@@ -34,13 +34,11 @@ function Portal() {
   }
 
   const findActivityByFilter = (filterInputs) => {
-    console.log(filterInputs)
+    console.log("FilterInputs",filterInputs)
     let copy = activitiesInitial.filter(
-      (elem) =>
-        elem.type === filterInputs.type ||
-        formatDate(new Date(elem.date)) ===
-          formatDate(new Date(filterInputs.date))
+      (elem) => elem.type === filterInputs.type || formatDate(new Date(elem.date))===formatDate(new Date(filterInputs.date))
     )
+    
     setList(copy)
   }
 
