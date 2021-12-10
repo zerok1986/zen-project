@@ -9,8 +9,10 @@ import MapList from '../../../MapList'
 const ActivityList = (props) => {
   const { detailsClick } = useContext(UserContext)
 
-  const defaultLocation = {
-    coordinates: [40.416626, -3.704652]
+  console.log(props.userLocation)
+
+  const userLocation = {
+    coordinates: [props.userLocation.coordinates[0], props.userLocation.coordinates[1]]
   }
 
   return (
@@ -27,7 +29,7 @@ const ActivityList = (props) => {
       ) : (
         <>
           <div className="map-container">
-            <MapList location={defaultLocation} activities={props.activities} />
+            <MapList location={userLocation} activities={props.activities} />
           </div>
           <div className="activitiesList-card">
             {props.activities.map((elem) => (
