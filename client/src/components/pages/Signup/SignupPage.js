@@ -66,13 +66,7 @@ const SignupPage = (props) => {
 
       <Form.Group className="mb-3" controlId="password">
         <Form.Label>Password</Form.Label>
-        <Form.Control
-          onChange={handleInputChange}
-          value={signupInfo.pwd}
-          name="pwd"
-          type="password"
-          placeholder="Password"
-        />
+        <Form.Control onChange={handleInputChange} value={signupInfo.pwd} name="pwd" type="password" placeholder="Password" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="role">
@@ -90,11 +84,11 @@ const SignupPage = (props) => {
         </Form.Select>
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button className="modal-button" variant="primary" type="submit">
         Submit
       </Button>
     </Form>
-  )
+  );
 }
 
 export default SignupPage

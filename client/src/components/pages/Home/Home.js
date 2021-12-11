@@ -51,7 +51,7 @@ const Home = () => {
             </Button>
           </Col>
           {/* MODAL */}
-          <Modal show={showModal} backdrop="static" onHide={closeModal}>
+          <Modal className="modal-home" show={showModal} backdrop="static" onHide={closeModal}>
             <Modal.Header closeButton>
               <Modal.Title>{modalType}</Modal.Title>
             </Modal.Header>
@@ -63,32 +63,34 @@ const Home = () => {
         </Row>
         <Row className="row-home description ">
           <Col md={12} style={{ overflow: "hidden" }}>
-            <h5>
-              Encuentra las clases más cercanas a tu localización, agenda y reserva tus clases con un solo click.
-            </h5>
+            <h5>Encuentra las clases más cercanas a tu localización, agenda y reserva tus clases con un solo click.</h5>
           </Col>
         </Row>
         <Row className="row-home ">
-          <Col md={4} className="col-home-about">
-            <img src="https://yogalamp.files.wordpress.com/2014/07/triangle-sunset.jpg" alt="Yoga" />
+          <Col md={4} className="col-home-about ">
+            <div className="image-home home-yoga">
+              <img src="https://yogalamp.files.wordpress.com/2014/07/triangle-sunset.jpg" alt="Yoga" />
+            </div>
             <h3>Yoga</h3>
-            <p>El yoga te lleva al momento presente. El único lugar donde existe la vida</p>
           </Col>
-          <Col md={4} className="col-home-about">
-            <img
-              src="https://cdn.bioguia.com/embed/5d5827a0fc08a9b7572085ff2e1524425431/Razones_por_las_que_deberias_practicar_Tai-Chi?imagick=1&size=500"
-              alt="Taichí"
-            />
+          <Col md={4} className="col-home-about ">
+            <div className="image-home home-taichi">
+              <img
+                src="https://cdn.bioguia.com/embed/5d5827a0fc08a9b7572085ff2e1524425431/Razones_por_las_que_deberias_practicar_Tai-Chi?imagick=1&size=500"
+                alt="Taichí"
+              />
+            </div>
             <h3>Taichí</h3>
-            <p>Aprende a controlar las energías, tanto las que vienen de ti, como las que te rodean</p>
           </Col>
           <Col md={4} className="col-home-about">
-            <img
-              src="https://cdn.castleconnolly.com/d2/12/93e5babc4ee89ffbe1c1b56abd5f/eh-personal-story-what-i-learned-about-stress-after-meditating-02-1200x675.jpg"
-              alt="Meditación"
-            />
+            <div className="image-home home-med">
+              <img
+                className="image-home"
+                src="https://cdn.castleconnolly.com/d2/12/93e5babc4ee89ffbe1c1b56abd5f/eh-personal-story-what-i-learned-about-stress-after-meditating-02-1200x675.jpg"
+                alt="Meditación"
+              />
+            </div>
             <h3>Meditación</h3>
-            <p>La meditación no te lleva a otro mundo,revela las dimensiones más asombrosas del mundo en el que vives.</p>
           </Col>
         </Row>
       </Container>
