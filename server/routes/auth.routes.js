@@ -62,7 +62,6 @@ router.get('/isloggedin', (req, res) => {
   req.session.currentUser
     ? res.status(200).json(req.session.currentUser)
     : res.status(401).json({ code: 401, message: 'Unauthorized' })
-    console.log(req.session.currentUser);
 })
 
 module.exports = router

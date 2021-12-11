@@ -4,6 +4,7 @@ import UserContext from '../../../context/UserContext'
 import UserService from '../../../services/user.service'
 import ProfileCard from './ProfileCard/ProfileCard'
 import NewReviewForm from './Reviews/NewReviewForm/NewReviewForm'
+import ReviewList from './Reviews/ReviewList/ReviewList'
 
 const userService = new UserService()
 
@@ -71,7 +72,9 @@ const ProfilePage = (props) => {
                 )}
               </Row>
               <Row>
-                <Col>{/* ReviewList con map de cada Review */}</Col>
+                <Col>
+                  <ReviewList teacherId={id} />
+                </Col>
               </Row>
             </>
           )}

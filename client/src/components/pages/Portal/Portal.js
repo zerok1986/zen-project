@@ -13,7 +13,7 @@ const { formatDate } = require('../../../utils')
 
 const service = new ActivitiesService()
 
-function Portal() {
+const Portal = () => {
   const { loggedUser } = useContext(UserContext)
   const [activitiesList, setList] = useState([])
   const [activitiesInitial, setListInitial] = useState([])

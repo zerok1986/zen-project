@@ -9,10 +9,11 @@ import MapList from '../../../MapList'
 const ActivityList = (props) => {
   const { detailsClick } = useContext(UserContext)
 
-  console.log(props.userLocation)
-
   const userLocation = {
-    coordinates: [props.userLocation.coordinates[0], props.userLocation.coordinates[1]]
+    coordinates: [
+      props.userLocation.coordinates[0],
+      props.userLocation.coordinates[1],
+    ],
   }
 
   return (

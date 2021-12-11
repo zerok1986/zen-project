@@ -18,16 +18,6 @@ const NewReviewForm = (props) => {
     rating: '',
   })
 
-  //   const refreshReviews = () => {
-  //     reviewsService
-  //       .getAllReviews()
-  //       .then((res) => {
-  //         const reviews = res.data
-  //         props.setList(reviews)
-  //       })
-  //       .catch((err) => console.error(err))
-  //   }
-
   const handleChange = (e) => {
     let { name, value } = e.currentTarget
 
@@ -40,7 +30,6 @@ const NewReviewForm = (props) => {
     reviewsService
       .createReview(formData)
       .then((res) => {
-        // refreshReviews()
         props.closeForm()
       })
       .catch((err) => console.error(err))

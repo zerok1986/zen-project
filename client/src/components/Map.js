@@ -8,8 +8,7 @@ const containerStyle = {
 const zoom = 13.5
 const API_KEY = 'AIzaSyA2EY6nvc3be8-6agfTwW2PNHPH0GX3dg8'
 
-function Map(props) {
-  
+const Map = (props) => {
   const center = {
     lat: props.location.coordinates[0],
     lng: props.location.coordinates[1],
