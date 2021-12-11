@@ -80,7 +80,7 @@ const ActivityDetails = (props) => {
     <>
       <Container className="details-container">
         <Row className="justify-content-around">
-          <Col md={6} style={{ overflow: 'hidden' }}>
+          <Col md={6} style={{ overflow: "hidden" }}>
             <Col className="title-left">
               <Button className="btn-dark" onClick={outDetailsClick}>
                 Volver
@@ -97,13 +97,9 @@ const ActivityDetails = (props) => {
                 <hr />
 
                 <p>
-                  {' '}
-                  <strong>Nº máximo de asistentes:</strong>{' '}
-                  {actDetails.maxAssistants} <br></br>
-                  <span>
-                    (Puestos disponibles:{' '}
-                    {actDetails.maxAssistants - actDetails.assistants.length})
-                  </span>
+                  {" "}
+                  <strong>Nº máximo de asistentes:</strong> {actDetails.maxAssistants} <br></br>
+                  <span>(Puestos disponibles: {actDetails.maxAssistants - actDetails.assistants.length})</span>
                 </p>
 
                 <p>
@@ -126,16 +122,13 @@ const ActivityDetails = (props) => {
         <Row className="back-button">
           <Col>
             {actDetails.assistants.includes(loggedUser._id) ? (
-              <Button
-                className="btn-danger"
-                onClick={() => deleteParticipation()}
-              >
+              <Button className="btn-danger" onClick={() => deleteParticipation()}>
                 Desapuntarse
               </Button>
+            ) : actDetails.assistants.length < actDetails.maxAssistants ? (
+              <Button onClick={() => updateAssistants(loggedUser)}>Apuntarse</Button>
             ) : (
-              <Button onClick={() => updateAssistants(loggedUser)}>
-                Apuntarse
-              </Button>
+              <span style={{ color: "red" }}>Actividad llena</span>
             )}
           </Col>
         </Row>
@@ -145,7 +138,7 @@ const ActivityDetails = (props) => {
         </Row>
       </Container>
     </>
-  )
+  );
 }
 
 export default ActivityDetails
