@@ -37,25 +37,66 @@ function Portal() {
   };
 
   const findActivityByFilter = (filterInputs) => {
-    let maxLat = userLocation.coordinates[0] + 0.00889682909;
-    let minLat = userLocation.coordinates[0] - 0.00889682909;
-    let maxLng = userLocation.coordinates[1] + 0.00674932797;
-    let minLng = userLocation.coordinates[1] - 0.00674932797;
+    let maxLat = filterInputs.lat + 0.00889682909;
+    let minLat = filterInputs.lat - 0.00889682909;
+    let maxLng = filterInputs.lng + 0.00674932797;
+    let minLng = filterInputs.lng - 0.00674932797;
+    console.log("Filterinputs", filterInputs)
+    console.log("UserLocation", userLocation.coordinates)
+    console.log("ActivitiesInitial", activitiesInitial)
 
     let copy = activitiesInitial.filter((elem) => {
-      if (!filterInputs.type) {
+      if (!filterInputs.type && !filterInputs.date && !filterInputs.address) {
+        //000
+        return elem
+      } else if (!filterInputs.type && !filterInputs.date && filterInputs.address) {
+        //001
         return (
-          formatDate(new Date(elem.date)) ===
-          formatDate(new Date(filterInputs.date))
-        );
-      } else if (!filterInputs.date) {
-        return elem.type === filterInputs.type;
-      } else {
+          elem.location.coordinates[0] <= maxLat &&
+          elem.location.coordinates[0] >= minLat &&
+          elem.location.coordinates[1] <= maxLng &&
+          elem.location.coordinates[1] >= minLng
+        )
+      } else if (!filterInputs.type && filterInputs.date && !filterInputs.address) {
+        //010
+        return formatDate(new Date(elem.date)) === formatDate(new Date(filterInputs.date))
+      } else if (!filterInputs.type && filterInputs.date && filterInputs.address) {
+        //011
+        return (
+          formatDate(new Date(elem.date)) === formatDate(new Date(filterInputs.date)) &&
+          elem.location.coordinates[0] <= maxLat &&
+          elem.location.coordinates[0] >= minLat &&
+          elem.location.coordinates[1] <= maxLng &&
+          elem.location.coordinates[1] >= minLng
+        )
+      } else if (filterInputs.type && !filterInputs.date && !filterInputs.address) {
+        //100
+        return elem.type === filterInputs.type
+      } else if (filterInputs.type && !filterInputs.date && filterInputs.address) {
+        //101
         return (
           elem.type === filterInputs.type &&
-          formatDate(new Date(elem.date)) ===
-            formatDate(new Date(filterInputs.date))
-        );
+          elem.location.coordinates[0] <= maxLat &&
+          elem.location.coordinates[0] >= minLat &&
+          elem.location.coordinates[1] <= maxLng &&
+          elem.location.coordinates[1] >= minLng
+        )
+      } else if (filterInputs.type && filterInputs.date && !filterInputs.address) {
+        //110
+        return (
+          elem.type === filterInputs.type &&
+          formatDate(new Date(elem.date)) === formatDate(new Date(filterInputs.date))
+        )
+      } else {
+        //111
+        return (
+          elem.type === filterInputs.type &&
+          formatDate(new Date(elem.date)) === formatDate(new Date(filterInputs.date)) &&
+          elem.location.coordinates[0] <= maxLat &&
+          elem.location.coordinates[0] >= minLat &&
+          elem.location.coordinates[1] <= maxLng &&
+          elem.location.coordinates[1] >= minLng
+        )
       }
     });
 
