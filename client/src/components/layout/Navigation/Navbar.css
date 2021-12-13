@@ -12,21 +12,22 @@
   margin-right: 5px;
 }
 
-.navbar-brand {
-  font-family: Roboto !important;
-}
-
-.navbar-dark .navbar-toggler {
+.navbar-dark .navbar-toggler-icon {
   border: none;
 }
 
 .navbar-dark .navbar-toggler {
-  color: transparent;
   border-color: transparent;
 }
 .navbar-brand {
-  background: -webkit-linear-gradient(right, #47b8f3, #dd16ad);
+  /* background: -webkit-linear-gradient(right, #47b8f3, #dd16ad);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
+  -webkit-text-fill-color: transparent; */
+  color: #dfdcdb !important;
+  font-size: 25px !important;
+  padding-left: 0.5rem;
+  letter-spacing: 1px;
+}
+.navbar-main {
+  background-color: #171717 !important;
 }
