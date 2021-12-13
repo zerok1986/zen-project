@@ -57,10 +57,9 @@ const EditProfileForm = (props) => {
         <Form.Label>Username</Form.Label>
         <Form.Control
           onChange={handleInputChange}
-          value={setUserInfo.username}
+          value={userInfo.username}
           name="username"
           type="text"
-          placeholder="Elige un nombre de usuario"
         />
       </Form.Group>
 
@@ -68,10 +67,9 @@ const EditProfileForm = (props) => {
         <Form.Label>Name</Form.Label>
         <Form.Control
           onChange={handleInputChange}
-          value={setUserInfo.nameUser}
+          value={userInfo.name}
           name="name"
           type="text"
-          placeholder="Elige tu nombre"
         />
       </Form.Group>
 
@@ -79,17 +77,16 @@ const EditProfileForm = (props) => {
         <Form.Label>Email</Form.Label>
         <Form.Control
           onChange={handleInputChange}
-          value={setUserInfo.email}
+          value={userInfo.email}
           name="email"
           type="email"
-          placeholder="email@email.com"
         />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="password">
+      {/* <Form.Group className="mb-3" controlId="password">
         <Form.Label>Password</Form.Label>
-        <Form.Control onChange={handleInputChange} value={setUserInfo.pwd} name="pwd" type="password" placeholder="Password" />
-      </Form.Group>
+        <Form.Control onChange={handleInputChange} value={userInfo.pwd} name="pwd" type="password" placeholder="Introduce tu contraseña para editar" />
+      </Form.Group> */}
 
       <Form.Group className="mb-3" controlId="imageData">
         <Form.Label>Image</Form.Label>
@@ -98,7 +95,6 @@ const EditProfileForm = (props) => {
           value={setUserInfo.image}
           name="image"
           type="file"
-          placeholder="Elige tu nombre"
         />
       </Form.Group>
 

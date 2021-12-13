@@ -91,7 +91,7 @@ const ProfilePage = (props) => {
       <Container>
         <div className="profile-container">
           <div className="profile-title">
-            <h1>Detalles de {userDetails.username}</h1>
+            <h1>{userDetails.username}</h1>
             {id === loggedUser._id && (
               <Row className="back-button">
                 <Button onClick={() => openModal()}>Editar perfil</Button>

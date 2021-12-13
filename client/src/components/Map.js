@@ -6,7 +6,7 @@ const containerStyle = {
   width: '400px',
   height: '400px',
 }
-const zoom = 13.5
+const zoom = 12
 const API_KEY = 'AIzaSyA2EY6nvc3be8-6agfTwW2PNHPH0GX3dg8'
 
 const Map = (props) => {
