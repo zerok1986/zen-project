@@ -9,7 +9,7 @@ const containerStyle = {
 const zoom = 14;
 const API_KEY = "AIzaSyA2EY6nvc3be8-6agfTwW2PNHPH0GX3dg8";
 
-const Map = (props) => {
+const MapList = (props) => {
   const center = {
     lat: props.location.coordinates[0],
     lng: props.location.coordinates[1],
@@ -25,6 +25,17 @@ const Map = (props) => {
         center={center}
         zoom={zoom}
       >
+        {props.activities.length !== props.activitiesInitial.length && (
+          <Circle
+            center={center}
+            radius={1250}
+            options={{
+              fillColor: "rgba(110, 134, 214, 0.404)",
+              strokeOpacity: 0.3,
+            }}
+          />
+          )
+        }
         {props.activities.map((activity) => {
           return (
             <Marker
@@ -38,16 +49,8 @@ const Map = (props) => {
             />
           );
         })}
-        <Circle
-          center={center}
-          radius={1250}
-          options={{
-            fillColor: "rgba(110, 134, 214, 0.404)",
-            strokeOpacity: 0.3,
-          }}
-        />
       </GoogleMap>
     </LoadScript>
   );
 };
-export default Map;
+export default MapList;
