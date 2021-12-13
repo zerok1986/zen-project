@@ -1,55 +1,59 @@
-import React, { useState, useContext } from "react";
-import { Form, Button } from "react-bootstrap";
-import UserService from "../../../services/user.service";
-import UserContext from "../../../context/UserContext";
-import UploadService from "../../../services/upload.services";
-const userService = new UserService();
+import React, { useState, useContext } from 'react'
+import { Form, Button, Spinner } from 'react-bootstrap'
+import UserService from '../../../services/user.service'
+import UserContext from '../../../context/UserContext'
+import UploadService from '../../../services/upload.services'
+const userService = new UserService()
 
 const EditProfileForm = (props) => {
   const [userInfo, setUserInfo] = useState({
     username: props.username,
     email: props.email,
     name: props.name,
-    pwd: "",
+    pwd: '',
     image: props.image,
-  });
-  const { storeUser } = useContext(UserContext);
-  const { loggedUser } = useContext(UserContext);
-  const uploadService = new UploadService();
+  })
+  const { storeUser } = useContext(UserContext)
+  const { loggedUser } = useContext(UserContext)
+  const uploadService = new UploadService()
+  const [loading, setLoading] = useState(false)
+
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     userService
       .editUser(loggedUser._id, userInfo)
       .then((response) => {
-        storeUser(response.data);
-        props.closeModal();
-        props.refreshUser();
+        storeUser(response.data)
+        props.closeModal()
+        props.refreshUser()
       })
-      .catch((err) => console.error(err));
-  };
+      .catch((err) => console.error(err))
+  }
 
   const handleInputChange = (e) => {
-    const { name, value } = e.currentTarget;
+    const { name, value } = e.currentTarget
 
     setUserInfo({
       ...userInfo,
       [name]: value,
-    });
-  };
+    })
+  }
 
   const handleUploadChange = (e) => {
-    const uploadData = new FormData();
-    uploadData.append("imageData", e.target.files[0]);
+    setLoading(true)
+    const uploadData = new FormData()
+    uploadData.append('imageData', e.target.files[0])
 
     uploadService
       .uploadImage(uploadData)
       .then((response) => {
-        console.log(response);
-        setUserInfo({ ...userInfo, image: response.data.cloudinary_url });
+        console.log(response)
+        setUserInfo({ ...userInfo, image: response.data.cloudinary_url })
+        setLoading(false)
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  }
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -88,7 +92,13 @@ const EditProfileForm = (props) => {
 
       <Form.Group className="mb-3" controlId="password">
         <Form.Label>Password</Form.Label>
-        <Form.Control onChange={handleInputChange} value={setUserInfo.pwd} name="pwd" type="password" placeholder="Password" />
+        <Form.Control
+          onChange={handleInputChange}
+          value={setUserInfo.pwd}
+          name="pwd"
+          type="password"
+          placeholder="Password"
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="imageData">
@@ -101,12 +111,17 @@ const EditProfileForm = (props) => {
           placeholder="Elige tu nombre"
         />
       </Form.Group>
-
-      <Button className="modal-button" variant="primary" type="submit">
-        Submit
+      <Button
+        disabled={loading}
+        className="modal-button"
+        variant="primary"
+        type="submit"
+      >
+        Editar
       </Button>
+      {loading && <Spinner animation="border" variant="info" />}
     </Form>
-  );
-};
+  )
+}
 
-export default EditProfileForm;
+export default EditProfileForm
