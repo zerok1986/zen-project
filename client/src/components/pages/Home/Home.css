@@ -56,10 +56,7 @@
   border: none !important;
   color: rgb(255, 255, 255) !important;
   border-radius: 10px !important;
-  background: #b5189f;
-  background: -webkit-linear-gradient(top left, #b5189f, #4461ee);
-  background: -moz-linear-gradient(top left, #b5189f, #4461ee);
-  background: linear-gradient(to bottom right, #b5189f, #4461ee);
+ background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 
   position: relative;
 }

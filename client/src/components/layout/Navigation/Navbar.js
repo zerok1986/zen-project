@@ -1,38 +1,38 @@
-import React, { useState, useContext } from 'react'
-import { Navbar, Nav, Container, Modal } from 'react-bootstrap'
-import UserContext from '../../../context/UserContext'
-import { Link } from 'react-router-dom'
-import AuthService from '../../../services/auth.service'
-import SignupPage from '../../pages/Signup/SignupPage'
-import LoginPage from '../../pages/Login/LoginPage'
-import './Navbar.css'
+import React, { useState, useContext } from "react";
+import { Navbar, Nav, Container, Modal } from "react-bootstrap";
+import UserContext from "../../../context/UserContext";
+import { Link } from "react-router-dom";
+import AuthService from "../../../services/auth.service";
+import SignupPage from "../../pages/Signup/SignupPage";
+import LoginPage from "../../pages/Login/LoginPage";
+import "./Navbar.css";
 
-const authService = new AuthService()
+const authService = new AuthService();
 
 const Navigation = () => {
-  const { loggedUser, storeUser } = useContext(UserContext)
+  const { loggedUser, storeUser } = useContext(UserContext);
 
-  const [showModal, setModal] = useState(false)
-  const [modalType, setType] = useState('')
+  const [showModal, setModal] = useState(false);
+  const [modalType, setType] = useState("");
 
   const openModal = () => {
-    setModal(true)
-  }
+    setModal(true);
+  };
 
   const closeModal = () => {
-    setModal(false)
-    setType('')
-  }
+    setModal(false);
+    setType("");
+  };
 
   const logout = () => {
     authService
       .logout()
       .then((response) => storeUser(null))
-      .catch((err) => console.error(err))
-  }
+      .catch((err) => console.error(err));
+  };
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href="/home">NOMBRE ZEN</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -45,9 +45,11 @@ const Navigation = () => {
               Lista de actividades
             </Nav.Link>
             {loggedUser ? (
-              <Nav.Link as={"span"} onClick={logout}>
-                Logout
-              </Nav.Link>
+              <>
+                <Nav.Link as={"span"} onClick={logout}>
+                  Cerrar sesión
+                </Nav.Link>
+              </>
             ) : (
               <>
                 <Nav.Link
@@ -83,6 +85,6 @@ const Navigation = () => {
       </Container>
     </Navbar>
   );
-}
+};
 
-export default Navigation
+export default Navigation;

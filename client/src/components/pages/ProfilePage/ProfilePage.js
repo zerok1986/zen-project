@@ -1,45 +1,66 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
-import UserContext from '../../../context/UserContext'
-import UserService from '../../../services/user.service'
-import ProfileCard from './ProfileCard/ProfileCard'
-import NewReviewForm from './Reviews/NewReviewForm/NewReviewForm'
-import ReviewList from './Reviews/ReviewList/ReviewList'
+import React, { useState, useEffect, useContext } from "react";
+import { Container, Row, Col, Button, Modal } from "react-bootstrap";
+import UserContext from "../../../context/UserContext";
+import UserService from "../../../services/user.service";
+import EditProfileForm from "./EditProfileForm";
+import ProfileCard from "./ProfileCard/ProfileCard";
+import NewReviewForm from "./Reviews/NewReviewForm/NewReviewForm";
+import ReviewList from "./Reviews/ReviewList/ReviewList";
 
-const userService = new UserService()
+const userService = new UserService();
 
 const ProfilePage = (props) => {
   const [userDetails, setUserDetails] = useState({
-    username: '',
-    email: '',
-    role: '',
-    name: '',
-    image: '',
-  })
-
-  const [showForm, setShowForm] = useState(false)
-  const { id } = props.match.params
+    username: "",
+    email: "",
+    role: "",
+    name: "",
+    image: "",
+  });
+  const [showModal, setModal] = useState(false);
+  const { loggedUser } = useContext(UserContext);
+  const [showForm, setShowForm] = useState(false);
+  const { id } = props.match.params;
 
   const openForm = () => {
-    setShowForm(true)
-  }
+    setShowForm(true);
+  };
 
   const closeForm = () => {
-    setShowForm(false)
-  }
+    setShowForm(false);
+  };
 
-  const { outDetailsClick } = useContext(UserContext)
+  const openModal = () => {
+    setModal(true);
+  };
 
+  const closeModal = () => {
+    setModal(false);
+  };
+
+  const { outDetailsClick } = useContext(UserContext);
+ 
   useEffect(() => {
     userService
       .getOneUser(id)
       .then((res) => {
-        const { username, email, role, name, image } = res.data
+        const { username, email, role, name, image } = res.data;
 
-        setUserDetails({ username, email, role, name, image })
+        setUserDetails({ username, email, role, name, image });
       })
-      .catch((err) => console.error(err))
-  }, [])
+      .catch((err) => console.error(err));
+  }, []);
+
+  const refreshUser = () => {
+    userService
+      .getOneUser(id)
+      .then((res) => {
+        const { username, email, role, name, image } = res.data;
+
+        setUserDetails({ username, email, role, name, image });
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <>
@@ -47,41 +68,44 @@ const ProfilePage = (props) => {
         <div className="profile-container">
           <div className="profile-title">
             <h1>Detalles de {userDetails.username}</h1>
+            {id === loggedUser._id && (
+              <Row className="back-button">
+                <Button onClick={() => openModal()}>Editar perfil</Button>
+              </Row>
+            )}
           </div>
           <Row>
             <Col>
               <ProfileCard userDetails={userDetails} />
             </Col>
           </Row>
+          <Modal show={showModal} backdrop="static" onHide={closeModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>Editar perfil</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>{<EditProfileForm {...userDetails} refreshUser={refreshUser} closeModal={closeModal} />}</Modal.Body>
+          </Modal>
 
           <Row className="back-button">
             <Button onClick={outDetailsClick}>Volver</Button>
           </Row>
-          {userDetails.role === 'TEACHER' && (
+          {userDetails.role === "TEACHER" && id !== loggedUser._id && (
             <>
               <Row className="back-button">
                 <Button onClick={() => openForm()}>Crear Reseña</Button>
               </Row>
-              <Row>
-                {showForm && (
-                  <NewReviewForm
-                    show={showForm}
-                    closeForm={closeForm}
-                    teacherId={id}
-                  />
-                )}
-              </Row>
-              <Row>
-                <Col>
-                  <ReviewList teacherId={id} />
-                </Col>
-              </Row>
             </>
           )}
+          <Row>{showForm && <NewReviewForm show={showForm} closeForm={closeForm} teacherId={id} />}</Row>
+          <Row>
+            <Col>
+              <ReviewList teacherId={id} />
+            </Col>
+          </Row>
         </div>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default ProfilePage
+export default ProfilePage;
