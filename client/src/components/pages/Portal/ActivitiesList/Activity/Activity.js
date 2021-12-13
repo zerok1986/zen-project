@@ -20,7 +20,7 @@ const Activity = (props) => {
 
         <br />
         <Link to={`/activities/activity/${props.elem._id}`}>
-          <Button onClick={setDetailsClick} variant="primary">
+          <Button className="btn-home" onClick={setDetailsClick} variant="primary">
             Detalles
           </Button>
         </Link>

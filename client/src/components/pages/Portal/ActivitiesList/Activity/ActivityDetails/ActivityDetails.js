@@ -1,49 +1,39 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import ActivitiesService from '../../../../../../services/activities.service'
-import UserContext from '../../../../../../context/UserContext'
-import './ActivityDetails.css'
-import Map from '../../../../../Map'
+import React, { useState, useEffect, useContext } from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import ActivitiesService from "../../../../../../services/activities.service";
+import UserContext from "../../../../../../context/UserContext";
+import "./ActivityDetails.css";
+import Map from "../../../../../Map";
 
-const { formatDate, formatDateFull } = require('../../../../../../utils')
+const { formatDate, formatDateFull } = require("../../../../../../utils");
 
-const activitiesService = new ActivitiesService()
+const activitiesService = new ActivitiesService();
 
 const ActivityDetails = (props) => {
   const [actDetails, setActDetails] = useState({
-    name: '',
-    type: '',
-    maxAssistants: '',
-    date: '',
+    name: "",
+    type: "",
+    maxAssistants: "",
+    date: "",
     location: {
       coordinates: [],
     },
     price: 0,
     duration: 0,
-    teacher: '',
+    teacher: "",
     assistants: [],
-  })
+  });
 
-  const { outDetailsClick, loggedUser } = useContext(UserContext)
+  const { outDetailsClick, loggedUser } = useContext(UserContext);
 
   useEffect(() => {
-    const { id } = props.match.params
+    const { id } = props.match.params;
 
     activitiesService
       .getOneActivity(id)
       .then((res) => {
-        const {
-          name,
-          type,
-          maxAssistants,
-          date,
-          location,
-          price,
-          duration,
-          teacher,
-          assistants,
-        } = res.data
+        const { name, type, maxAssistants, date, location, price, duration, teacher, assistants } = res.data;
 
         setActDetails({
           name,
@@ -55,26 +45,22 @@ const ActivityDetails = (props) => {
           duration,
           teacher,
           assistants,
-        })
+        });
       })
-      .catch((err) => console.error(err))
-  }, [])
+      .catch((err) => console.error(err));
+  }, []);
 
   const updateAssistants = () => {
-    const { id } = props.match.params
-    activitiesService
-      .addParticipant(id)
-      .then((res) =>
-        setActDetails({ ...actDetails, assistants: res.data.assistants })
-      )
-  }
+    const { id } = props.match.params;
+    activitiesService.addParticipant(id).then((res) => setActDetails({ ...actDetails, assistants: res.data.assistants }));
+  };
 
   const deleteParticipation = () => {
-    const { id } = props.match.params
+    const { id } = props.match.params;
     activitiesService.deleteParticipant(id).then((res) => {
-      setActDetails({ ...actDetails, assistants: res.data.assistants })
-    })
-  }
+      setActDetails({ ...actDetails, assistants: res.data.assistants });
+    });
+  };
 
   return (
     <>
@@ -122,11 +108,13 @@ const ActivityDetails = (props) => {
         <Row className="back-button">
           <Col>
             {actDetails.assistants.includes(loggedUser._id) ? (
-              <Button className="btn-danger" onClick={() => deleteParticipation()}>
+              <Button className="btn-create-red" onClick={() => deleteParticipation()}>
                 Desapuntarse
               </Button>
             ) : actDetails.assistants.length < actDetails.maxAssistants ? (
-              <Button onClick={() => updateAssistants(loggedUser)}>Apuntarse</Button>
+              <Button className="btn-create" onClick={() => updateAssistants(loggedUser)}>
+                Apuntarse
+              </Button>
             ) : (
               <span style={{ color: "red" }}>Actividad llena</span>
             )}
@@ -139,6 +127,6 @@ const ActivityDetails = (props) => {
       </Container>
     </>
   );
-}
+};
 
-export default ActivityDetails
+export default ActivityDetails;

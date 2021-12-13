@@ -26,7 +26,6 @@
 }
 .container-home h4 {
   margin: 0.8rem 0;
-  font-weight: bold;
   padding-top: 1rem;
   text-align: center;
   font-family: Poppins;
@@ -50,7 +49,7 @@
   background-color: transparent !important;
   color: #171717 !important;
   margin-top: 0.8rem;
-  width: 140px;
+  width: 135px;
 }
 
 /* .btn-home:after {
