@@ -41,7 +41,7 @@ const App = (props) => {
           outDetailsClick,
         }}
       >
-        <Navbar {...props} />
+        <Navbar />
         <main>{loggedUser ? <Portal /> : <Home />}</main>
       </UserProvider>
     </>

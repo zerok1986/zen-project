@@ -30,10 +30,32 @@ const Portal = () => {
   const findActivity = (activity) => {
     let copy = activitiesInitial.filter(
       (elm) =>
-        elm.name.toLowerCase().includes(activity.toLowerCase()) ||
-        elm.type.toLowerCase().includes(activity.toLowerCase())
+        elm.name
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .includes(
+            activity
+              .toLowerCase()
+              .normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+          ) ||
+        elm.type
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .includes(
+            activity
+              .toLowerCase()
+              .normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+          )
     )
     setList(copy)
+  }
+
+  const clearFilters = () => {
+    setList(activitiesInitial)
   }
 
   const findActivityByFilter = (filterInputs) => {
@@ -41,9 +63,6 @@ const Portal = () => {
     let minLat = filterInputs.lat - 0.00889682909
     let maxLng = filterInputs.lng + 0.00674932797
     let minLng = filterInputs.lng - 0.00674932797
-    console.log('Filterinputs', filterInputs)
-    console.log('UserLocation', userLocation.coordinates)
-    console.log('ActivitiesInitial', activitiesInitial)
 
     let copy = activitiesInitial.filter((elem) => {
       if (!filterInputs.type && !filterInputs.date && !filterInputs.address) {
@@ -193,7 +212,12 @@ const Portal = () => {
         </Modal>
 
         {!detailsClick && <SearchBar searchActivity={findActivity}></SearchBar>}
-        <ActivityList activities={activitiesList} userLocation={userLocation} />
+        <ActivityList
+          activities={activitiesList}
+          activitiesInitial={activitiesInitial}
+          userLocation={userLocation}
+          clearFilters={clearFilters}
+        />
       </div>
     </div>
   )

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap'
 import UserContext from '../../../context/UserContext'
 import UserService from '../../../services/user.service'
 import ReviewsService from '../../../services/reviews.service'
+import EditProfileForm from './EditProfileForm'
 import ProfileCard from './ProfileCard/ProfileCard'
 import NewReviewForm from './Reviews/NewReviewForm/NewReviewForm'
 import ReviewList from './Reviews/ReviewList/ReviewList'
@@ -18,10 +19,10 @@ const ProfilePage = (props) => {
     name: '',
     image: '',
   })
-
-  const [showForm, setShowForm] = useState(false)
+  const [showModal, setModal] = useState(false)
   const [reviewsInfo, setReviewsInfo] = useState([])
-
+  const { loggedUser } = useContext(UserContext)
+  const [showForm, setShowForm] = useState(false)
   const { id } = props.match.params
 
   useEffect(() => {
@@ -53,6 +54,14 @@ const ProfilePage = (props) => {
     setShowForm(false)
   }
 
+  const openModal = () => {
+    setModal(true)
+  }
+
+  const closeModal = () => {
+    setModal(false)
+  }
+
   const { outDetailsClick } = useContext(UserContext)
 
   useEffect(() => {
@@ -66,18 +75,48 @@ const ProfilePage = (props) => {
       .catch((err) => console.error(err))
   }, [])
 
+  const refreshUser = () => {
+    userService
+      .getOneUser(id)
+      .then((res) => {
+        const { username, email, role, name, image } = res.data
+
+        setUserDetails({ username, email, role, name, image })
+      })
+      .catch((err) => console.error(err))
+  }
+
   return (
     <>
       <Container>
         <div className="profile-container">
           <div className="profile-title">
             <h1>Detalles de {userDetails.username}</h1>
+            {id === loggedUser._id && (
+              <Row className="back-button">
+                <Button onClick={() => openModal()}>Editar perfil</Button>
+              </Row>
+            )}
           </div>
           <Row>
             <Col>
               <ProfileCard userDetails={userDetails} />
             </Col>
           </Row>
+          <Modal show={showModal} backdrop="static" onHide={closeModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>Editar perfil</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {
+                <EditProfileForm
+                  {...userDetails}
+                  refreshUser={refreshUser}
+                  closeModal={closeModal}
+                />
+              }
+            </Modal.Body>
+          </Modal>
 
           <Row className="back-button">
             <Button onClick={outDetailsClick}>Volver</Button>
@@ -104,6 +143,20 @@ const ProfilePage = (props) => {
               </Row>
             </>
           )}
+          <Row>
+            {showForm && (
+              <NewReviewForm
+                show={showForm}
+                closeForm={closeForm}
+                teacherId={id}
+              />
+            )}
+          </Row>
+          <Row>
+            <Col>
+              <ReviewList teacherId={id} />
+            </Col>
+          </Row>
         </div>
       </Container>
     </>

@@ -9,8 +9,8 @@ import './Navbar.css'
 
 const authService = new AuthService()
 
-const Navigation = () => {
-  const { loggedUser, storeUser } = useContext(UserContext)
+const Navigation = (props) => {
+  const { loggedUser, storeUser, setDetailsClick } = useContext(UserContext)
 
   const [showModal, setModal] = useState(false)
   const [modalType, setType] = useState('')
@@ -39,11 +39,19 @@ const Navigation = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/home">Inicio</Nav.Link>
-            <Nav.Link href="/home">Lista de actividades</Nav.Link>
             {loggedUser ? (
-              <Nav.Link as={'span'} onClick={logout}>
-                Logout
-              </Nav.Link>
+              <>
+                <Nav.Link
+                  as={Link}
+                  onClick={setDetailsClick}
+                  to={`/users/user/${loggedUser._id}`}
+                >
+                  Mi perfil
+                </Nav.Link>
+                <Nav.Link as={'span'} onClick={logout}>
+                  Cerrar sesión
+                </Nav.Link>
+              </>
             ) : (
               <>
                 <Nav.Link

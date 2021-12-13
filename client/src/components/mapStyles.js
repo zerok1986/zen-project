@@ -1,73 +1,61 @@
 const dark = [
   {
-    featureType: "administrative",
-    elementType: "labels.text.fill",
+    featureType: "landscape.natural",
+    elementType: "geometry.fill",
     stylers: [
-      {
-        color: "#7b7b7b",
-      },
       {
         visibility: "on",
       },
-    ],
-  },
-  {
-    featureType: "landscape",
-    elementType: "all",
-    stylers: [
       {
-        hue: "#ff0000",
-      },
-      {
-        saturation: "-100",
-      },
-      {
-        lightness: "68",
+        color: "#e0efef",
       },
     ],
   },
   {
     featureType: "poi",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        visibility: "on",
+      },
+      {
+        hue: "#1900ff",
+      },
+      {
+        color: "#c0e8e8",
+      },
+    ],
+  },
+  {
+    featureType: "road",
     elementType: "geometry",
     stylers: [
       {
-        color: "#dff8c6",
+        lightness: 100,
       },
-    ],
-  },
-  {
-    featureType: "poi",
-    elementType: "labels.text",
-    stylers: [
       {
         visibility: "simplified",
       },
     ],
   },
   {
-    featureType: "poi",
-    elementType: "labels.text.fill",
+    featureType: "road",
+    elementType: "labels",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "transit.line",
+    elementType: "geometry",
     stylers: [
       {
         visibility: "on",
       },
       {
-        saturation: "-100",
-      },
-      {
-        color: "#858585",
-      },
-    ],
-  },
-  {
-    featureType: "road.highway",
-    elementType: "all",
-    stylers: [
-      {
-        saturation: "-100",
-      },
-      {
-        visibility: "simplified",
+        lightness: 700,
       },
     ],
   },
@@ -76,10 +64,7 @@ const dark = [
     elementType: "all",
     stylers: [
       {
-        color: "#8cdae7",
-      },
-      {
-        visibility: "on",
+        color: "#7dcdcd",
       },
     ],
   },
