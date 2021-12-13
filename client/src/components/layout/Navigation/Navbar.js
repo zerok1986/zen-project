@@ -67,7 +67,7 @@ const Navigation = (props) => {
                   Iniciar Sesión
                 </Nav.Link>
                 {/* MODAL */}
-                <Modal show={showModal} backdrop="static" onHide={closeModal}>
+                <Modal className="modal-home" show={showModal} backdrop="static" onHide={closeModal}>
                   <Modal.Header closeButton>
                     <Modal.Title>{modalType}</Modal.Title>
                   </Modal.Header>
