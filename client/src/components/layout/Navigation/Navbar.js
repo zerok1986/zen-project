@@ -49,7 +49,7 @@ const Navigation = (props) => {
                   Mi perfil
                 </Nav.Link>
                 <Nav.Link as={"span"} onClick={logout}>
-                  Logout
+                  Cerrar sesión
                 </Nav.Link>
               </>
             ) : (
