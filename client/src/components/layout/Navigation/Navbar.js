@@ -68,7 +68,7 @@ const Navigation = (props) => {
                     openModal()
                   }}
                 >
-                  Login
+                  Iniciar Sesión
                 </Nav.Link>
                 {/* MODAL */}
                 <Modal show={showModal} backdrop="static" onHide={closeModal}>

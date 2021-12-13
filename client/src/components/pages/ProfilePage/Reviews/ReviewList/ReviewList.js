@@ -6,7 +6,7 @@ const ReviewList = (props) => {
 
   return (
     <div className="reviewslist-card">
-      {reviews.map((elm) => (
+      {reviews?.map((elm) => (
         <Review info={elm} key={elm._id} />
       ))}
     </div>
