@@ -1,13 +1,32 @@
 .me-auto {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .me-auto .nav-link {
-    margin-top: 0.5rem;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.15rem;
-    text-align: right;
-    margin-right: 5px;
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.15rem;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.navbar-brand {
+  font-family: Roboto !important;
+}
+
+.navbar-dark .navbar-toggler {
+  border: none;
+}
+
+.navbar-dark .navbar-toggler {
+  color: transparent;
+  border-color: transparent;
+}
+.navbar-brand {
+  background: -webkit-linear-gradient(right, #47b8f3, #dd16ad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
 }

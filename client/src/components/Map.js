@@ -1,5 +1,6 @@
 import React from 'react'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
+import mapStyles from "./mapStyles"
 
 const containerStyle = {
   width: '400px',
@@ -15,10 +16,17 @@ const Map = (props) => {
   }
   return (
     <LoadScript googleMapsApiKey={API_KEY}>
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={zoom}>
-        <Marker position={center} />
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={zoom}
+        options={{
+          styles: mapStyles,
+        }}
+      >
+        <Marker position={center} icon={"https://img.icons8.com/ios-glyphs/30/000000/marker--v1.png"} />
       </GoogleMap>
     </LoadScript>
-  )
+  );
 }
 export default Map

@@ -1,33 +1,35 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Container, Row, Col, Modal } from 'react-bootstrap'
-import './Home.css'
-import SignupPage from '../Signup/SignupPage'
-import LoginPage from '../Login/LoginPage'
+import React, { useState, useEffect } from "react";
+import { Button, Container, Row, Col, Modal } from "react-bootstrap";
+import "./Home.css";
+import SignupPage from "../Signup/SignupPage";
+import LoginPage from "../Login/LoginPage";
+import image from "./Iphone.png";
+import imageMap from "./Captura.PNG";
 
 const Home = () => {
-  const [showModal, setModal] = useState(false)
-  const [modalType, setType] = useState('')
+  const [showModal, setModal] = useState(false);
+  const [modalType, setType] = useState("");
 
   const openModal = () => {
-    setModal(true)
-  }
+    setModal(true);
+  };
 
   const closeModal = () => {
-    setModal(false)
-    setType('')
-  }
+    setModal(false);
+    setType("");
+  };
 
   useEffect(() => {
-    return () => { 
-      setModal(false)
-      setType('')
-    }
-  }, [])
+    return () => {
+      setModal(false);
+      setType("");
+    };
+  }, []);
 
   return (
     <Container fluid className="flex-home">
       <Container className="container-home">
-        <Row className="row-home ">
+        <Row className="row-home home-buttons ">
           <Col className="col-home-auth">
             <Button
               className="btn-home"
@@ -61,12 +63,13 @@ const Home = () => {
           </Modal>
           {/* MODAL */}
         </Row>
-        <Row className="row-home description ">
+        <Row className="row-home-about ">
           <Col md={12} style={{ overflow: "hidden" }}>
-            <h5>Encuentra las clases más cercanas a tu localización, agenda y reserva tus clases con un solo click.</h5>
+            <h4>Chaturanga es</h4>
           </Col>
         </Row>
-        <Row className="row-home ">
+
+        <Row className="row-home  ">
           <Col md={4} className="col-home-about ">
             <div className="image-home home-yoga">
               <img src="https://yogalamp.files.wordpress.com/2014/07/triangle-sunset.jpg" alt="Yoga" />
@@ -93,9 +96,34 @@ const Home = () => {
             <h3>Meditación</h3>
           </Col>
         </Row>
+        <Row className="row-home-about ">
+          <Col md={12} style={{ overflow: "hidden" }}>
+            <h4>¿Qué ofrecemos?</h4>
+          </Col>
+        </Row>
+        <Row className="row-home description ">
+          <Col md={12} style={{ overflow: "hidden" }}>
+            <ul>
+              <li>
+                Encuentra las clases más cercanas a tu localización,busca por fechas para encontrar las clases que más se adapten
+                a ti, agenda y reserva tus clases con un solo click.
+              </li>
+              <img src={imageMap} alt="mobile" class="imageMap"></img>
+              <li>Haz saber a los demás como ha sido tu experiencia, dejando reseñas de los profesores de tus clases</li>
+              <img src={image} alt="mobile" class="imageMobile"></img>
+            </ul>
+          </Col>
+        </Row>
       </Container>
+      <Row>
+        <footer>
+          <p>
+            Desarrollado por: <br></br>Marcos Fernández, Miguel Muñoz y Miguel Ángel Abad
+          </p>
+        </footer>
+      </Row>
     </Container>
   );
-}
+};
 
-export default Home
+export default Home;
