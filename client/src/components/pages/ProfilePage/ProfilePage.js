@@ -136,16 +136,11 @@ const ProfilePage = (props) => {
                   />
                 )}
               </Row>
-              <Row>
-                <Col>
-                  <ReviewList reviews={reviews} teacherId={id} />
-                </Col>
-              </Row>
             </>
           ) : null}
           <Row>
             <Col>
-              <ReviewList teacherId={id} />
+              <ReviewList reviews={reviews} teacherId={id} />
             </Col>
           </Row>
         </div>
