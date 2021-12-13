@@ -15,7 +15,7 @@ const ActivitiesFilter = (props) => {
     e.preventDefault()
     props.closeModal()
     props.setUserLocation({
-      coordinates: [filterInfo.lat, filterInfo.lng]
+      coordinates: [filterInfo.lat, filterInfo.lng],
     })
     props.findActivityByFilter(filterInfo)
   }
@@ -62,7 +62,7 @@ const ActivitiesFilter = (props) => {
                 <option>Select the type</option>
                 <option value="YOGA">Yoga</option>
                 <option value="TAICHI">Taichí</option>
-                <option value="MEDITATION">Meditación</option>
+                <option value="MEDITACION">Meditación</option>
               </Form.Select>
             </Form.Group>
 
@@ -89,7 +89,11 @@ const ActivitiesFilter = (props) => {
               Confirmar dirección
             </Button>
 
-            <Form.Group className="mb-3" controlId="lat" style={{display: 'none'}}>
+            <Form.Group
+              className="mb-3"
+              controlId="lat"
+              style={{ display: 'none' }}
+            >
               <Form.Label>Latitud</Form.Label>
               <Form.Control
                 onChange={handleInputChange}
@@ -99,7 +103,11 @@ const ActivitiesFilter = (props) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="lng" style={{display: 'none'}}>
+            <Form.Group
+              className="mb-3"
+              controlId="lng"
+              style={{ display: 'none' }}
+            >
               <Form.Label>Longitud</Form.Label>
               <Form.Control
                 onChange={handleInputChange}

@@ -121,7 +121,7 @@ const ProfilePage = (props) => {
           <Row className="back-button">
             <Button onClick={outDetailsClick}>Volver</Button>
           </Row>
-          {userDetails.role === 'PROFESOR' && (
+          {userDetails.role === 'PROFESOR' && id !== loggedUser._id ? (
             <>
               <Row className="back-button">
                 <Button onClick={() => openForm()}>Crear Reseña</Button>
@@ -142,16 +142,7 @@ const ProfilePage = (props) => {
                 </Col>
               </Row>
             </>
-          )}
-          <Row>
-            {showForm && (
-              <NewReviewForm
-                show={showForm}
-                closeForm={closeForm}
-                teacherId={id}
-              />
-            )}
-          </Row>
+          ) : null}
           <Row>
             <Col>
               <ReviewList teacherId={id} />
