@@ -8,7 +8,7 @@ const activitySchema = new Schema(
     },
     type: {
       type: String,
-      enum: ['YOGA', 'TAICHI', 'MEDITATION'],
+      enum: ['YOGA', 'TAICHI', 'MEDITACION'],
     },
     maxAssistants: Number,
     date: Date,
@@ -22,11 +22,9 @@ const activitySchema = new Schema(
     duration: Number,
     teacher: { type: Schema.Types.ObjectId, ref: 'User' },
     assistants: {
-    type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-    default : []
-    }
-        
-
+      type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+      default: [],
+    },
   },
 
   { timestamps: true }

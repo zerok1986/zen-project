@@ -36,7 +36,7 @@ const LoginPage = (props) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="username">
-        <Form.Label>Username</Form.Label>
+        <Form.Label>Nombre de usuario</Form.Label>
         <Form.Control
           onChange={handleInputChange}
           value={loginInfo.username}
@@ -47,7 +47,7 @@ const LoginPage = (props) => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="password">
-        <Form.Label>Password</Form.Label>
+        <Form.Label>Contraseña</Form.Label>
         <Form.Control
           onChange={handleInputChange}
           value={loginInfo.pwd}

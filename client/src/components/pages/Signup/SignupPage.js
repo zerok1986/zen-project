@@ -43,7 +43,7 @@ const SignupPage = (props) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="username">
-        <Form.Label>Username</Form.Label>
+        <Form.Label>Nombre de usuario</Form.Label>
         <Form.Control
           onChange={handleInputChange}
           value={signupInfo.username}
@@ -54,7 +54,7 @@ const SignupPage = (props) => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="email">
-        <Form.Label>Email</Form.Label>
+        <Form.Label>Correo electrónico</Form.Label>
         <Form.Control
           onChange={handleInputChange}
           value={signupInfo.email}
@@ -65,12 +65,18 @@ const SignupPage = (props) => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="password">
-        <Form.Label>Password</Form.Label>
-        <Form.Control onChange={handleInputChange} value={signupInfo.pwd} name="pwd" type="password" placeholder="Password" />
+        <Form.Label>Contraseña</Form.Label>
+        <Form.Control
+          onChange={handleInputChange}
+          value={signupInfo.pwd}
+          name="pwd"
+          type="password"
+          placeholder="Password"
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="role">
-        <Form.Label>Role</Form.Label>
+        <Form.Label>Tipo de perfil</Form.Label>
         <Form.Select
           name="role"
           type="text"
@@ -78,17 +84,17 @@ const SignupPage = (props) => {
           value={signupInfo.role}
           aria-label="Default select example"
         >
-          <option>Select your role</option>
-          <option value="USER">User</option>
-          <option value="TEACHER">Teacher</option>
+          <option>Selecciona tu perfil</option>
+          <option value="ALUMNO">Alumno</option>
+          <option value="PROFESOR">Profesor</option>
         </Form.Select>
       </Form.Group>
 
       <Button className="modal-button" variant="primary" type="submit">
-        Submit
+        Registrarse
       </Button>
     </Form>
-  );
+  )
 }
 
 export default SignupPage

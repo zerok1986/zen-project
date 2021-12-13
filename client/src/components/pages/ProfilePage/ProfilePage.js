@@ -2,11 +2,13 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import UserContext from '../../../context/UserContext'
 import UserService from '../../../services/user.service'
+import ReviewsService from '../../../services/reviews.service'
 import ProfileCard from './ProfileCard/ProfileCard'
 import NewReviewForm from './Reviews/NewReviewForm/NewReviewForm'
 import ReviewList from './Reviews/ReviewList/ReviewList'
 
 const userService = new UserService()
+const reviewsService = new ReviewsService()
 
 const ProfilePage = (props) => {
   const [userDetails, setUserDetails] = useState({
@@ -18,7 +20,30 @@ const ProfilePage = (props) => {
   })
 
   const [showForm, setShowForm] = useState(false)
+  const [reviewsInfo, setReviewsInfo] = useState([])
+
   const { id } = props.match.params
+
+  useEffect(() => {
+    reviewsService
+      .getAllReviews()
+      .then((res) => {
+        let filteredReviews = res.data.filter((elm) => elm.ref._id === id)
+        setReviewsInfo(filteredReviews)
+      })
+      .catch((err) => console.error(err))
+  }, [])
+  const reviews = reviewsInfo
+
+  const refreshReviews = () => {
+    reviewsService
+      .getAllReviews()
+      .then((res) => {
+        let filteredReviews = res.data.filter((elm) => elm.ref._id === id)
+        setReviewsInfo(filteredReviews)
+      })
+      .catch((err) => console.error(err))
+  }
 
   const openForm = () => {
     setShowForm(true)
@@ -57,7 +82,7 @@ const ProfilePage = (props) => {
           <Row className="back-button">
             <Button onClick={outDetailsClick}>Volver</Button>
           </Row>
-          {userDetails.role === 'TEACHER' && (
+          {userDetails.role === 'PROFESOR' && (
             <>
               <Row className="back-button">
                 <Button onClick={() => openForm()}>Crear Reseña</Button>
@@ -68,12 +93,13 @@ const ProfilePage = (props) => {
                     show={showForm}
                     closeForm={closeForm}
                     teacherId={id}
+                    refreshReviews={refreshReviews}
                   />
                 )}
               </Row>
               <Row>
                 <Col>
-                  <ReviewList teacherId={id} />
+                  <ReviewList reviews={reviews} teacherId={id} />
                 </Col>
               </Row>
             </>

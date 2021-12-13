@@ -31,6 +31,7 @@ const NewReviewForm = (props) => {
       .createReview(formData)
       .then((res) => {
         props.closeForm()
+        props.refreshReviews()
       })
       .catch((err) => console.error(err))
   }

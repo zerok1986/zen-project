@@ -156,7 +156,7 @@ const Portal = () => {
     <div className="portal-container">
       <div>
         {!detailsClick &&
-          (loggedUser.role === 'TEACHER' ? (
+          (loggedUser.role === 'PROFESOR' ? (
             <Button onClick={openModal}>Crea una nueva actividad</Button>
           ) : (
             <Button onClick={openModal}>Buscar nuevas actividades</Button>
@@ -176,7 +176,7 @@ const Portal = () => {
             <Modal.Title>Nueva Actividad</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {loggedUser.role === 'TEACHER' ? (
+            {loggedUser.role === 'PROFESOR' ? (
               <NewActivityForm
                 closeModal={closeModal}
                 refreshActivities={refreshActivities}

@@ -33,10 +33,16 @@ const App = (props) => {
   return (
     <>
       <UserProvider
-        value={{ loggedUser, storeUser, detailsClick, setDetailsClick, outDetailsClick }}
+        value={{
+          loggedUser,
+          storeUser,
+          detailsClick,
+          setDetailsClick,
+          outDetailsClick,
+        }}
       >
         <Navbar {...props} />
-        <main>{loggedUser ? <Portal/> : <Home/>}</main>
+        <main>{loggedUser ? <Portal /> : <Home />}</main>
       </UserProvider>
     </>
   )

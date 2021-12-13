@@ -18,12 +18,12 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ['USER', 'TEACHER', 'GOD'],
-      default: 'USER',
+      enum: ['ALUMNO', 'PROFESOR', 'GOD'],
+      default: 'ALUMNO',
     },
     name: {
       type: String,
-      default: 'New user',
+      default: 'Nuevo alumno',
     },
     image: {
       type: String,
