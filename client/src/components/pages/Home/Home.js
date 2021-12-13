@@ -3,7 +3,7 @@ import { Button, Container, Row, Col, Modal } from "react-bootstrap";
 import "./Home.css";
 import SignupPage from "../Signup/SignupPage";
 import LoginPage from "../Login/LoginPage";
-import image from "./Iphone.png";
+import image from "./Mockup.png";
 import imageMap from "./Captura.PNG";
 
 const Home = () => {
@@ -95,7 +95,7 @@ const Home = () => {
               </li>
               <img src={imageMap} alt="mobile" class="imageMap"></img>
               <li>Haz saber a los demás como ha sido tu experiencia, dejando reseñas de los profesores de tus clases</li>
-              {/* <img src={image} alt="mobile" class="imageMobile"></img> */}
+              <img src={image} alt="mobile" class="imageMobile"></img>
             </ul>
           </Col>
         </Row>

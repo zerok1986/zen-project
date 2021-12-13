@@ -158,7 +158,7 @@ const Portal = () => {
           </Switch>
         )}
 
-        <Modal show={showModal} backdrop="static" onHide={closeModal}>
+        <Modal className="modal-activity" show={showModal} backdrop="static" onHide={closeModal}>
           <Modal.Header closeButton>
             <Modal.Title>Nueva Actividad</Modal.Title>
           </Modal.Header>
