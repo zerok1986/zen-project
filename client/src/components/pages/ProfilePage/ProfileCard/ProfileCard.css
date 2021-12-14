@@ -1,11 +1,12 @@
 .user-card img{  
-height: 100%;
-width: 200px;
+   height: 100%;
+   width: 200px;
+   border: 1px solid #171717;
 }
 .profile-container button{
-width: fit-content;
-text-align: center;
-margin: 1rem 0;
+   width: fit-content;
+   text-align: center;
+   margin: 1rem 0;
 }
 .back-button{
    display: flex;

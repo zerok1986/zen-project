@@ -10,21 +10,21 @@ const ProfileCard = (props) => {
     <div>
       <div className="user-card">
         {loggedUser.role === "GOD" && (
-          <Button onClick={() => props.deleteUser(props.userDetails._id)} className="btn-home" variant="primary">
+          <Button onClick={() => props.deleteUser(props.userDetails._id)} className="btn-create-fit" variant="primary">
             Eliminar
           </Button>
         )}
         <img src={props.userDetails.image} alt={props.name} />
-        <br />
-        <hr />
+        <br/>
+        <br/>
         <h5>
-          <strong>Name: </strong> {props.userDetails.name}
+          <strong>Nombre: </strong> {props.userDetails.name}
         </h5>
         <h6>
-          <strong>You are: </strong> {props.userDetails.role}
+          <strong>Rol: </strong> {props.userDetails.role}
         </h6>
         <h6>
-          <strong>Your email: </strong>
+          <strong>Email: </strong>
           {props.userDetails.email}
         </h6>
         <br />

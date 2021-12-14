@@ -1,4 +1,25 @@
 .review-card img {
   width: 110px;
-  padding-bottom: 10px;
+  border: 1px solid #171717;
+  size: contain;
+}
+
+.review-card {
+  font-size: 13px;
+  text-align: left;
+  border: 1px solid #171717;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.review-card p {
+  margin-bottom: 5px;
+}
+
+.review-col {
+  display: flex;
+  align-items: center;
+  
+  
 }
