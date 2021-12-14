@@ -12,7 +12,7 @@ const SignupPage = (props) => {
     pwd: "",
     role: "",
   });
-  const { storeUser } = useContext(UserContext);
+  const { storeUser, showText } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const SignupPage = (props) => {
         storeUser(response.data);
         props.closeModal();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => showText(err.response.data.message));
   };
 
   const handleInputChange = (e) => {

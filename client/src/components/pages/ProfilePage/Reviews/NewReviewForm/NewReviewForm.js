@@ -6,7 +6,7 @@ import ReviewsService from '../../../../../services/reviews.service'
 const reviewsService = new ReviewsService()
 
 const NewReviewForm = (props) => {
-  const { loggedUser } = useContext(UserContext)
+  const { loggedUser, showText } = useContext(UserContext)
   const refTeacher = props.teacherId
   const today = new Date()
 
@@ -33,7 +33,7 @@ const NewReviewForm = (props) => {
         props.closeForm()
         props.refreshReviews()
       })
-      .catch((err) => console.error(err))
+      .catch((err) => showText(err.response.data.message))
   }
 
   return (

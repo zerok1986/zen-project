@@ -6,7 +6,7 @@ router.get('/allReviews', (req, res) => {
     .populate('creator ref')
     .then((allReviews) => res.status(200).json(allReviews))
     .catch((err) =>
-      res.status(500).json({ err, errMessage: 'Problema buscando reviews' })
+      res.status(500).json({ err, message: 'Problema buscando reseña' })
     )
 })
 
@@ -17,7 +17,7 @@ router.get('/review/:id', (req, res) => {
     .populate('creator ref')
     .then((theReview) => res.status(200).json(theReview))
     .catch((err) =>
-      res.status(500).json({ err, errMessage: 'Problema buscando una Review' })
+      res.status(500).json({ err, message: 'Problema buscando una reseña' })
     )
 })
 
@@ -27,7 +27,7 @@ router.post('/newReview', (req, res) => {
   Review.create({ creator, ref, comment, date, rating })
     .then((newReview) => res.status(201).json(newReview))
     .catch((err) =>
-      res.status(405).json({ err, errMessage: 'Problema creando Review' })
+      res.status(405).json({ err, message: 'Problema creando reseña' })
     )
 })
 
@@ -37,7 +37,7 @@ router.delete('/delete/:id', (req, res) => {
   Review.findByIdAndDelete(id)
     .then((deletedReview) => res.status(200).json({ deletedReview }))
     .catch((err) =>
-      res.status(405).json({ err, errMessage: 'Problema borrando Activity' })
+      res.status(405).json({ err, message: 'Problema borrando actividad' })
     )
 })
 

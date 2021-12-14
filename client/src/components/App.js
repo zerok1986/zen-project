@@ -1,34 +1,42 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import { UserProvider } from '../context/UserContext'
-import Navbar from './layout/Navigation/Navbar'
-import AuthService from '../services/auth.service'
-import Portal from './pages/Portal/Portal'
-import Home from './pages/Home/Home'
-const authService = new AuthService()
+import { useState, useEffect } from "react";
+import "./App.css";
+import { UserProvider } from "../context/UserContext";
+import Navbar from "./layout/Navigation/Navbar";
+import AuthService from "../services/auth.service";
+import Portal from "./pages/Portal/Portal";
+import Home from "./pages/Home/Home";
+import Alert from "./shared/Alert";
+const authService = new AuthService();
 
 const App = (props) => {
-  const [loggedUser, setLoggedUser] = useState(undefined)
-  const [detailsClick, setClick] = useState(false)
+  const [loggedUser, setLoggedUser] = useState(undefined);
+  const [detailsClick, setClick] = useState(false);
+  const [alert, setAlert] = useState({
+    show: false,
+    text: "",
+  });
 
   const setDetailsClick = () => {
-    setClick(true)
-  }
+    setClick(true);
+  };
 
   const outDetailsClick = () => {
-    setClick(false)
-  }
+    setClick(false);
+  };
 
   const storeUser = (user) => {
-    setLoggedUser(user)
-  }
+    setLoggedUser(user);
+  };
 
   useEffect(() => {
     authService
       .isloggedin()
       .then((response) => storeUser(response.data))
-      .catch(() => storeUser(null))
-  }, [])
+      .catch((err) => showText(err.response.data.message));
+  }, []);
+
+  const showText = (text) => setAlert({ show: true, text });
+  const closeAlert = () => setAlert({ show: false, text: "" });
 
   return (
     <>
@@ -39,13 +47,15 @@ const App = (props) => {
           detailsClick,
           setDetailsClick,
           outDetailsClick,
+          showText,
         }}
       >
+        <Alert show={alert.show} text={alert.text} closeAlert={closeAlert} />
         <Navbar />
         <main>{loggedUser ? <Portal /> : <Home />}</main>
       </UserProvider>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

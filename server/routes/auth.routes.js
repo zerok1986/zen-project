@@ -8,7 +8,7 @@ router.post('/signup', (req, res) => {
 
   User.findOne({ username }).then((user) => {
     if (user) {
-      res.status(400).json({ code: 400, message: 'Username already exists' })
+      res.status(400).json({ code: 400, message: 'Usuario ya existente' })
       return
     }
 
@@ -20,7 +20,7 @@ router.post('/signup', (req, res) => {
       .catch((err) =>
         res.status(500).json({
           code: 500,
-          message: 'DB error while creating user',
+          message: 'Error en la BBDD al crear usuario',
           err: err.message,
         })
       )
@@ -33,12 +33,12 @@ router.post('/login', (req, res) => {
   User.findOne({ username })
     .then((user) => {
       if (!user) {
-        res.status(401).json({ code: 401, message: 'Username not registered' })
+        res.status(401).json({ code: 401, message: 'Usuario no registrado' })
         return
       }
 
       if (bcrypt.compareSync(pwd, user.password) === false) {
-        res.status(401).json({ code: 401, message: 'Incorrect password' })
+        res.status(401).json({ code: 401, message: 'Contraseña incorrecta' })
         return
       }
 
@@ -48,20 +48,20 @@ router.post('/login', (req, res) => {
     .catch((err) =>
       res
         .status(500)
-        .json({ code: 500, message: 'DB error while fetching user', err })
+        .json({ code: 500, message: 'Error al buscar usuario en la BBDD', err })
     )
 })
 
 router.get('/logout', (req, res) => {
   req.session.destroy((err) =>
-    res.status(200).json({ code: 200, message: 'Logout successful' })
+    res.status(200).json({ code: 200, message: 'Sesión cerrada correctamente' })
   )
 })
 
 router.get('/isloggedin', (req, res) => {
   req.session.currentUser
     ? res.status(200).json(req.session.currentUser)
-    : res.status(401).json({ code: 401, message: 'Unauthorized' })
+    : res.status(401).json({ code: 401, message: 'Necesitas iniciar sesión' })
 })
 
 module.exports = router

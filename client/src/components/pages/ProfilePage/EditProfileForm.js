@@ -13,10 +13,9 @@ const EditProfileForm = (props) => {
     pwd: '',
     image: props.image,
   })
-  const { storeUser } = useContext(UserContext)
-  const { loggedUser } = useContext(UserContext)
-  const uploadService = new UploadService()
   const [loading, setLoading] = useState(false)
+  const { loggedUser, showText, storeUser } = useContext(UserContext)
+  const uploadService = new UploadService()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -28,7 +27,7 @@ const EditProfileForm = (props) => {
         props.closeModal()
         props.refreshUser()
       })
-      .catch((err) => console.error(err))
+      .catch((err) => showText(err.response.data.message))
   }
 
   const handleInputChange = (e) => {
@@ -48,11 +47,10 @@ const EditProfileForm = (props) => {
     uploadService
       .uploadImage(uploadData)
       .then((response) => {
-        console.log(response)
         setUserInfo({ ...userInfo, image: response.data.cloudinary_url })
         setLoading(false)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => showText(err.response.data.message))
   }
 
   return (

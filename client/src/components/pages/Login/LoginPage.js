@@ -10,7 +10,7 @@ const LoginPage = (props) => {
     username: "",
     pwd: "",
   });
-  const { storeUser } = useContext(UserContext);
+  const { storeUser, showText } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,8 +20,9 @@ const LoginPage = (props) => {
       .then((response) => {
         storeUser(response.data);
         props.closeModal();
+        showText("Sesión iniciada");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => showText(err.response.data.message));
   };
 
   const handleInputChange = (e) => {
@@ -48,7 +49,13 @@ const LoginPage = (props) => {
 
       <Form.Group className="mb-3" controlId="password">
         <Form.Label>Contraseña</Form.Label>
-        <Form.Control onChange={handleInputChange} value={loginInfo.pwd} name="pwd" type="password" placeholder="Password" />
+        <Form.Control
+          onChange={handleInputChange}
+          value={loginInfo.pwd}
+          name="pwd"
+          type="password"
+          placeholder="Password"
+        />
       </Form.Group>
 
       <Button className="btn-home" variant="primary" type="submit">

@@ -7,7 +7,7 @@ import ActivitiesService from "../../../../../services/activities.service";
 const activitiesService = new ActivitiesService();
 
 const NewActivityForm = (props) => {
-  const { loggedUser } = useContext(UserContext);
+  const { loggedUser, showText } = useContext(UserContext);
   const [formData, setFormData] = useState({
     name: "",
     type: "",
@@ -38,7 +38,7 @@ const NewActivityForm = (props) => {
         props.closeModal();
         props.refreshActivities();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => showText(err.response.data.message));
   };
 
   Geocode.setApiKey("AIzaSyA2EY6nvc3be8-6agfTwW2PNHPH0GX3dg8");
