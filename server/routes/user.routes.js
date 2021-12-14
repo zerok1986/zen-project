@@ -1,32 +1,26 @@
-const router = require("express").Router();
-// const { checkMongoID, isAdmin, isCurrUser } = require('../utils')
-const User = require("../models/User.model");
-// const {
-//   isLoggedIn,
-//   checkRoles,
-//   checkIfCurrUserOrAdmin,
-// } = require('../middlewares')
+const router = require('express').Router()
+const User = require('../models/User.model')
+const { checkIfGOD } = require('../middlewares')
 
-router.get("/allUsers", (req, res) => {
+router.get('/allUsers', (req, res) => {
   User.find()
     .then((allUsers) => res.status(200).json(allUsers))
     .catch((err) => res.status(401).json({ err, message: "Problema buscando usuarios" }));
 });
 
-router.get("/user/:id", (req, res) => {
-  const { id } = req.params;
+router.get('/user/:id', (req, res) => {
+  const { id } = req.params
 
   User.findById(id)
     .then((user) => {
-      res.status(200).json(user);
+      res.status(200).json(user)
     })
     .catch((err) => res.status(401).json({ err, message: "Problema buscando un usuario" }));
 });
 
 router.delete(
   "/delete/:id",
-  //   isLoggedIn,
-  //   checkRoles('ADMIN'),
+  checkIfGOD,
   (req, res) => {
     const { id } = req.params;
 
@@ -38,7 +32,6 @@ router.delete(
 
 router.put(
   "/edit/:id",
-
   (req, res) => {
     const { id } = req.params;
     const { username, email, pwd, role, name, image } = req.body;
@@ -60,4 +53,4 @@ router.put(
   }
 );
 
-module.exports = router;
+module.exports = router

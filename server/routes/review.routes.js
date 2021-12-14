@@ -1,8 +1,10 @@
 const router = require('express').Router()
 const Review = require('../models/Review.model')
+const { checkIfGOD } = require('../middlewares')
 
 router.get('/allReviews', (req, res) => {
   Review.find()
+    .sort({ createdAt: -1 })
     .populate('creator ref')
     .then((allReviews) => res.status(200).json(allReviews))
     .catch((err) =>
@@ -31,7 +33,7 @@ router.post('/newReview', (req, res) => {
     )
 })
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', checkIfGOD, (req, res) => {
   const { id } = req.params
 
   Review.findByIdAndDelete(id)
