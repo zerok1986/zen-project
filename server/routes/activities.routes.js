@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Activity = require('../models/Activity.model')
+const { checkIfGOD } = require('../middlewares')
 
 router.get('/allActivities', (req, res) => {
   Activity.find()
@@ -8,7 +9,7 @@ router.get('/allActivities', (req, res) => {
     .catch((err) =>
       res.status(500).json({ err, errMessage: 'Problema buscando activities' })
     )
-     })
+})
 
 router.get('/activity/:id', (req, res) => {
   const { id } = req.params
@@ -24,7 +25,18 @@ router.get('/activity/:id', (req, res) => {
 })
 
 router.post('/newActivity', (req, res) => {
-  const { name, type, maxAssistants, date, lat, lng, price, duration, teacher, assistants } = req.body;
+  const {
+    name,
+    type,
+    maxAssistants,
+    date,
+    lat,
+    lng,
+    price,
+    duration,
+    teacher,
+    assistants,
+  } = req.body
   let location = {
     type: 'Point',
     coordinates: [lat, lng],
@@ -42,10 +54,12 @@ router.post('/newActivity', (req, res) => {
     assistants,
   })
     .then((newActivity) => res.status(201).json(newActivity))
-    .catch((err) => res.status(405).json({ err, errMessage: "Problema creando Activity" }));
+    .catch((err) =>
+      res.status(405).json({ err, errMessage: 'Problema creando Activity' })
+    )
 })
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', checkIfGOD, (req, res) => {
   const { id } = req.params
 
   Activity.findByIdAndDelete(id)
@@ -55,27 +69,34 @@ router.delete('/delete/:id', (req, res) => {
     )
 })
 
-router.put("/addParticipant/:id", (req, res) => {
-    const { id } = req.params;
-    const loggedUser = req.session.currentUser
+router.put('/addParticipant/:id', (req, res) => {
+  const { id } = req.params
+  const loggedUser = req.session.currentUser
 
-    Activity.findByIdAndUpdate(
-      id,
-      { $push: { assistants:loggedUser } },
-      {new: true}
-    )
-      .then((user) => res.status(202).json(user))
-      .catch((err) => res.status(405).json({ err, errMessage: "Problema editando user" }));
-  }
-);
-
-router.put("/deleteParticipant/:id", (req, res) => {
-  const { id } = req.params;
-  const loggedUser = req.session.currentUser;
-
-  Activity.findByIdAndUpdate(id, { $pull: { assistants: loggedUser._id } }, { new: true })
+  Activity.findByIdAndUpdate(
+    id,
+    { $push: { assistants: loggedUser } },
+    { new: true }
+  )
     .then((user) => res.status(202).json(user))
-    .catch((err) => res.status(405).json({ err, errMessage: "Problema editando user" }));
-});
+    .catch((err) =>
+      res.status(405).json({ err, errMessage: 'Problema editando user' })
+    )
+})
+
+router.put('/deleteParticipant/:id', checkIfGOD, (req, res) => {
+  const { id } = req.params
+  const loggedUser = req.session.currentUser
+
+  Activity.findByIdAndUpdate(
+    id,
+    { $pull: { assistants: loggedUser._id } },
+    { new: true }
+  )
+    .then((user) => res.status(202).json(user))
+    .catch((err) =>
+      res.status(405).json({ err, errMessage: 'Problema editando user' })
+    )
+})
 
 module.exports = router
