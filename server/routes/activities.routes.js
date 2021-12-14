@@ -19,9 +19,7 @@ router.get('/activity/:id', (req, res) => {
     .populate('teacher')
     .then((theActivity) => res.status(200).json(theActivity))
     .catch((err) =>
-      res
-        .status(500)
-        .json({ err, message: 'Problema buscando una actividad' })
+      res.status(500).json({ err, message: 'Problema buscando una actividad' })
     )
 })
 
@@ -55,7 +53,9 @@ router.post('/newActivity', (req, res) => {
     assistants,
   })
     .then((newActivity) => res.status(201).json(newActivity))
-    .catch((err) => res.status(405).json({ err, message: "Problema creando actividad" }));
+    .catch((err) =>
+      res.status(405).json({ err, message: 'Problema creando actividad' })
+    )
 })
 
 router.delete('/delete/:id', checkIfGOD, (req, res) => {
@@ -78,11 +78,12 @@ router.put('/addParticipant/:id', (req, res) => {
     { new: true }
   )
     .then((user) => res.status(202).json(user))
-    .catch((err) => res.status(405).json({ err, message: "Problema añadiendo usuario" }));
-  }
-);
+    .catch((err) =>
+      res.status(405).json({ err, message: 'Problema añadiendo usuario' })
+    )
+})
 
-router.put('/deleteParticipant/:id', checkIfGOD, (req, res) => {
+router.put('/deleteParticipant/:id', (req, res) => {
   const { id } = req.params
   const loggedUser = req.session.currentUser
 
@@ -92,7 +93,9 @@ router.put('/deleteParticipant/:id', checkIfGOD, (req, res) => {
     { new: true }
   )
     .then((user) => res.status(202).json(user))
-    .catch((err) => res.status(405).json({ err, message: "Problema borrando usuario" }));
-});
+    .catch((err) =>
+      res.status(405).json({ err, message: 'Problema borrando usuario' })
+    )
+})
 
 module.exports = router
