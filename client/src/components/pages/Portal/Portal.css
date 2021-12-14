@@ -75,3 +75,49 @@ main {
   margin: 1rem 0;
   box-shadow: 0;
 }
+.btn-confirm-address {
+  font-size: 0.7rem !important;
+  border: 1px solid black !important;
+  color: rgb(255, 255, 255) !important;
+  border-radius: 0 !important;
+  position: relative;
+  background-color: transparent !important;
+  color: #171717 !important;
+  box-shadow: 0;
+  margin-top: 2.7rem;
+}
+.btn-confirmed-address {
+  font-size: 0.7rem !important;
+  border: 1px solid black !important;
+  color: rgb(8, 8, 8) !important;
+  border-radius: 0 !important;
+  position: relative;
+  background-color: rgb(83, 245, 78) !important;
+  box-shadow: 0;
+  margin-top: 2.7rem;
+}
+.btn-confirmed-address-filter {
+  font-size: 0.9rem !important;
+  border: 1px solid black !important;
+  border-radius: 0 !important;
+  position: relative;
+  background-color: rgb(83, 245, 78) !important;
+  color: #171717 !important;
+  box-shadow: 0;
+  margin-bottom: 1rem;
+}
+.btn-confirm-address-filter {
+  font-size: 0.9rem !important;
+  border: 1px solid black !important;
+  color: rgb(255, 255, 255) !important;
+  border-radius: 0 !important;
+  position: relative;
+  background-color: transparent !important;
+  color: #171717 !important;
+  box-shadow: 0;
+
+  margin-bottom: 1rem;
+}
+.form-label {
+  color: #5c5c5c;
+}

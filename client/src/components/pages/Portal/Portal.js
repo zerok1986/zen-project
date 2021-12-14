@@ -170,9 +170,9 @@ const Portal = () => {
           </Switch>
         )}
 
-        <Modal className="modal-activity" show={showModal} backdrop="static" onHide={closeModal}>
+        <Modal show={showModal} backdrop="static" onHide={closeModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Nueva Actividad</Modal.Title>
+            <Modal.Title>Actividad</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {loggedUser.role === "PROFESOR" ? (

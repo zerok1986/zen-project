@@ -1,3 +1,26 @@
 .form-select {
   width: 50% !important;
 }
+
+#my-input {
+  margin: 0.6rem 1rem;
+}
+.form-activity div {
+  margin: 0.3rem 0.3rem;
+}
+#durationInput,
+#priceInput {
+  width: 80px !important;
+  margin: 0.6rem 0.5rem !important;
+}
+
+#demo-simple-select {
+  width: 80px !important;
+}
+#demo-simple-select {
+  padding: 10px 0 !important;
+  margin-top: 0.9rem !important;
+}
+#textType {
+  line-height: 42px;
+}
