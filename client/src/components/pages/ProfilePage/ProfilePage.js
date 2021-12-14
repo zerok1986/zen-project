@@ -21,7 +21,7 @@ const ProfilePage = (props) => {
   })
   const [showModal, setModal] = useState(false)
   const [reviewsInfo, setReviewsInfo] = useState([])
-  const { loggedUser } = useContext(UserContext)
+  const { loggedUser, showText, outDetailsClick } = useContext(UserContext)
   const [showForm, setShowForm] = useState(false)
   const { id } = props.match.params
 
@@ -32,7 +32,7 @@ const ProfilePage = (props) => {
         let filteredReviews = res.data.filter((elm) => elm.ref._id === id)
         setReviewsInfo(filteredReviews)
       })
-      .catch((err) => console.error(err))
+      .catch((err) => showText(err.response.data.message))
   }, [])
   const reviews = reviewsInfo
 
@@ -43,7 +43,7 @@ const ProfilePage = (props) => {
         let filteredReviews = res.data.filter((elm) => elm.ref._id === id)
         setReviewsInfo(filteredReviews)
       })
-      .catch((err) => console.error(err))
+      .catch((err) => showText(err.response.data.message))
   }
 
   const openForm = () => {
@@ -62,8 +62,6 @@ const ProfilePage = (props) => {
     setModal(false)
   }
 
-  const { outDetailsClick } = useContext(UserContext)
-
   useEffect(() => {
     userService
       .getOneUser(id)
@@ -72,7 +70,7 @@ const ProfilePage = (props) => {
 
         setUserDetails({ username, email, role, name, image })
       })
-      .catch((err) => console.error(err))
+      .catch((err) => showText(err.response.data.message))
   }, [])
 
   const refreshUser = () => {
@@ -83,7 +81,7 @@ const ProfilePage = (props) => {
 
         setUserDetails({ username, email, role, name, image })
       })
-      .catch((err) => console.error(err))
+      .catch((err) => showText(err.response.data.message))
   }
 
   return (

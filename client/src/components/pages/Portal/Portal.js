@@ -15,7 +15,7 @@ const { formatDate } = require("../../../utils");
 const service = new ActivitiesService();
 
 const Portal = () => {
-  const { loggedUser } = useContext(UserContext);
+  const { loggedUser, showText } = useContext(UserContext);
   const [activitiesList, setList] = useState([]);
   const [activitiesInitial, setListInitial] = useState([]);
   const [showModal, setModal] = useState(false);
@@ -128,7 +128,7 @@ const Portal = () => {
         setList(activities);
         setListInitial(activities);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => showText(err.response.data.message));
   };
 
   const openModal = () => {
@@ -141,9 +141,10 @@ const Portal = () => {
   const deleteActivity = (id) => {
     service
       .deleteActivity(id)
+      //AQUI
       .then((res) => console.log(res))
       .then(() => refreshActivities())
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   return (

@@ -12,7 +12,7 @@ const SignupPage = (props) => {
     pwd: "",
     role: "",
   });
-  const { storeUser } = useContext(UserContext);
+  const { storeUser, showText } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,8 +22,9 @@ const SignupPage = (props) => {
       .then((response) => {
         storeUser(response.data);
         props.closeModal();
+        showText('Usuario creado correctamente')
       })
-      .catch((err) => console.error(err));
+      .catch((err) => showText(err.response.data.message));
   };
 
   const handleInputChange = (e) => {

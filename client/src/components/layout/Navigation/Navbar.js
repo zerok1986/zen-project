@@ -10,7 +10,7 @@ import "./Navbar.css";
 const authService = new AuthService();
 
 const Navigation = (props) => {
-  const { loggedUser, storeUser, setDetailsClick } = useContext(UserContext);
+  const { loggedUser, storeUser, setDetailsClick, showText } = useContext(UserContext);
 
   const [showModal, setModal] = useState(false);
   const [modalType, setType] = useState("");
@@ -27,7 +27,10 @@ const Navigation = (props) => {
   const logout = () => {
     authService
       .logout()
-      .then((response) => storeUser(null))
+      .then((res) => {
+        storeUser(null)
+        showText(res.data.message)
+      })
       .catch((err) => console.error(err));
   };
 
