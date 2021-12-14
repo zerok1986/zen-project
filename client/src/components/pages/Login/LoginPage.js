@@ -17,10 +17,10 @@ const LoginPage = (props) => {
 
     authService
       .login(loginInfo.username, loginInfo.pwd)
-      .then((response) => {
-        storeUser(response.data);
+      .then((res) => {
+        storeUser(res.data);
         props.closeModal();
-        showText("Sesión iniciada");
+        showText("Sesión iniciada correctamente");
       })
       .catch((err) => showText(err.response.data.message));
   };

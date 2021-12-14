@@ -6,7 +6,6 @@ import ActivityDetails from "./Activity/ActivityDetails/ActivityDetails";
 import { Switch, Route } from "react-router-dom";
 import MapList from "../../../MapList";
 import { Button } from "react-bootstrap";
-import ActivitiesService from "../../../../services/activities.service";
 
 const ActivityList = (props) => {
   const { detailsClick } = useContext(UserContext);

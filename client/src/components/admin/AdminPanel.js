@@ -1,12 +1,15 @@
 import React from "react";
 import UserService from "../../services/user.service";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProfileCard from "../pages/ProfilePage/ProfileCard/ProfileCard";
+import UserContext from "../../context/UserContext";
 
 const userService = new UserService();
 
 function AdminPanel() {
   const [usersList, setUserList] = useState([]);
+  const { showText } = useContext(UserContext)
+
 
   useEffect(() => {
     refreshUsers();
@@ -18,14 +21,15 @@ function AdminPanel() {
       .then((res) => {
         setUserList(res.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => showText(err.response.data.message));
   };
 
   const deleteUser = (id) => {
     userService
       .deleteUser(id)
+      //AQUI
       .then((res) => console.log(res))
-      .catch((err) => console.error(err));
+      .catch((err) => showText(err.response.data.message));
     refreshUsers();
   };
 

@@ -22,6 +22,7 @@ const SignupPage = (props) => {
       .then((response) => {
         storeUser(response.data);
         props.closeModal();
+        showText('Usuario creado correctamente')
       })
       .catch((err) => showText(err.response.data.message));
   };

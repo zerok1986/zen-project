@@ -32,7 +32,10 @@ const App = (props) => {
     authService
       .isloggedin()
       .then((response) => storeUser(response.data))
-      .catch((err) => showText(err.response.data.message));
+      .catch((err) => {
+        showText(err.response.data.message)
+        storeUser(null)
+      });
   }, []);
 
   const showText = (text) => setAlert({ show: true, text });

@@ -25,7 +25,7 @@ const ActivityDetails = (props) => {
     assistants: [],
   });
 
-  const { outDetailsClick, loggedUser } = useContext(UserContext);
+  const { outDetailsClick, loggedUser, showText } = useContext(UserContext);
 
   useEffect(() => {
     const { id } = props.match.params;
@@ -47,19 +47,23 @@ const ActivityDetails = (props) => {
           assistants,
         });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => showText(err.response.data.message));
   }, []);
 
   const updateAssistants = () => {
     const { id } = props.match.params;
-    activitiesService.addParticipant(id).then((res) => setActDetails({ ...actDetails, assistants: res.data.assistants }));
+    activitiesService.addParticipant(id)
+      .then((res) => setActDetails({ ...actDetails, assistants: res.data.assistants }))
+      .catch((err) => showText(err.response.data.message));
   };
 
   const deleteParticipation = () => {
     const { id } = props.match.params;
-    activitiesService.deleteParticipant(id).then((res) => {
-      setActDetails({ ...actDetails, assistants: res.data.assistants });
-    });
+    activitiesService.deleteParticipant(id)
+      .then((res) => {
+        setActDetails({ ...actDetails, assistants: res.data.assistants });
+      })
+      .catch((err) => showText(err.response.data.message));
   };
 
   return (
