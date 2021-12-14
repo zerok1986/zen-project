@@ -5,6 +5,7 @@ import mapStyles from "./mapStyles";
 const containerStyle = {
   width: "400px",
   height: "400px",
+  border: "1px solid black"
 };
 const zoom = 14;
 const API_KEY = "AIzaSyA2EY6nvc3be8-6agfTwW2PNHPH0GX3dg8";
