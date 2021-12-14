@@ -33,7 +33,6 @@ const App = (props) => {
       .isloggedin()
       .then((response) => storeUser(response.data))
       .catch((err) => {
-        showText(err.response.data.message)
         storeUser(null)
       });
   }, []);

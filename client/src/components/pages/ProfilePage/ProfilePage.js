@@ -7,6 +7,7 @@ import EditProfileForm from './EditProfileForm'
 import ProfileCard from './ProfileCard/ProfileCard'
 import NewReviewForm from './Reviews/NewReviewForm/NewReviewForm'
 import ReviewList from './Reviews/ReviewList/ReviewList'
+import './ProfilePage.css'
 
 const userService = new UserService()
 const reviewsService = new ReviewsService()
@@ -89,10 +90,10 @@ const ProfilePage = (props) => {
       <Container>
         <div className="profile-container">
           <div className="profile-title">
-            <h1>{userDetails.username}</h1>
+            <h1 className="profile-username">{userDetails.username}</h1>
             {id === loggedUser._id && (
               <Row className="back-button">
-                <Button onClick={() => openModal()}>Editar perfil</Button>
+                <Button className="btn-create-fit" onClick={() => openModal()}>Editar perfil</Button>
               </Row>
             )}
           </div>
@@ -117,12 +118,12 @@ const ProfilePage = (props) => {
           </Modal>
 
           <Row className="back-button">
-            <Button onClick={outDetailsClick}>Volver</Button>
+            <Button className="btn-create-fit button-profile-back" onClick={outDetailsClick}>Volver</Button>
           </Row>
           {userDetails.role === 'PROFESOR' && id !== loggedUser._id ? (
             <>
               <Row className="back-button">
-                <Button onClick={() => openForm()}>Crear Reseña</Button>
+                <Button className="btn-create-fit" onClick={() => openForm()}>Crear Reseña</Button>
               </Row>
               <Row>
                 {showForm && (

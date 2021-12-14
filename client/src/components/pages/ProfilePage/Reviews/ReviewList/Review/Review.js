@@ -25,18 +25,16 @@ const Review = (props) => {
     <>
       <Container className="review-card">
         <Row>
-          <hr />
-          <Col>
+          <Col xs={6} className="review-col">
             <img src={props.info.creator.image} alt="reviewer" />
           </Col>
-          <Col xs={6}>
+          <Col xs={6} >
             <p>
               <b>{props.info.creator.name}: </b>
-              {props.info.comment}
             </p>
-            <h6>Puntuación: {renderSwitch(props.info.rating)}</h6>
+            <p>{props.info.comment}</p>
+            <p><strong>Puntuación:</strong> {renderSwitch(props.info.rating)}</p>
           </Col>
-          <hr />
         </Row>
       </Container>
     </>
