@@ -1,10 +1,19 @@
-import React from 'react'
-import './ProfileCard.css'
+import React, { useContext } from "react";
+import "./ProfileCard.css";
+import UserContext from "../../../../context/UserContext";
+import { Button } from "react-bootstrap";
 
 const ProfileCard = (props) => {
+  const { loggedUser } = useContext(UserContext);
+
   return (
     <div>
       <div className="user-card">
+        {loggedUser.role === "GOD" && (
+          <Button onClick={() => props.deleteUser(props.userDetails._id)} className="btn-home" variant="primary">
+            Eliminar
+          </Button>
+        )}
         <img src={props.userDetails.image} alt={props.name} />
         <br />
         <hr />
@@ -21,7 +30,7 @@ const ProfileCard = (props) => {
         <br />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProfileCard
+export default ProfileCard;

@@ -3,7 +3,7 @@ import Geocode from "react-geocode";
 import UserContext from "../../../../../context/UserContext";
 import { Form, Button } from "react-bootstrap";
 import ActivitiesService from "../../../../../services/activities.service";
-
+import "./NewActivityForm.css";
 const activitiesService = new ActivitiesService();
 
 const NewActivityForm = (props) => {
@@ -75,8 +75,8 @@ const NewActivityForm = (props) => {
 
       <Form.Group className="mb-3" controlId="type">
         <Form.Label>Tipo de Actividad</Form.Label>
-        <Form.Select name="type" type="text" onChange={handleChange} value={formData.type}>
-          <option>Selecciona el tipo de actividad</option>
+        <Form.Select name="type" type="text" onChange={handleChange} value={formData.type} className="small-input">
+          <option>Actividad</option>
           <option value="YOGA">Yoga</option>
           <option value="TAICHI">Taichí</option>
           <option value="MEDITACION">Meditación</option>

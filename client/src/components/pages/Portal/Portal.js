@@ -9,6 +9,7 @@ import NewActivityForm from "./ActivitiesList/NewActivityForm/NewActivityForm";
 import ActivitiesFilter from "./ActivitiesList/ActivitiesFilter/ActivitiesFilter";
 import UserContext from "../../../context/UserContext";
 import ProfilePage from "../ProfilePage/ProfilePage";
+import AdminPanel from "../../admin/AdminPanel";
 const { formatDate } = require("../../../utils");
 
 const service = new ActivitiesService();
@@ -137,6 +138,13 @@ const Portal = () => {
   const closeModal = () => {
     setModal(false);
   };
+  const deleteActivity = (id) => {
+    service
+      .deleteActivity(id)
+      .then((res) => console.log(res))
+      .then(() => refreshActivities())
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="portal-container">
@@ -151,6 +159,10 @@ const Portal = () => {
               Buscar nuevas actividades
             </Button>
           ))}
+
+        <Switch>
+          <Route path="/admin/panel" render={() => <AdminPanel />} />
+        </Switch>
 
         {detailsClick && (
           <Switch>
@@ -178,6 +190,7 @@ const Portal = () => {
 
         {!detailsClick && <SearchBar searchActivity={findActivity}></SearchBar>}
         <ActivityList
+          deleteActivity={deleteActivity}
           activities={activitiesList}
           activitiesInitial={activitiesInitial}
           userLocation={userLocation}
