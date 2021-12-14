@@ -1,39 +1,44 @@
-import React, { useState, useContext } from "react";
-import { Form, Button } from "react-bootstrap";
-import AuthService from "../../../services/auth.service";
-import UserContext from "../../../context/UserContext";
+import React, { useState, useContext } from 'react'
+import { Form, Button } from 'react-bootstrap'
+import AuthService from '../../../services/auth.service'
+import UserContext from '../../../context/UserContext'
 
-const authService = new AuthService();
+const authService = new AuthService()
 
 const SignupPage = (props) => {
   const [signupInfo, setSignupInfo] = useState({
-    username: "",
-    email: "",
-    pwd: "",
-    role: "",
-  });
-  const { storeUser, showText } = useContext(UserContext);
+    username: '',
+    email: '',
+    pwd: '',
+    role: '',
+  })
+  const { storeUser, showText } = useContext(UserContext)
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     authService
-      .signup(signupInfo.username, signupInfo.email, signupInfo.pwd, signupInfo.role)
+      .signup(
+        signupInfo.username,
+        signupInfo.email,
+        signupInfo.pwd,
+        signupInfo.role
+      )
       .then((response) => {
-        storeUser(response.data);
-        props.closeModal();
+        storeUser(response.data)
+        props.closeModal()
       })
-      .catch((err) => showText(err.response.data.message));
-  };
+      .catch((err) => showText(err.response.data.message))
+  }
 
   const handleInputChange = (e) => {
-    const { name, value } = e.currentTarget;
+    const { name, value } = e.currentTarget
 
     setSignupInfo({
       ...signupInfo,
       [name]: value,
-    });
-  };
+    })
+  }
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -61,7 +66,13 @@ const SignupPage = (props) => {
 
       <Form.Group className="mb-3" controlId="password">
         <Form.Label>Contraseña</Form.Label>
-        <Form.Control onChange={handleInputChange} value={signupInfo.pwd} name="pwd" type="password" placeholder="Password" />
+        <Form.Control
+          onChange={handleInputChange}
+          value={signupInfo.pwd}
+          name="pwd"
+          type="password"
+          placeholder="Password"
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="role">
@@ -83,7 +94,7 @@ const SignupPage = (props) => {
         Registrarse
       </Button>
     </Form>
-  );
-};
+  )
+}
 
-export default SignupPage;
+export default SignupPage

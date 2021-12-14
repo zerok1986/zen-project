@@ -7,7 +7,6 @@ module.exports = (app) => {
     console.error('ERROR', req.method, req.path, err)
 
     if (!res.headersSent) {
-      console.log(res, 'estoy entrando aquí')
       res.status(500).json({
         errorMessage: 'Internal server error. Check the server console',
       })

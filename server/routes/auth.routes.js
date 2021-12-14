@@ -16,7 +16,10 @@ router.post('/signup', (req, res) => {
     const hashPass = bcrypt.hashSync(pwd, salt)
 
     User.create({ username, email, password: hashPass, role })
-      .then((user) => res.status(200).json(user))
+      .then((user) => {
+        req.session.currentUser = user
+        res.status(200).json(user)
+      })
       .catch((err) =>
         res.status(500).json({
           code: 500,
