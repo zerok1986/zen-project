@@ -3,7 +3,7 @@
   margin: 0.5rem 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 0.5rem 0;
 }
 .back-button {
@@ -41,6 +41,7 @@
   width: 120px !important;
   height: 120px !important;
   border: 1px solid black;
+  border-radius: 50%;
 }
 .info-content {
   height: 140px;
