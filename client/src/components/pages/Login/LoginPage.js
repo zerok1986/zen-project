@@ -1,38 +1,39 @@
-import React, { useState, useContext } from "react";
-import { Form, Button } from "react-bootstrap";
-import AuthService from "../../../services/auth.service";
-import UserContext from "../../../context/UserContext";
+import React, { useState, useContext } from 'react'
+import { Form, Button } from 'react-bootstrap'
+import AuthService from '../../../services/auth.service'
+import UserContext from '../../../context/UserContext'
+import GLogin from './GLogin'
 
-const authService = new AuthService();
+const authService = new AuthService()
 
 const LoginPage = (props) => {
   const [loginInfo, setLoginInfo] = useState({
-    username: "",
-    pwd: "",
-  });
-  const { storeUser, showText } = useContext(UserContext);
+    username: '',
+    pwd: '',
+  })
+  const { storeUser, showText } = useContext(UserContext)
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     authService
       .login(loginInfo.username, loginInfo.pwd)
       .then((res) => {
-        storeUser(res.data);
-        props.closeModal();
-        showText("Sesión iniciada correctamente");
+        storeUser(res.data)
+        props.closeModal()
+        showText('Sesión iniciada correctamente')
       })
-      .catch((err) => showText(err.response.data.message));
-  };
+      .catch((err) => showText(err.response.data.message))
+  }
 
   const handleInputChange = (e) => {
-    const { name, value } = e.currentTarget;
+    const { name, value } = e.currentTarget
 
     setLoginInfo({
       ...loginInfo,
       [name]: value,
-    });
-  };
+    })
+  }
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -58,11 +59,14 @@ const LoginPage = (props) => {
         />
       </Form.Group>
 
-      <Button className="btn-home" variant="primary" type="submit">
-        Submit
-      </Button>
+      <div id="login-btns">
+        <Button className="btn-home" variant="primary" type="submit">
+          Submit
+        </Button>
+        <GLogin />
+      </div>
     </Form>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage

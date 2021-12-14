@@ -1,0 +1,4 @@
+#login-btns {
+  display: flex;
+  justify-content: space-evenly;
+}
