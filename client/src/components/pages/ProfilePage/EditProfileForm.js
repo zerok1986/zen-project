@@ -48,11 +48,10 @@ const EditProfileForm = (props) => {
     uploadService
       .uploadImage(uploadData)
       .then((response) => {
-        console.log(response)
         setUserInfo({ ...userInfo, image: response.data.cloudinary_url })
         setLoading(false)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
   }
 
   return (

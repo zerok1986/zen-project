@@ -4,6 +4,7 @@ const { checkIfGOD } = require('../middlewares')
 
 router.get('/allActivities', (req, res) => {
   Activity.find()
+    .sort({ createdAt: -1 })
     .populate('teacher')
     .then((allActivities) => res.status(200).json(allActivities))
     .catch((err) =>

@@ -4,6 +4,7 @@ const { checkIfGOD } = require('../middlewares')
 
 router.get('/allReviews', (req, res) => {
   Review.find()
+    .sort({ createdAt: -1 })
     .populate('creator ref')
     .then((allReviews) => res.status(200).json(allReviews))
     .catch((err) =>
