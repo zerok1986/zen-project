@@ -15,7 +15,7 @@ const { formatDate } = require("../../../utils");
 const service = new ActivitiesService();
 
 const Portal = () => {
-  const { loggedUser } = useContext(UserContext);
+  const { loggedUser, showText } = useContext(UserContext);
   const [activitiesList, setList] = useState([]);
   const [activitiesInitial, setListInitial] = useState([]);
   const [showModal, setModal] = useState(false);
@@ -128,7 +128,7 @@ const Portal = () => {
         setList(activities);
         setListInitial(activities);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => showText(err.response.data.message));
   };
 
   const openModal = () => {
@@ -141,9 +141,10 @@ const Portal = () => {
   const deleteActivity = (id) => {
     service
       .deleteActivity(id)
+      //AQUI
       .then((res) => console.log(res))
       .then(() => refreshActivities())
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -170,9 +171,9 @@ const Portal = () => {
           </Switch>
         )}
 
-        <Modal className="modal-activity" show={showModal} backdrop="static" onHide={closeModal}>
+        <Modal show={showModal} backdrop="static" onHide={closeModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Nueva Actividad</Modal.Title>
+            <Modal.Title>Actividad</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {loggedUser.role === "PROFESOR" ? (

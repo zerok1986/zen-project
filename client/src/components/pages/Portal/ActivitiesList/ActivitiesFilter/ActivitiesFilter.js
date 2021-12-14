@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import Geocode from "react-geocode";
+import { FormControl, FormGroup, InputLabel, Input, FormLabel, Select, MenuItem } from "@mui/material";
 
 const ActivitiesFilter = (props) => {
   const [filterInfo, setFilterInfo] = useState({
@@ -12,7 +13,7 @@ const ActivitiesFilter = (props) => {
   });
 
   const [confirmedAdress, setAdress] = useState(false);
-  const [classWhite, setClass] = useState("btn-create-fit");
+  const [classWhite, setClass] = useState("btn-confirm-address-filter");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +52,7 @@ const ActivitiesFilter = (props) => {
 
   const changeParticipation = () => {
     setAdress(true);
-    setClass("btn-create-green");
+    setClass("btn-confirmed-address-filter");
   };
 
   const setStateNew = () => {
@@ -67,7 +68,7 @@ const ActivitiesFilter = (props) => {
             <Form.Group className="mb-3" controlId="type">
               <Form.Label>Tipo de clase</Form.Label>
               <Form.Select name="type" type="text" onChange={handleInputChange} value={filterInfo.type}>
-                <option>Select the type</option>
+                <option>Tipo</option>
                 <option value="YOGA">Yoga</option>
                 <option value="TAICHI">Taichí</option>
                 <option value="MEDITACION">Meditación</option>
@@ -75,13 +76,19 @@ const ActivitiesFilter = (props) => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="date">
-              <Form.Label>Username</Form.Label>
+              <Form.Label>Fecha</Form.Label>
               <Form.Control onChange={handleInputChange} value={filterInfo.date} name="date" type="date" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="address">
               <Form.Label>Dirección</Form.Label>
-              <Form.Control onChange={handleInputChange} value={filterInfo.address} name="address" type="text" />
+              <Form.Control
+                onChange={handleInputChange}
+                placeholder="Plaza de España"
+                value={filterInfo.address}
+                name="address"
+                type="text"
+              />
             </Form.Group>
             <Button className={classWhite} onClick={() => setStateNew()}>
               {confirmedAdress ? "Dirección confirmada" : "Confirmar direccion"}

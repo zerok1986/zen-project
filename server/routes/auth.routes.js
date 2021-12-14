@@ -56,7 +56,7 @@ router.post('/login', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-  req.session.destroy((err) =>
+  req.session.destroy(() =>
     res.status(200).json({ code: 200, message: 'Sesión cerrada correctamente' })
   )
 })

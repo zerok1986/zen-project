@@ -21,7 +21,7 @@ const ProfilePage = (props) => {
   })
   const [showModal, setModal] = useState(false)
   const [reviewsInfo, setReviewsInfo] = useState([])
-  const { loggedUser, showText } = useContext(UserContext)
+  const { loggedUser, showText, outDetailsClick } = useContext(UserContext)
   const [showForm, setShowForm] = useState(false)
   const { id } = props.match.params
 
@@ -61,8 +61,6 @@ const ProfilePage = (props) => {
   const closeModal = () => {
     setModal(false)
   }
-
-  const { outDetailsClick } = useContext(UserContext)
 
   useEffect(() => {
     userService
