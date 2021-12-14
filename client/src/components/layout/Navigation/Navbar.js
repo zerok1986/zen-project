@@ -78,6 +78,12 @@ const Navigation = (props) => {
                 {/* MODAL */}
               </>
             )}
+
+            {loggedUser?.role === "GOD" && (
+              <Nav.Link as={Link} to="/admin/panel">
+                Panel de Admin
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

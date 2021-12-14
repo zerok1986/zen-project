@@ -1,24 +1,24 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
-import './Review.css'
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import "./Review.css";
 
 const Review = (props) => {
   const renderSwitch = (rating) => {
     switch (rating) {
       case 1:
-        return '★'
+        return "★";
       case 2:
-        return '★★'
+        return "★★";
       case 3:
-        return '★★★'
+        return "★★★";
       case 4:
-        return '★★★★'
+        return "★★★★";
       case 5:
-        return '★★★★★'
+        return "★★★★★";
       default:
-        return 'Puntuación no encontrada'
+        return "Puntuación no encontrada";
     }
-  }
+  };
 
   return (
     <>
@@ -39,7 +39,7 @@ const Review = (props) => {
         </Row>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default Review
+export default Review;
