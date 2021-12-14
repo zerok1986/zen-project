@@ -3,6 +3,10 @@
   justify-content: center;
   padding: 50px 0;
 }
-.title-left{
+.title-left {
   text-align: left !important;
+}
+.atributes-details {
+  display: flex;
+  justify-content: space-evenly;
 }

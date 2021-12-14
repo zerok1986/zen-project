@@ -52,14 +52,16 @@ const ActivityDetails = (props) => {
 
   const updateAssistants = () => {
     const { id } = props.match.params;
-    activitiesService.addParticipant(id)
+    activitiesService
+      .addParticipant(id)
       .then((res) => setActDetails({ ...actDetails, assistants: res.data.assistants }))
       .catch((err) => showText(err.response.data.message));
   };
 
   const deleteParticipation = () => {
     const { id } = props.match.params;
-    activitiesService.deleteParticipant(id)
+    activitiesService
+      .deleteParticipant(id)
       .then((res) => {
         setActDetails({ ...actDetails, assistants: res.data.assistants });
       })
@@ -72,7 +74,7 @@ const ActivityDetails = (props) => {
         <Row className="justify-content-around">
           <Col md={6} style={{ overflow: "hidden" }}>
             <Col className="title-left">
-              <Button className="btn-dark" onClick={outDetailsClick}>
+              <Button className="btn-create" onClick={outDetailsClick}>
                 Volver
               </Button>
             </Col>
@@ -80,26 +82,22 @@ const ActivityDetails = (props) => {
               <h2>{actDetails.name}</h2>
               <div>
                 <p>{actDetails.type}</p>
-                <p>
-                  <strong>Fecha: </strong>
-                  {formatDateFull(new Date(actDetails.date))}
-                </p>
-                <hr />
-
+                <p>{formatDateFull(new Date(actDetails.date))}</p>
                 <p>
                   {" "}
                   <strong>Nº máximo de asistentes:</strong> {actDetails.maxAssistants} <br></br>
                   <span>(Puestos disponibles: {actDetails.maxAssistants - actDetails.assistants.length})</span>
                 </p>
+                <hr />
 
-                <p>
+                <p className="atributes-details">
                   <strong>Precio: </strong> {actDetails.price} €
                 </p>
-                <p>
+                <p className="atributes-details">
                   <strong>Duración: </strong>
                   {actDetails.duration} minutos
                 </p>
-                <p>
+                <p className="atributes-details">
                   <strong> Profesor: </strong>
                   <Link to={`/users/user/${actDetails.teacher._id}`}>
                     <b>{actDetails.teacher.username}</b>

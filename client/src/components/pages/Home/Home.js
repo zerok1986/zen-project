@@ -100,13 +100,6 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Row>
-        <footer>
-          <p>
-            Desarrollado por: <br></br>Marcos Fernández, Miguel Muñoz y Miguel Ángel Abad
-          </p>
-        </footer>
-      </Row>
     </Container>
   );
 };

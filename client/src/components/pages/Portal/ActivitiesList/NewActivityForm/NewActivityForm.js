@@ -130,7 +130,7 @@ const NewActivityForm = (props) => {
 
         <InputLabel htmlFor="my-input"></InputLabel>
         <Input
-          id="my-input"
+          id="address-input"
           aria-describedby="my-helper-text"
           onChange={handleChange}
           value={formData.address}

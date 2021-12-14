@@ -14,6 +14,11 @@
   margin: 0.6rem 0.5rem !important;
 }
 
+#address-input {
+  width: 165px;
+  margin-top: 1.2rem;
+}
+
 #demo-simple-select {
   width: 80px !important;
 }

@@ -13,7 +13,7 @@ module.exports = {
     if (hour.length < 3) hour = "0" + hour;
     if (mins.length < 3) mins = "0" + mins;
 
-    return [year, month, day].join("-");
+    return [day, month, year].join("-");
     // + "  |  "+ [hour, mins].join("")
   },
 
@@ -29,7 +29,7 @@ module.exports = {
     if (hour.length < 3) hour = "0" + hour;
     if (mins.length < 3) mins = "0" + mins;
 
-    return [year, month, day].join("-") + "  |  "+ [hour, mins].join("")
+    return [day, month, year].join("-") + "  |  " + [hour, mins].join("");
   },
 
   //   isAdmin: (user) => user?.role === "ADMIN",
