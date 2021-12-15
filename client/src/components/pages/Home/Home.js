@@ -103,12 +103,12 @@ const Home = () => {
                 fechas para encontrar las clases que más se adapten a ti, agenda
                 y reserva tus clases con un solo click.
               </li>
-              <img src={imageMap} alt="mobile" class="imageMap"></img>
+              <img src={imageMap} alt="mobile" className="imageMap"></img>
               <li>
                 Haz saber a los demás como ha sido tu experiencia, dejando
                 reseñas de los profesores de tus clases
               </li>
-              <img src={image} alt="mobile" class="imageMobile"></img>
+              <img src={image} alt="mobile" className="imageMobile"></img>
             </ul>
           </Col>
         </Row>

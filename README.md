@@ -1,28 +1,9 @@
-# ZEN project   
+# moksha  
 
-Una app que pone en común a profesionales y usuarios de actividades ZEN como Yoga, Meditación o Taichí
+Una app que pone en común a profesionales y usuarios de actividades como Yoga, Meditación o Taichí
 ¡La mejor app del mundo!
 
 ## Puntos principales 📦
-
-1. Planificación de server
-    - Lista de endpoints en .md
-    - Lista de modelos con cada propiedad y tipo de dato
-2. Planificación de cliente
-    - Lista de componentes, planificando props.
-    - Planificar de cada uno su estado y props, siempre que sea posible
-    - Opcional: planificar un mockup por cada uno.
-3. Desarrollo de server
-    - Desarrollo de endpoints siguiendo el punto 1.a
-    - Testeo de endpoints con Postman
-4. Desarrollo de cliente
-Desarrollo de componentes siguiendo punto 2.a
-5. Escalabilidades, por cada una
-    - Viabilidad: estudiar la relación coste/valor de la escalabilidad mediante el cálculo de tiempo, dificultad y valor que añade a la aplicación
-    - Planificar escalabilidad de lado de servidor siguiendo puntos 1
-    - Planificar escalabilidad de lado de cliente siguiendo puntos 2
-    - Desarrollo servidor siguiendo puntos 3
-    - Desarrollo cliente siguiendo puntos 4
 
 - Usuarios y Privilegios:
   - USER -> usuario estándar de la app. Puede crear citas y matchearlas con actividades de su interés en su zona/horario elegidas
@@ -50,30 +31,23 @@ Desarrollo de componentes siguiendo punto 2.a
 | get    | /logout           | Borra la sesión de usuario loggeado                  |
 | get    | /isloggedin       | Middleware que comprueba si hay usuario loggeado     |
 
-## Project Info
+## APIs Info
 
-- ComicVine API:
-  - JSON
-  - API Key
-  - 200 request/day
-  - Busqueda a través de querys
-- Marvel API
-  - JSON
-  - API Key unica tras registro
-  - 3000 request/day
-  - md5 digest para generar un hash
-
-### BONUS
-
-- Recomendaciones
-- Nivel
-- Rol de Moderador
+- @react-google-maps/api
+  - API key and API secret
+  - npm package
+  - quick access to GMaps API functionality
+  - $300 credit for requests
+- react-geocode
+  - Google API Key
+  - npm package
+  - help us transform addresses to latitude and longitude coordinates
 
 ### APIs Info
 
-- ComicVine API info and base-endpoint: https://comicvine.gamespot.com/api
-- Marvel API doc: https://developer.marvel.com/documentation/generalinfo
-- Marvel base-endpoint: http://gateway.marvel.com/v1/public
+- @react-google-maps/api: https://www.npmjs.com/package/@react-google-maps/api
+- react-geocode: https://www.npmjs.com/package/react-geocode
+
 
 ## Comenzando 🚀
 
@@ -93,42 +67,39 @@ _TODO_
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
+- React
 - NodeJS
 - Express
 - MongoDB
 - Mongoose
-- ComicVine API
 - Vanilla JavaScript
+- Material UI
+- React Bootstrap
+- CSS3
+- @react-google-maps/api
+- react-geocode
 
 ## Contribuyendo 🖇️
 
 Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
 
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-- **Fulanito Detal** - _Documentación_ - [fulanitodetal](#fulanito-de-tal)
+- **Miguel Muñoz** - _IronHack_ - [mimues](#https://github.com/mimues)
+- **Marcos Fernández** - _IronHack_ - [marferbl](#https://github.com/marferbl)
+- **Miguel Angel Abad** - _IronHack_ - [zerok1986](#https://github.com/zerok1986)
 
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto.
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia MIT - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
 ## Expresiones de Gratitud 🎁
 
-- Comenta a otros sobre este proyecto 📢
-- Invita una cerveza 🍺 o un café ☕ a alguien del equipo.
-- Da las gracias públicamente 🤓.
-- etc.
+Con la inestimable ayuda de nuestros TAs y Lead Instructor:
+
+Sara Mansori 🧠
+Laura de Cos 🦆
+Guille Concepción 👾
+Teo López 🤓

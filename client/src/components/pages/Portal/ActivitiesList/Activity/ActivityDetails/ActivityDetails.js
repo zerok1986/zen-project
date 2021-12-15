@@ -6,7 +6,7 @@ import UserContext from '../../../../../../context/UserContext'
 import './ActivityDetails.css'
 import Map from '../../../../../Map'
 
-const { formatDate, formatDateFull } = require('../../../../../../utils')
+const { formatDateFull } = require('../../../../../../utils')
 
 const activitiesService = new ActivitiesService()
 
@@ -58,6 +58,7 @@ const ActivityDetails = (props) => {
         })
       })
       .catch((err) => showText(err.response.data.message))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const updateAssistants = () => {

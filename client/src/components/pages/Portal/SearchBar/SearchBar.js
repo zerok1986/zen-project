@@ -10,6 +10,7 @@ const SearchBar = (props) => {
 
   useEffect(() => {
     props.searchActivity(inputText)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputText])
 
   return (

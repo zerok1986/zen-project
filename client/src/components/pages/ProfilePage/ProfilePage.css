@@ -1,6 +1,7 @@
 .profile-username {
   margin: 0;
-  padding-top: 20px;
+  padding: 20px 0;
+  font-weight: 300;
 }
 
 .button-profile-back {
