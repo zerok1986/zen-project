@@ -6,6 +6,7 @@ import AuthService from "../services/auth.service";
 import Portal from "./pages/Portal/Portal";
 import Home from "./pages/Home/Home";
 import Alert from "./shared/Alert";
+import Footer from "./layout/Footer/Footer";
 const authService = new AuthService();
 
 const App = (props) => {
@@ -55,6 +56,7 @@ const App = (props) => {
         <Alert show={alert.show} text={alert.text} closeAlert={closeAlert} />
         <Navbar />
         <main>{loggedUser ? <Portal /> : <Home />}</main>
+        <Footer />
       </UserProvider>
     </>
   );

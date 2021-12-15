@@ -159,11 +159,11 @@ const Portal = () => {
       <div>
         {!detailsClick &&
           (loggedUser.role === "PROFESOR" ? (
-            <Button className="btn-create" onClick={openModal}>
+            <Button className="btn-create-fit" onClick={openModal}>
               Crea una nueva actividad
             </Button>
           ) : (
-            <Button className="btn-create" onClick={openModal}>
+            <Button className="btn-create-fit" onClick={openModal}>
               Filtrar actividades
             </Button>
           ))}
