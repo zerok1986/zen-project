@@ -30,7 +30,7 @@ const ActivityList = (props) => {
           <br></br>
           {props.activities.length !== props.activitiesInitial.length && (
             <Button className="btn-create-fit" onClick={() => props.clearFilters()}>
-              <i class="fas fa-undo-alt" style={{ fontSize: "12px", marginRight: "0.2rem" }}></i>
+              <i className="fas fa-undo-alt" style={{ fontSize: "12px", marginRight: "0.2rem" }}></i>
               Lista completa
             </Button>
           )}
