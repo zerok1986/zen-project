@@ -61,7 +61,7 @@ const LoginPage = (props) => {
 
       <div id="login-btns">
         <Button className="btn-home" variant="primary" type="submit">
-          Submit
+          Acceder
         </Button>
         <GLogin />
       </div>
