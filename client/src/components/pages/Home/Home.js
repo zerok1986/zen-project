@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { Button, Container, Row, Col, Modal } from "react-bootstrap";
-import "./Home.css";
-import SignupPage from "../Signup/SignupPage";
-import LoginPage from "../Login/LoginPage";
-import image from "./Mockup.png";
-import imageMap from "./Captura.PNG";
+import React, { useState, useEffect } from 'react'
+import { Button, Container, Row, Col, Modal } from 'react-bootstrap'
+import './Home.css'
+import SignupPage from '../Signup/SignupPage'
+import LoginPage from '../Login/LoginPage'
+import image from './Mockup.png'
+import imageMap from './Captura.PNG'
 
 const Home = () => {
-  const [showModal, setModal] = useState(false);
-  const [modalType, setType] = useState("");
+  const [showModal, setModal] = useState(false)
+  const [modalType, setType] = useState('')
 
   const openModal = () => {
-    setModal(true);
-  };
+    setModal(true)
+  }
 
   const closeModal = () => {
-    setModal(false);
-    setType("");
-  };
+    setModal(false)
+    setType('')
+  }
 
   useEffect(() => {
     return () => {
-      setModal(false);
-      setType("");
-    };
-  }, []);
+      setModal(false)
+      setType('')
+    }
+  }, [])
 
   return (
     <Container fluid className="flex-home">
@@ -34,8 +34,8 @@ const Home = () => {
             <Button
               className="btn-home"
               onClick={() => {
-                setType("Sign up");
-                openModal();
+                setType('Registro')
+                openModal()
               }}
             >
               Regístrate
@@ -45,20 +45,29 @@ const Home = () => {
             <Button
               className="btn-home"
               onClick={() => {
-                setType("Log in");
-                openModal();
+                setType('Inicio de sesión')
+                openModal()
               }}
             >
               Inicia Sesión
             </Button>
           </Col>
           {/* MODAL */}
-          <Modal className="modal-home" show={showModal} backdrop="static" onHide={closeModal}>
+          <Modal
+            className="modal-home"
+            show={showModal}
+            backdrop="static"
+            onHide={closeModal}
+          >
             <Modal.Header closeButton>
               <Modal.Title>{modalType}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              {modalType === "Sign up" ? <SignupPage closeModal={closeModal} /> : <LoginPage closeModal={closeModal} />}
+              {modalType === 'Registro' ? (
+                <SignupPage closeModal={closeModal} />
+              ) : (
+                <LoginPage closeModal={closeModal} />
+              )}
             </Modal.Body>
           </Modal>
           {/* MODAL */}
@@ -82,26 +91,30 @@ const Home = () => {
           </Col>
         </Row>
         <Row className="row-home-about ">
-          <Col md={12} style={{ overflow: "hidden" }}>
+          <Col md={12} style={{ overflow: 'hidden' }}>
             <h4>¿Qué ofrecemos?</h4>
           </Col>
         </Row>
         <Row className="row-home description ">
-          <Col md={12} style={{ overflow: "hidden" }}>
+          <Col md={12} style={{ overflow: 'hidden' }}>
             <ul>
               <li>
-                Encuentra las clases más cercanas a tu localización,busca por fechas para encontrar las clases que más se adapten
-                a ti, agenda y reserva tus clases con un solo click.
+                Encuentra las clases más cercanas a tu localización,busca por
+                fechas para encontrar las clases que más se adapten a ti, agenda
+                y reserva tus clases con un solo click.
               </li>
               <img src={imageMap} alt="mobile" class="imageMap"></img>
-              <li>Haz saber a los demás como ha sido tu experiencia, dejando reseñas de los profesores de tus clases</li>
+              <li>
+                Haz saber a los demás como ha sido tu experiencia, dejando
+                reseñas de los profesores de tus clases
+              </li>
               <img src={image} alt="mobile" class="imageMobile"></img>
             </ul>
           </Col>
         </Row>
       </Container>
     </Container>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
