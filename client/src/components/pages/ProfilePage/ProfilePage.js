@@ -34,6 +34,7 @@ const ProfilePage = (props) => {
         setReviewsInfo(filteredReviews)
       })
       .catch((err) => showText(err.response.data.message))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const reviews = reviewsInfo
 
@@ -72,6 +73,7 @@ const ProfilePage = (props) => {
         setUserDetails({ username, email, role, name, image })
       })
       .catch((err) => showText(err.response.data.message))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const refreshUser = () => {

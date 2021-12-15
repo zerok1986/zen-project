@@ -22,3 +22,16 @@
   display: flex;
   align-items: center;
 }
+
+.review-col img {
+  height: 75px;
+  width: 75px;
+}
+
+.review-col b {
+  font-size: 1.2rem !important;
+}
+
+.review-header span {
+  color: #9e5627;
+}

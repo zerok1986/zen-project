@@ -26,6 +26,7 @@ const Portal = () => {
 
   useEffect(() => {
     refreshActivities()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const findActivity = (activity) => {

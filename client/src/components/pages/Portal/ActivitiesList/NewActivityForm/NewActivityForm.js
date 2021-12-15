@@ -1,73 +1,73 @@
-import React, { useState, useContext } from "react";
-import Geocode from "react-geocode";
-import UserContext from "../../../../../context/UserContext";
-import { Form, Button } from "react-bootstrap";
-import ActivitiesService from "../../../../../services/activities.service";
-import "./NewActivityForm.css";
-import { FormControl, FormGroup, InputLabel, Input, FormLabel, Select, MenuItem } from "@mui/material";
+import React, { useState, useContext } from 'react'
+import Geocode from 'react-geocode'
+import UserContext from '../../../../../context/UserContext'
+import { Form, Button } from 'react-bootstrap'
+import ActivitiesService from '../../../../../services/activities.service'
+import './NewActivityForm.css'
+import { FormControl, InputLabel, Input, Select, MenuItem } from '@mui/material'
 
-const activitiesService = new ActivitiesService();
+const activitiesService = new ActivitiesService()
 
 const NewActivityForm = (props) => {
-  const { loggedUser, showText } = useContext(UserContext);
+  const { loggedUser, showText } = useContext(UserContext)
   const [formData, setFormData] = useState({
-    name: "",
-    type: "",
-    maxAssistants: "",
-    date: "",
-    address: "",
-    lat: "",
-    lng: "",
-    price: "",
-    duration: "",
+    name: '',
+    type: '',
+    maxAssistants: '',
+    date: '',
+    address: '',
+    lat: '',
+    lng: '',
+    price: '',
+    duration: '',
     teacher: loggedUser,
-  });
-  const [confirmedAdress, setAdress] = useState(false);
-  const [classWhite, setClass] = useState("btn-confirm-address");
+  })
+  const [confirmedAdress, setAdress] = useState(false)
+  const [classWhite, setClass] = useState('btn-confirm-address')
 
   const handleChange = (e) => {
-    let { name, value } = e.target;
+    let { name, value } = e.target
 
-    setFormData({ ...formData, [name]: value });
-  };
+    setFormData({ ...formData, [name]: value })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     activitiesService
       .createActivity(formData)
       .then((res) => {
-        props.closeModal();
-        props.refreshActivities();
+        props.closeModal()
+        props.refreshActivities()
       })
-      .catch((err) => showText(err.response.data.message));
-  };
+      .catch((err) => showText(err.response.data.message))
+  }
 
-  Geocode.setApiKey("AIzaSyA2EY6nvc3be8-6agfTwW2PNHPH0GX3dg8");
-  Geocode.setLanguage("es");
-  Geocode.setRegion("es");
-  Geocode.setLocationType("ROOFTOP");
+  Geocode.setApiKey('AIzaSyA2EY6nvc3be8-6agfTwW2PNHPH0GX3dg8')
+  Geocode.setLanguage('es')
+  Geocode.setRegion('es')
+  Geocode.setLocationType('ROOFTOP')
 
   const transformAddress = (address) => {
     Geocode.fromAddress(address).then(
       (res) => {
-        const { lat, lng } = res.results[0].geometry.location;
-        setFormData({ ...formData, lat: lat, lng: lng });
+        const { lat, lng } = res.results[0].geometry.location
+        setFormData({ ...formData, lat: lat, lng: lng })
       },
       (error) => {
-        console.error(error);
+        console.error(error)
       }
-    );
-  };
+    )
+  }
 
   const changeParticipation = () => {
-    setAdress(true);
-    setClass("btn-confirmed-address");
-  };
+    setAdress(true)
+    setClass('btn-confirmed-address')
+  }
   const setStateNew = () => {
-    transformAddress(formData.address);
-    changeParticipation();
-  };
+    transformAddress(formData.address)
+    changeParticipation()
+  }
   return (
     <Form onSubmit={handleSubmit} className="form-activity">
       <FormControl>
@@ -140,17 +140,27 @@ const NewActivityForm = (props) => {
       </FormControl>
 
       <Button className={classWhite} onClick={() => setStateNew()}>
-        {confirmedAdress ? "Dirección confirmada" : "Confirmar direccion"}
+        {confirmedAdress ? 'Dirección confirmada' : 'Confirmar direccion'}
       </Button>
       <br></br>
-      <Form.Group className="mb-3" controlId="lat" style={{ display: "none" }}>
+      <Form.Group className="mb-3" controlId="lat" style={{ display: 'none' }}>
         <Form.Label>Latitud</Form.Label>
-        <Form.Control onChange={handleChange} value={formData.lat} name="lat" type="number" />
+        <Form.Control
+          onChange={handleChange}
+          value={formData.lat}
+          name="lat"
+          type="number"
+        />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="lng" style={{ display: "none" }}>
+      <Form.Group className="mb-3" controlId="lng" style={{ display: 'none' }}>
         <Form.Label>Longitud</Form.Label>
-        <Form.Control onChange={handleChange} value={formData.lng} name="lng" type="number" />
+        <Form.Control
+          onChange={handleChange}
+          value={formData.lng}
+          name="lng"
+          type="number"
+        />
       </Form.Group>
       <FormControl>
         <InputLabel htmlFor="my-input">Duración</InputLabel>
@@ -180,7 +190,7 @@ const NewActivityForm = (props) => {
         Submit
       </Button>
     </Form>
-  );
-};
+  )
+}
 
-export default NewActivityForm;
+export default NewActivityForm
