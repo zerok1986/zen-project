@@ -57,12 +57,12 @@ const EditProfileForm = (props) => {
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="username">
         <Form.Label>Username</Form.Label>
-        <Form.Control onChange={handleInputChange} value={userInfo.username} name="username" type="text" />
+        <Form.Control onChange={handleInputChange} value={userInfo.username} name="username" type="text" maxlength="20"/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="name">
         <Form.Label>Name</Form.Label>
-        <Form.Control onChange={handleInputChange} value={userInfo.name} name="name" type="text" />
+        <Form.Control onChange={handleInputChange} value={userInfo.name} name="name" type="text" maxlength="30"/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="email">

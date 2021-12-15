@@ -1,4 +1,5 @@
 const dark = [
+
   {
     featureType: "landscape.natural",
     elementType: "geometry.fill",
@@ -13,10 +14,18 @@ const dark = [
   },
   {
     featureType: "poi",
+    elementType: "labels",
+
+    stylers: [{
+      visibility: "off"
+    }]
+  },
+  {
+    featureType: "poi",
     elementType: "geometry.fill",
     stylers: [
       {
-        visibility: "on",
+        visibility: "off",
       },
       {
         hue: "#1900ff",
