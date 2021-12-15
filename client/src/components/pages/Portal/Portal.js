@@ -19,6 +19,8 @@ const Portal = () => {
   const [activitiesList, setList] = useState([]);
   const [activitiesInitial, setListInitial] = useState([]);
   const [showModal, setModal] = useState(false);
+  const [mapShowed, setmapShowed] = useState(true);
+
   const [userLocation, setUserLocation] = useState({
     coordinates: [40.416626, -3.704652],
   });
@@ -148,12 +150,6 @@ const Portal = () => {
       .catch((err) => console.error(err));
   };
 
-  const showMap = () => {
-    let map = document.querySelector(".map-container").style.display;
-    if (map == "none") {
-      document.querySelector(".map-container").style.display = "block";
-    } else document.querySelector(".map-container").style.display = "none";
-  };
   return (
     <div className="portal-container">
       <div>
@@ -197,7 +193,6 @@ const Portal = () => {
         </Modal>
 
         {!detailsClick && <SearchBar searchActivity={findActivity}></SearchBar>}
-        <span onClick={showMap}>Mostrar mapa</span>
         <ActivityList
           deleteActivity={deleteActivity}
           activities={activitiesList}

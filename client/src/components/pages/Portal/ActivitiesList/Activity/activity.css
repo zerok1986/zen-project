@@ -1,12 +1,14 @@
 .activity-card {
   /* border: 1px solid black;
    */
-  box-shadow: 0 0 20px 0 rgba(128, 128, 128, 0.281);
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  box-shadow: 0 0 30px 0 rgba(190, 189, 189, 0.281);
   margin: 0.9rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem 2.5rem;
+  background-color: #faf8f5;
 }
 
 .activity-card:hover .back-button {
@@ -69,6 +71,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  text-align: left;
 }
 
 .teacher-name {
@@ -85,8 +88,8 @@
 .content-bottom-activity {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  align-items: baseline;
+  justify-content: space-evenly;
 }
 .content-bottom-activity h6 {
   margin-top: 0.7rem;

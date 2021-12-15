@@ -13,7 +13,12 @@ const ActivityList = (props) => {
   const userLocation = {
     coordinates: [props.userLocation.coordinates[0], props.userLocation.coordinates[1]],
   };
-
+  const showMap = () => {
+    let map = document.querySelector(".map-container").style.display;
+    if (map === "none") {
+      document.querySelector(".map-container").style.display = "flex";
+    } else document.querySelector(".map-container").style.display = "none";
+  };
   return (
     <>
       {detailsClick ? (
@@ -24,6 +29,8 @@ const ActivityList = (props) => {
         </section>
       ) : (
         <>
+          <span onClick={() => showMap()}>Mapa de actividades</span>
+
           <div className="map-container">
             <MapList location={userLocation} activities={props.activities} activitiesInitial={props.activitiesInitial} />
           </div>
