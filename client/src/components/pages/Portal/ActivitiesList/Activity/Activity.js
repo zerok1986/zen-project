@@ -20,13 +20,13 @@ const Activity = (props) => {
           <h5 className="teacher-name">{props.elem.teacher.name}</h5>
         </div>
         <div className="info-content">
-          <h5>{props.elem.name}</h5>
-          <h6>{props.elem.type}</h6>
-          <h6>{formattedDate} </h6>
-
-          <br />
+          <div>
+            <h5 className="activity-name">{props.elem.name}</h5>
+            <h6>{props.elem.type}</h6>
+            <h6>{formattedDate} </h6>
+          </div>
           <Link to={`/activities/activity/${props.elem._id}`}>
-            <Button className="btn-home details-activity" onClick={setDetailsClick} variant="primary">
+            <Button className="btn-details-activity details-activity" onClick={setDetailsClick} variant="primary">
               Detalles
             </Button>
             {loggedUser.role === "GOD" && (

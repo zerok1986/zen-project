@@ -10,3 +10,12 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.atributes-details b {
+  color: rgb(136, 43, 40) !important;
+  text-decoration: none !important;
+}
+
+a {
+  color: rgb(88, 35, 35);
+}
