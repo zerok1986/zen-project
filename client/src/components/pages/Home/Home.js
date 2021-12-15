@@ -29,8 +29,8 @@ const Home = () => {
   return (
     <Container fluid className="flex-home">
       <Container className="container-home">
-        <Row className="row-home home-buttons ">
-          <Col className="col-home-auth">
+        <Row className="row-home home-buttons">
+          <Col className="col-home-auth col-home-signup">
             <Button
               className="btn-home"
               onClick={() => {
@@ -41,7 +41,7 @@ const Home = () => {
               Regístrate
             </Button>
           </Col>
-          <Col className="col-home-auth">
+          <Col className="col-home-auth col-home-login">
             <Button
               className="btn-home"
               onClick={() => {
@@ -73,7 +73,7 @@ const Home = () => {
           {/* MODAL */}
         </Row>
 
-        <Row className="row-home  ">
+        <Row className="row-home">
           <Col md={4} className="col-home-about ">
             <div className="image-home home-yoga">
               <h2>YOGA</h2>
@@ -95,18 +95,22 @@ const Home = () => {
             <h4>¿Qué ofrecemos?</h4>
           </Col>
         </Row>
-        <Row className="row-home description ">
+        <Row className="row-home description">
           <Col md={12} style={{ overflow: 'hidden' }}>
             <ul>
               <li>
-                Encuentra las clases más cercanas a tu localización,busca por
-                fechas para encontrar las clases que más se adapten a ti, agenda
-                y reserva tus clases con un solo click.
+                <p>
+                  Encuentra las clases más cercanas a tu localización, busca por
+                  fechas para encontrar las que más se adapten a ti, agenda
+                  y reserva con un solo click.
+                </p>
               </li>
               <img src={imageMap} alt="mobile" className="imageMap"></img>
               <li>
-                Haz saber a los demás como ha sido tu experiencia, dejando
-                reseñas de los profesores de tus clases
+                <p>
+                  Haz saber a los demás como ha sido tu experiencia, dejando
+                  reseñas a los profesores de tus clases.
+                </p>
               </li>
               <img src={image} alt="mobile" className="imageMobile"></img>
             </ul>
