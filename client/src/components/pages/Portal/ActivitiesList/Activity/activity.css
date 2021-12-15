@@ -1,14 +1,15 @@
 .activity-card {
   /* border: 1px solid black;
    */
-  box-shadow: 0 0 30px 0 rgba(128, 128, 128, 0.336);
+  box-shadow: 0 0 20px 0 rgba(128, 128, 128, 0.281);
   margin: 0.9rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem 2.5rem;
 }
-.back-button {
+
+.activity-card:hover .back-button {
   display: flex;
   justify-content: center;
 }
@@ -21,8 +22,23 @@
 .activity-card h5 {
   font-size: 0.8rem;
 }
+
+.activity-name {
+  color: #921d0e;
+  font-size: 1rem !important;
+}
 .activity-card h6 {
   font-size: 0.8rem;
+  color: rgb(0, 0, 0);
+}
+
+.details-activity {
+  transition: all 1s ease-out !important;
+}
+
+.details-activity:hover {
+  background-color: #921d0e !important;
+  color: white !important;
 }
 
 .details-container button {
@@ -48,12 +64,13 @@
 .info-content {
   height: 140px;
   padding-top: 0.2rem;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.activity-card button {
-  font-size: 0.8rem !important;
-  width: fit-content;
-}
 .teacher-name {
   margin-top: 0.3rem;
 }

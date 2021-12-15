@@ -117,7 +117,7 @@ const ActivityDetails = (props) => {
                 <p className="atributes-details">
                   <strong> Profesor: </strong>
                   <Link to={`/users/user/${actDetails.teacher._id}`}>
-                    <b>{actDetails.teacher.username}</b>
+                    <b>{actDetails.teacher.name}</b>
                   </Link>
                 </p>
               </div>

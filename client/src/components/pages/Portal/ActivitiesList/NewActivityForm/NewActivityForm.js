@@ -98,9 +98,10 @@ const NewActivityForm = (props) => {
           value={formData.name}
           name="name"
           type="text"
+          inputProps={{ maxLength: 30 }}
         />
       </FormControl>
-
+      
       <FormControl>
         <InputLabel htmlFor="my-input">Máximo de asistentes</InputLabel>
         <Input
@@ -110,9 +111,10 @@ const NewActivityForm = (props) => {
           value={formData.maxAssistants}
           name="maxAssistants"
           type="number"
+          inputProps={{min: 0}}
         />
       </FormControl>
-
+      
       <FormControl>
         <InputLabel htmlFor="my-input"></InputLabel>
         <Input
@@ -171,6 +173,7 @@ const NewActivityForm = (props) => {
           value={formData.duration}
           name="duration"
           type="number"
+          inputProps={{min: 0, max: 90}}
         />
       </FormControl>
       <FormControl>
@@ -182,6 +185,7 @@ const NewActivityForm = (props) => {
           value={formData.price}
           name="price"
           type="number"
+          inputProps={{min: 0}}
         />
       </FormControl>
       <br></br>
