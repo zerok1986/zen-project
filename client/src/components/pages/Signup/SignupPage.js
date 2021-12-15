@@ -72,7 +72,7 @@ const SignupPage = (props) => {
           value={signupInfo.pwd}
           name="pwd"
           type="password"
-          placeholder="Password"
+          placeholder="********"
         />
       </Form.Group>
 
@@ -85,7 +85,7 @@ const SignupPage = (props) => {
           value={signupInfo.role}
           aria-label="Default select example"
         >
-          <option>Selecciona tu perfil</option>
+          <option>Selecciona</option>
           <option value="ALUMNO">Alumno</option>
           <option value="PROFESOR">Profesor</option>
         </Form.Select>

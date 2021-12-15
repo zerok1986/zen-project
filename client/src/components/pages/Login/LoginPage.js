@@ -44,7 +44,7 @@ const LoginPage = (props) => {
           value={loginInfo.username}
           name="username"
           type="text"
-          placeholder="Elige un nombre de usuario"
+          placeholder="Nombre de usuario"
         />
       </Form.Group>
 
@@ -55,7 +55,7 @@ const LoginPage = (props) => {
           value={loginInfo.pwd}
           name="pwd"
           type="password"
-          placeholder="Password"
+          placeholder="********"
         />
       </Form.Group>
 
