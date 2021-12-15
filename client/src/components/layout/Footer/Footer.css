@@ -11,6 +11,8 @@ footer {
 footer p {
     margin-bottom: 0;
     padding-bottom: 0.9rem;
+    padding-left: 5px;
+    padding-right: 5px;
     letter-spacing: 1px;
 }
 .devs {
