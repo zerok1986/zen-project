@@ -190,7 +190,7 @@ const Portal = () => {
             </Button>
           ) : (
             <Button className="btn-create" onClick={openModal}>
-              Buscar nuevas actividades
+              Filtrar actividades
             </Button>
           ))}
 
@@ -209,7 +209,7 @@ const Portal = () => {
 
         <Modal show={showModal} backdrop="static" onHide={closeModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Actividad</Modal.Title>
+            <Modal.Title>Filtrar por</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {loggedUser.role === 'PROFESOR' ? (
