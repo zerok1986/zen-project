@@ -1,10 +1,12 @@
 .activity-card {
-  border: 1px solid black;
-  margin: 0.5rem 0;
+  /* border: 1px solid black;
+   */
+  box-shadow: 0 0 30px 0 rgba(128, 128, 128, 0.336);
+  margin: 0.9rem 0;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 0.5rem 0;
+  justify-content: space-between;
+  padding: 0.8rem 2.5rem;
 }
 .back-button {
   display: flex;
@@ -41,7 +43,7 @@
   width: 120px !important;
   height: 120px !important;
   border: 1px solid black;
-  border-radius: 50%;
+  object-fit: cover;
 }
 .info-content {
   height: 140px;

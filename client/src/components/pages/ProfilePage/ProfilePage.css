@@ -1,8 +1,13 @@
 .profile-username {
-    margin: 0;
-    padding-top: 20px
+  margin: 0;
+  padding-top: 20px;
 }
 
 .button-profile-back {
-    margin-top: 0!important;
+  margin-top: 0 !important;
+}
+.user-card img {
+  height: 200px;
+  width: 180px;
+  object-fit: cover;
 }
