@@ -78,6 +78,20 @@ main {
   margin: 1rem 0;
   box-shadow: 0;
 }
+
+.btn-create-map {
+  font-size: 1.1rem !important;
+  border: 1px solid black !important;
+  color: rgb(255, 255, 255) !important;
+  border-radius: 0 !important;
+  position: relative;
+  background-color: transparent !important;
+  color: #171717 !important;
+  margin-top: 0.8rem;
+  margin: 1rem 0;
+  box-shadow: 0;
+  width: 145.4px;
+}
 .btn-confirm-address {
   font-size: 0.7rem !important;
   border: 1px solid black !important;
@@ -133,4 +147,16 @@ main {
 .sandwich {
   text-decoration: none;
   font-size: 12px;
+}
+.column-portal {
+  padding: 0 !important;
+}
+.column-portal button {
+  font-size: 0.9rem !important;
+}
+
+@media (min-width: 990px) {
+  .home-buttons {
+    opacity: 0 !important;
+  }
 }

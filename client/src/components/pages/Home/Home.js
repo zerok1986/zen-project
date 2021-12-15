@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Container, Row, Col, Modal } from 'react-bootstrap'
-import './Home.css'
-import SignupPage from '../Signup/SignupPage'
-import LoginPage from '../Login/LoginPage'
-import image from './Mockup.png'
-import imageMap from './Captura.PNG'
+import React, { useState, useEffect } from "react";
+import { Button, Container, Row, Col, Modal } from "react-bootstrap";
+import "./Home.css";
+import SignupPage from "../Signup/SignupPage";
+import LoginPage from "../Login/LoginPage";
+import image from "./Mockup.png";
+import imageMap from "./Captura.PNG";
 
 const Home = () => {
-  const [showModal, setModal] = useState(false)
-  const [modalType, setType] = useState('')
+  const [showModal, setModal] = useState(false);
+  const [modalType, setType] = useState("");
 
   const openModal = () => {
-    setModal(true)
-  }
+    setModal(true);
+  };
 
   const closeModal = () => {
-    setModal(false)
-    setType('')
-  }
+    setModal(false);
+    setType("");
+  };
 
   useEffect(() => {
     return () => {
-      setModal(false)
-      setType('')
-    }
-  }, [])
+      setModal(false);
+      setType("");
+    };
+  }, []);
 
   return (
     <Container fluid className="flex-home">
@@ -34,8 +34,8 @@ const Home = () => {
             <Button
               className="btn-home"
               onClick={() => {
-                setType('Registro')
-                openModal()
+                setType("Registro");
+                openModal();
               }}
             >
               Regístrate
@@ -45,29 +45,20 @@ const Home = () => {
             <Button
               className="btn-home"
               onClick={() => {
-                setType('Inicio de sesión')
-                openModal()
+                setType("Inicio de sesión");
+                openModal();
               }}
             >
               Inicia Sesión
             </Button>
           </Col>
           {/* MODAL */}
-          <Modal
-            className="modal-home"
-            show={showModal}
-            backdrop="static"
-            onHide={closeModal}
-          >
+          <Modal className="modal-home" show={showModal} backdrop="static" onHide={closeModal}>
             <Modal.Header closeButton>
               <Modal.Title>{modalType}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              {modalType === 'Registro' ? (
-                <SignupPage closeModal={closeModal} />
-              ) : (
-                <LoginPage closeModal={closeModal} />
-              )}
+              {modalType === "Registro" ? <SignupPage closeModal={closeModal} /> : <LoginPage closeModal={closeModal} />}
             </Modal.Body>
           </Modal>
           {/* MODAL */}
@@ -91,26 +82,26 @@ const Home = () => {
           </Col>
         </Row>
         <Row className="row-home-about ">
-          <Col md={12} style={{ overflow: 'hidden' }}>
+          <Col md={12} style={{ overflow: "hidden" }}>
             <h4>¿Qué ofrecemos?</h4>
           </Col>
         </Row>
         <Row className="row-home description">
-          <Col md={12} style={{ overflow: 'hidden' }}>
+          <Col md={12} lg={6} style={{ overflow: "hidden" }}>
             <ul>
               <li>
                 <p>
-                  Encuentra las clases más cercanas a tu localización, busca por
-                  fechas para encontrar las que más se adapten a ti, agenda
-                  y reserva con un solo click.
+                  Encuentra las clases más cercanas a tu localización, busca por fechas para encontrar las que más se adapten a
+                  ti, agenda y reserva con un solo click.
                 </p>
               </li>
-              <img src={imageMap} alt="mobile" className="imageMap"></img>
+            </ul>
+            <img src={imageMap} alt="mobile" className="imageMap"></img>
+          </Col>
+          <Col>
+            <ul>
               <li>
-                <p>
-                  Haz saber a los demás como ha sido tu experiencia, dejando
-                  reseñas a los profesores de tus clases.
-                </p>
+                <p>Haz saber a los demás como ha sido tu experiencia, dejando reseñas a los profesores de tus clases.</p>
               </li>
               <img src={image} alt="mobile" className="imageMobile"></img>
             </ul>
@@ -118,7 +109,7 @@ const Home = () => {
         </Row>
       </Container>
     </Container>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

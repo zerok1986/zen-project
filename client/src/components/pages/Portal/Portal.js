@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import ActivitiesService from "../../../services/activities.service";
 import ActivityList from "./ActivitiesList/ActivityList";
 import SearchBar from "../Portal/SearchBar/SearchBar";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Row, Col } from "react-bootstrap";
 import "./Portal.css";
 import NewActivityForm from "./ActivitiesList/NewActivityForm/NewActivityForm";
 import ActivitiesFilter from "./ActivitiesList/ActivitiesFilter/ActivitiesFilter";
@@ -149,19 +149,43 @@ const Portal = () => {
       .then(() => refreshActivities())
       .catch((err) => console.error(err));
   };
+  const showMap = () => {
+    let map = document.querySelector(".map-container").style.display;
+    if (map === "none") {
+      document.querySelector(".map-container").style.display = "flex";
+    } else document.querySelector(".map-container").style.display = "none";
+  };
 
   return (
     <div className="portal-container">
       <div>
         {!detailsClick &&
           (loggedUser.role === "PROFESOR" ? (
-            <Button className="btn-create-fit" onClick={openModal}>
-              Crea una nueva actividad
-            </Button>
+            <Row>
+              <Col className="column-portal">
+                <Button className="btn-create-map" onClick={openModal}>
+                  Crear actividad
+                </Button>
+              </Col>
+              <Col className="column-portal">
+                <Button className="btn-create-map" onClick={showMap}>
+                  Mapa
+                </Button>
+              </Col>
+            </Row>
           ) : (
-            <Button className="btn-create-fit" onClick={openModal}>
-              Filtrar actividades
-            </Button>
+            <Row>
+              <Col className="column-portal">
+                <Button className="btn-create-map" onClick={openModal}>
+                  Filtrar actividades
+                </Button>
+              </Col>
+              <Col className="column-portal">
+                <Button className="btn-create-map" onClick={showMap}>
+                  Mapa de actividades
+                </Button>
+              </Col>
+            </Row>
           ))}
 
         <Switch>

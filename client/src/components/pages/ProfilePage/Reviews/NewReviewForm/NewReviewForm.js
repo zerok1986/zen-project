@@ -47,7 +47,7 @@ const NewReviewForm = (props) => {
           type="text"
           onChange={handleChange}
           value={formData.comment}
-          maxlength="60"
+          maxlength="90"
         />
       </FloatingLabel>
 
