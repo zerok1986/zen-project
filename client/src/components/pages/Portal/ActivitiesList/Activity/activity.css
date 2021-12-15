@@ -56,8 +56,8 @@
   padding-top: 0.6rem;
 }
 .photo-content img {
-  width: 120px !important;
-  height: 120px !important;
+  width: 110px !important;
+  height: 110px !important;
   border: 1px solid black;
   object-fit: cover;
 }
@@ -73,4 +73,24 @@
 
 .teacher-name {
   margin-top: 0.3rem;
+}
+.date-content {
+  display: flex;
+  justify-content: space-around;
+}
+.date-content i {
+  color: #921d0e;
+  margin: 0 0.4rem;
+}
+.content-bottom-activity {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.content-bottom-activity h6 {
+  margin-top: 0.7rem;
+}
+.date-titles {
+  font-size: 0.65rem !important;
 }

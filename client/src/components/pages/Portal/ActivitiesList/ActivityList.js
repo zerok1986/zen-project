@@ -27,8 +27,12 @@ const ActivityList = (props) => {
           <div className="map-container">
             <MapList location={userLocation} activities={props.activities} activitiesInitial={props.activitiesInitial} />
           </div>
+          <br></br>
           {props.activities.length !== props.activitiesInitial.length && (
-            <Button onClick={() => props.clearFilters()}>Volver a la lista completa</Button>
+            <Button className="btn-create-fit" onClick={() => props.clearFilters()}>
+              <i class="fas fa-undo-alt" style={{ fontSize: "12px", marginRight: "0.2rem" }}></i>
+              Lista completa
+            </Button>
           )}
           <div className="activitiesList-card">
             {props.activities.map((elem) => (
