@@ -17,5 +17,5 @@
 }
 
 a {
-  color: rgb(88, 35, 35);
+  color: rgb(88, 35, 35) !important;
 }
