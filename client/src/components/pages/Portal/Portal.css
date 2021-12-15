@@ -128,3 +128,8 @@ main {
   padding: 0;
   margin: 2rem 0;
 }
+
+.sandwich {
+  text-decoration: none;
+  font-size: 12px;
+}
