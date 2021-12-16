@@ -16,7 +16,7 @@ const containerStyle = {
   border: '1px solid black',
 }
 const zoom = 14
-const API_KEY = 'AIzaSyA2EY6nvc3be8-6agfTwW2PNHPH0GX3dg8'
+const API_KEY = process.env.REACT_APP_API_KEY
 
 const MapList = (props) => {
   const [selectedActivity, setSelectedActivity] = useState(null)
