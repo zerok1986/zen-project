@@ -146,9 +146,11 @@ const ActivityDetails = (props) => {
           </Col>
         </Row>
 
-        <Row className="map-container">
-          <Map location={actDetails.location} />
-        </Row>
+        {actDetails.location?.length && (
+          <Row className="map-container">
+            <Map location={actDetails.location} />
+          </Row>
+        )}
       </Container>
     </>
   )
