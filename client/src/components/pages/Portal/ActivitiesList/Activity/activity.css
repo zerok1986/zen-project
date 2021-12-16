@@ -3,14 +3,13 @@
    */
   border: 1px solid rgba(0, 0, 0, 0.11);
   box-shadow: 0 0 30px 0 rgba(190, 189, 189, 0.281);
-  margin: 0.9rem auto;
+  margin-bottom: 0.9rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem 2.5rem;
   background-color: #faf8f5;
   max-width: 500px;
-  
 }
 
 .activity-card:hover .back-button {
@@ -74,7 +73,7 @@
   justify-content: space-evenly;
   align-items: center;
   text-align: left !important;
-  width: 138px
+  width: 138px;
 }
 
 .teacher-name {
@@ -101,11 +100,11 @@
   font-size: 0.65rem !important;
 }
 @media (max-width: 370px) {
- .date-content{
- display:block;
- text-align:center
-}
-.content-bottom-activity h6{
-  display:none
-}
+  .date-content {
+    display: block;
+    text-align: center;
+  }
+  .content-bottom-activity h6 {
+    display: none;
+  }
 }

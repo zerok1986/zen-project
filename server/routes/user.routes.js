@@ -5,7 +5,7 @@ const { checkIfGOD } = require('../middlewares')
 router.get('/allUsers', (req, res) => {
   User.find()
     .then((allUsers) => res.status(200).json(allUsers))
-    .catch((err) => res.status(401).json({ err, message: "Problema buscando usuarios" }));
+    .catch((err) => res.status(401).json({ err, message: "❌ Problema buscando usuarios" }));
 });
 
 router.get('/user/:id', (req, res) => {
@@ -15,7 +15,7 @@ router.get('/user/:id', (req, res) => {
     .then((user) => {
       res.status(200).json(user)
     })
-    .catch((err) => res.status(401).json({ err, message: "Problema buscando un usuario" }));
+    .catch((err) => res.status(401).json({ err, message: "❌ Problema buscando un usuario" }));
 });
 
 router.delete(
@@ -26,7 +26,7 @@ router.delete(
 
     User.findByIdAndRemove(id)
       .then((user) => res.status(200).json(user))
-      .catch((err) => res.status(405).json({ err, message: "Problema eliminando usuario" }));
+      .catch((err) => res.status(405).json({ err, message: "❌ Problema eliminando usuario" }));
   }
 );
 
@@ -49,7 +49,7 @@ router.put(
       { new: true }
     )
       .then((user) => res.status(202).json(user))
-      .catch((err) => res.status(405).json({ err, message: "Problema editando usuario" }));
+      .catch((err) => res.status(405).json({ err, message: "❌ Problema editando usuario" }));
   }
 );
 
