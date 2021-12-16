@@ -28,7 +28,7 @@ const ActivityDetails = (props) => {
   const { outDetailsClick, loggedUser, showText } = useContext(UserContext)
 
   useEffect(() => {
-    document.querySelector('.mapDetails-container').style.display = 'flex'
+    // document.querySelector('.mapDetails-container').style.display = 'flex'
 
     const { id } = props.match.params
 
