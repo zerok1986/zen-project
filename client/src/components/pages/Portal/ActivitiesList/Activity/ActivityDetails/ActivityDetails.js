@@ -11,7 +11,7 @@ const { formatDateFull } = require('../../../../../../utils')
 const activitiesService = new ActivitiesService()
 
 const ActivityDetails = (props) => {
-  document.querySelector('.map-container').style = 'flex'
+  document.querySelector('.map-container').style.display = 'flex'
   const [actDetails, setActDetails] = useState({
     name: '',
     type: '',
