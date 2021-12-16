@@ -129,7 +129,7 @@
   border: 1px solid black;
 }
 .home-yoga {
-  background-image: url("https://www.artpartner.com/propeller/uploads/2018/10/1_070918_LASTMAG_MUSHROOMS_027_RGB.jpg");
+  background-image: url('https://www.artpartner.com/propeller/uploads/2018/10/1_070918_LASTMAG_MUSHROOMS_027_RGB.jpg');
   height: 195px;
   background-position: center;
   width: 100%;
@@ -142,7 +142,7 @@
   color: #faf8f5;
 }
 .home-taichi {
-  background-image: url("https://i.pinimg.com/564x/a3/85/20/a38520182eef474db16842a964136712.jpg");
+  background-image: url('https://i.pinimg.com/564x/a3/85/20/a38520182eef474db16842a964136712.jpg');
   height: 195px;
   background-position: top;
   width: 100%;
@@ -150,7 +150,7 @@
   background-size: cover;
 }
 .home-med {
-  background-image: url("https://i.pinimg.com/564x/8c/74/2d/8c742dd67e3b77b81602527f522c556f.jpg");
+  background-image: url('https://i.pinimg.com/564x/8c/74/2d/8c742dd67e3b77b81602527f522c556f.jpg');
   height: 195px;
   background-position: top;
   width: 100%;
@@ -158,7 +158,7 @@
   background-size: cover;
 }
 .image-home:before {
-  content: "";
+  content: '';
   position: absolute;
   border: none;
   top: 0;
@@ -184,7 +184,7 @@
 }
 /* Yoga Effect */
 .home-yoga:after {
-  content: "El yoga te lleva al momento presente. El único lugar donde existe la vida";
+  content: 'El yoga te lleva al momento presente. El único lugar donde existe la vida';
   position: absolute;
   top: 29%;
   left: 15%;
@@ -198,7 +198,7 @@
 }
 /* Taichi Effect */
 .home-taichi:after {
-  content: "Aprende a controlar las energías, tanto las que vienen de ti, como las que te rodean";
+  content: 'Aprende a controlar las energías, tanto las que vienen de ti, como las que te rodean';
   position: absolute;
   top: 29%;
   left: 12.5%;
@@ -212,7 +212,7 @@
 }
 /* Med Effect */
 .home-med:after {
-  content: "La meditación revela las dimensiones más asombrosas del mundo en el que vivimos";
+  content: 'La meditación revela las dimensiones más asombrosas del mundo en el que vivimos';
   position: absolute;
   top: 29%;
   left: 10%;
@@ -252,4 +252,10 @@
 }
 .btn-primary:focus {
   box-shadow: none !important;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1196px) {
+  h2 {
+    font-size: 30px !important;
+  }
 }
