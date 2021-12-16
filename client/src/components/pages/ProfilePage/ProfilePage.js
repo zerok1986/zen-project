@@ -95,6 +95,14 @@ const ProfilePage = (props) => {
       .catch((err) => showText(err.response.data.message))
   }
 
+  const deleteReview = (id) => {
+    reviewsService
+      .deleteReview(id)
+      .then((res) => console.info(res))
+      .then(() => refreshReviews())
+      .catch((err) => console.error(err))
+  }
+
   return (
     <>
       <Container>
@@ -168,7 +176,12 @@ const ProfilePage = (props) => {
           ) : null}
           <Row>
             <Col>
-              <ReviewList reviews={reviews} teacherId={id} />
+              <ReviewList
+                reviews={reviews}
+                teacherId={id}
+                refreshReviews={refreshReviews}
+                deleteReview={deleteReview}
+              />
             </Col>
           </Row>
         </div>

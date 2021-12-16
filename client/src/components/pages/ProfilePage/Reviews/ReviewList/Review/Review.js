@@ -1,9 +1,12 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import React, { useContext } from 'react'
+import UserContext from '../../../../../../context/UserContext'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import { formatDate } from '../../../../../../utils'
 import './Review.css'
 
 const Review = (props) => {
+  const { loggedUser } = useContext(UserContext)
+
   const renderSwitch = (rating) => {
     switch (rating) {
       case 1:
@@ -37,6 +40,15 @@ const Review = (props) => {
             </p>
             <p className="comment-area">{props.info.comment}</p>
             <p>{formatDate(new Date(props.info.createdAt))}</p>
+            {loggedUser.role === 'GOD' && (
+              <Button
+                className="btn-home"
+                onClick={() => props.deleteReview(props.info._id)}
+                variant="primary"
+              >
+                Eliminar
+              </Button>
+            )}
           </Col>
         </Row>
       </Container>
