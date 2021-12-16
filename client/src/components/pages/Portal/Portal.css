@@ -160,7 +160,7 @@ main {
   /* margin: 0 auto !important; */
 }
 .col-portal-buttons {
-  padding: 0;
+  padding: 0 12px;
   font-family: Poppins;
 }
 .col-portal-left {
