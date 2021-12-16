@@ -7,7 +7,7 @@ const containerStyle = {
   height: '400px',
   border: '1px solid black',
 }
-const zoom = 12
+const zoom = 14
 
 const Map = (props) => {
   const center = {
