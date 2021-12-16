@@ -22,7 +22,6 @@ const MapList = (props) => {
   const [selectedActivity, setSelectedActivity] = useState(null)
 
   const { setDetailsClick } = useContext(UserContext)
-  console.log(props.location.coordinates)
   const center = {
     lat: Number(props.location.coordinates[0]),
     lng: Number(props.location.coordinates[1]),
