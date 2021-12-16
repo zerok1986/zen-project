@@ -19,3 +19,15 @@
   width: 180px;
   object-fit: cover;
 }
+.rating-profile {
+  margin-bottom: 1rem;
+  font-family: Poppins;
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 1rem !important;
+}
+.avg-span {
+  color: #9e5627;
+}

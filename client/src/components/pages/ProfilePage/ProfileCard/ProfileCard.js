@@ -14,9 +14,10 @@ const ProfileCard = (props) => {
             Eliminar
           </Button>
         )}
+
         <img src={props.userDetails.image} alt={props.name} />
-        <br/>
-        <br/>
+        <br />
+        <br />
         <h5>
           <strong>Nombre: </strong> {props.userDetails.name}
         </h5>
