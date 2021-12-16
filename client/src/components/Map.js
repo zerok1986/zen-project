@@ -8,21 +8,20 @@ const containerStyle = {
   border: '1px solid black',
 }
 const zoom = 12
-const API_KEY = process.env.REACT_APP_API_KEY
 
 const Map = (props) => {
   const center = {
-    lat: props.location.coordinates[0],
-    lng: props.location.coordinates[1],
+    lat: Number(props.location.coordinates[0]),
+    lng: Number(props.location.coordinates[1]),
   }
   return (
-    <LoadScript googleMapsApiKey={API_KEY}>
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
         zoom={zoom}
         options={{
-          styles: mapStyles,
+          styles: mapStyles[0],
         }}
       >
         <Marker

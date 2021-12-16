@@ -24,8 +24,8 @@ const MapList = (props) => {
   const { setDetailsClick } = useContext(UserContext)
 
   const center = {
-    lat: props.location.coordinates[0],
-    lng: props.location.coordinates[1],
+    lat: Number(props.location.coordinates[0]),
+    lng: Number(props.location.coordinates[1]),
   }
 
   return (
