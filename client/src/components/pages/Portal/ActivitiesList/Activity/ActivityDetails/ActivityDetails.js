@@ -28,7 +28,7 @@ const ActivityDetails = (props) => {
   const { outDetailsClick, loggedUser, showText } = useContext(UserContext)
 
   useEffect(() => {
-    document.querySelector('.map-container').style.display = 'flex'
+    document.querySelector('.mapDetails-container').style.display = 'flex'
 
     const { id } = props.match.params
 
@@ -148,7 +148,7 @@ const ActivityDetails = (props) => {
           </Col>
         </Row>
         {actDetails.location.coordinates?.length && (
-          <Row className="map-container">
+          <Row className="mapDetails-container">
             <Map location={actDetails.location} />
           </Row>
         )}
