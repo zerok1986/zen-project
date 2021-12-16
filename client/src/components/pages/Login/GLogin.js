@@ -7,11 +7,11 @@ const clientId =
 
 const GLogin = () => {
   const onSuccess = (res) => {
-    console.info('[Login Success] currentUser: ', res.profileObj)
+    console.info(`¡Bienvenido a moksha, ${res.profileObj.name}!`)
   }
 
   const onFailure = (res) => {
-    console.info('[Login failed] Response: ', res)
+    console.info(`[Login with Google STATUS]: ${res.details}`)
   }
 
   return (
