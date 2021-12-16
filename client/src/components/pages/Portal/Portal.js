@@ -19,13 +19,12 @@ const Portal = () => {
   const [activitiesList, setList] = useState([]);
   const [activitiesInitial, setListInitial] = useState([]);
   const [showModal, setModal] = useState(false);
-  const [mapShowed, setmapShowed] = useState(true);
-
+  
   const [userLocation, setUserLocation] = useState({
     coordinates: [40.416626, -3.704652],
   });
   const { detailsClick } = useContext(UserContext);
-
+  
   useEffect(() => {
     refreshActivities();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,8 +42,20 @@ const Portal = () => {
               .toLowerCase()
               .normalize("NFD")
               .replace(/[\u0300-\u036f]/g, "")
-          ) ||
+          )
+        ||
         elm.type
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(
+            activity
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+          )
+        ||
+        elm.teacher.name
           .toLowerCase()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
@@ -57,9 +68,16 @@ const Portal = () => {
     );
     setList(copy);
   };
-
+              
   const clearFilters = () => {
     setList(activitiesInitial);
+  };
+
+  let map = document.querySelector(".map-container");
+  const showMap = () => {
+    if (map.style.display === "none") {
+      document.querySelector(".map-container").style.display = "flex";
+    } else document.querySelector(".map-container").style.display = "none";
   };
 
   const findActivityByFilter = (filterInputs) => {
@@ -74,6 +92,7 @@ const Portal = () => {
         return elem;
       } else if (!filterInputs.type && !filterInputs.date && filterInputs.address) {
         //001
+        showMap()
         return (
           elem.location.coordinates[0] <= maxLat &&
           elem.location.coordinates[0] >= minLat &&
@@ -85,6 +104,7 @@ const Portal = () => {
         return formatDate(new Date(elem.date)) === formatDate(new Date(filterInputs.date));
       } else if (!filterInputs.type && filterInputs.date && filterInputs.address) {
         //011
+        showMap()
         return (
           formatDate(new Date(elem.date)) === formatDate(new Date(filterInputs.date)) &&
           elem.location.coordinates[0] <= maxLat &&
@@ -97,6 +117,7 @@ const Portal = () => {
         return elem.type === filterInputs.type;
       } else if (filterInputs.type && !filterInputs.date && filterInputs.address) {
         //101
+        showMap()
         return (
           elem.type === filterInputs.type &&
           elem.location.coordinates[0] <= maxLat &&
@@ -109,6 +130,7 @@ const Portal = () => {
         return elem.type === filterInputs.type && formatDate(new Date(elem.date)) === formatDate(new Date(filterInputs.date));
       } else {
         //111
+        showMap()
         return (
           elem.type === filterInputs.type &&
           formatDate(new Date(elem.date)) === formatDate(new Date(filterInputs.date)) &&
@@ -141,6 +163,7 @@ const Portal = () => {
   const closeModal = () => {
     setModal(false);
   };
+  
   const deleteActivity = (id) => {
     service
       .deleteActivity(id)
@@ -148,12 +171,6 @@ const Portal = () => {
       .then((res) => console.info(res))
       .then(() => refreshActivities())
       .catch((err) => console.error(err));
-  };
-  const showMap = () => {
-    let map = document.querySelector(".map-container").style.display;
-    if (map === "none") {
-      document.querySelector(".map-container").style.display = "flex";
-    } else document.querySelector(".map-container").style.display = "none";
   };
 
   return (
