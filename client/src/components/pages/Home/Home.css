@@ -19,9 +19,11 @@
 }
 .col-home-signup {
   text-align: left;
+  margin-left: -12px;
 }
 .col-home-login {
   text-align: right;
+  margin-right: -12px;
 }
 .container-home h3 {
   padding: 0.5rem 0;
