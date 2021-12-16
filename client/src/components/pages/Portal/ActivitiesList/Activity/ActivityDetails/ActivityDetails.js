@@ -80,7 +80,7 @@ const ActivityDetails = (props) => {
       })
       .catch((err) => showText(err.response.data.message))
   }
-  console.log(actDetails.location)
+
   return (
     <>
       <Container className="details-container">

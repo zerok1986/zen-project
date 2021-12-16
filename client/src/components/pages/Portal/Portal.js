@@ -210,7 +210,7 @@ const Portal = () => {
     <div className="portal-container">
       <div>
         {!detailsClick &&
-          (loggedUser.role === "PROFESOR" ? (
+          (loggedUser.role === 'PROFESOR' ? (
             <Row className="portal-buttons">
               <Col className="col-portal-buttons col-portal-left">
                 <Button className="btn-create-map" onClick={openModal}>
@@ -279,6 +279,7 @@ const Portal = () => {
           activitiesInitial={activitiesInitial}
           userLocation={userLocation}
           clearFilters={clearFilters}
+          showMap={showMap}
         />
       </div>
     </div>

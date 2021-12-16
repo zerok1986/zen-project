@@ -13,6 +13,12 @@ const Activity = (props) => {
 
   const { setDetailsClick } = useContext(UserContext)
   const { loggedUser } = useContext(UserContext)
+
+  const onDetailsClick = () => {
+    setDetailsClick()
+    props.showMap()
+  }
+
   return (
     <div>
       <div className="activity-card">
@@ -40,7 +46,7 @@ const Activity = (props) => {
             <Link to={`/activities/activity/${props.elem._id}`}>
               <Button
                 className="btn-details-activity details-activity"
-                onClick={setDetailsClick}
+                onClick={() => onDetailsClick()}
                 variant="primary"
               >
                 Detalles

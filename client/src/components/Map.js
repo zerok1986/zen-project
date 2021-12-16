@@ -10,7 +10,6 @@ const containerStyle = {
 const zoom = 12
 
 const Map = (props) => {
-  console.log(props.location.coordinates)
   const center = {
     lat: props.location.coordinates[0],
     lng: props.location.coordinates[1],
