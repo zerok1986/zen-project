@@ -117,12 +117,14 @@ const ProfilePage = (props) => {
           <Row>
             <Col sm={12}>
               <ProfileCard userDetails={userDetails} />
-              <div className="rating-profile">
-                <span>Media:</span>
-                <span className="avg-span">
-                  {calcAvg().toFixed([1]) + ' ★'}
-                </span>
-              </div>
+              {userDetails.role === 'PROFESOR' && (
+                <div className="rating-profile">
+                  <span>Media:</span>
+                  <span className="avg-span">
+                    {calcAvg().toFixed([1]) + ' ★'}
+                  </span>
+                </div>
+              )}
             </Col>
           </Row>
           <Modal
