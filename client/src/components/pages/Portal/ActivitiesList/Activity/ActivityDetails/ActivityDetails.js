@@ -80,7 +80,7 @@ const ActivityDetails = (props) => {
       })
       .catch((err) => showText(err.response.data.message))
   }
-
+  console.log(actDetails.location)
   return (
     <>
       <Container className="details-container">
@@ -145,8 +145,7 @@ const ActivityDetails = (props) => {
             )}
           </Col>
         </Row>
-
-        {actDetails.location?.length && (
+        {actDetails.location.coordinates?.length && (
           <Row className="map-container">
             <Map location={actDetails.location} />
           </Row>

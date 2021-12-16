@@ -22,7 +22,7 @@ const Map = (props) => {
         center={center}
         zoom={zoom}
         options={{
-          styles: mapStyles[0],
+          styles: mapStyles,
         }}
       >
         <Marker
