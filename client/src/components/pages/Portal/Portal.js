@@ -178,26 +178,26 @@ const Portal = () => {
       <div>
         {!detailsClick &&
           (loggedUser.role === "PROFESOR" ? (
-            <Row>
-              <Col className="column-portal">
+            <Row className="portal-buttons">
+              <Col className="col-portal-buttons col-portal-left">
                 <Button className="btn-create-map" onClick={openModal}>
                   Crear actividad
                 </Button>
               </Col>
-              <Col className="column-portal">
+              <Col className="col-portal-buttons col-portal-right">
                 <Button className="btn-create-map" onClick={showMap}>
-                  Mapa
+                  Mapa de actividades
                 </Button>
               </Col>
             </Row>
           ) : (
-            <Row>
-              <Col className="column-portal">
+            <Row className="portal-buttons">
+              <Col className="col-portal-buttons col-portal-left">
                 <Button className="btn-create-map" onClick={openModal}>
                   Filtrar actividades
                 </Button>
               </Col>
-              <Col className="column-portal">
+              <Col className="col-portal-buttons col-portal-right">
                 <Button className="btn-create-map" onClick={showMap}>
                   Mapa de actividades
                 </Button>

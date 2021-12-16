@@ -21,7 +21,7 @@ const LoginPage = (props) => {
       .then((res) => {
         storeUser(res.data)
         props.closeModal()
-        showText('Sesión iniciada correctamente')
+        showText('Sesión iniciada correctamente 🧘🏻‍♀️')
       })
       .catch((err) => showText(err.response.data.message))
   }

@@ -8,7 +8,7 @@ router.get('/allActivities', (req, res) => {
     .populate('teacher')
     .then((allActivities) => res.status(200).json(allActivities))
     .catch((err) =>
-      res.status(500).json({ err, message: 'Problema buscando actividades' })
+      res.status(500).json({ err, message: '❌ Problema buscando actividades' })
     )
 })
 
@@ -19,7 +19,7 @@ router.get('/activity/:id', (req, res) => {
     .populate('teacher')
     .then((theActivity) => res.status(200).json(theActivity))
     .catch((err) =>
-      res.status(500).json({ err, message: 'Problema buscando una actividad' })
+      res.status(500).json({ err, message: '❌ Problema buscando una actividad' })
     )
 })
 
@@ -54,7 +54,7 @@ router.post('/newActivity', (req, res) => {
   })
     .then((newActivity) => res.status(201).json(newActivity))
     .catch((err) =>
-      res.status(405).json({ err, message: 'Problema creando actividad' })
+      res.status(405).json({ err, message: '❌ Problema creando actividad' })
     )
 })
 
@@ -64,7 +64,7 @@ router.delete('/delete/:id', checkIfGOD, (req, res) => {
   Activity.findByIdAndDelete(id)
     .then((deletedActivity) => res.status(200).json({ deletedActivity }))
     .catch((err) =>
-      res.status(405).json({ err, message: 'Problema borrando actividad' })
+      res.status(405).json({ err, message: '❌ Problema borrando actividad' })
     )
 })
 
@@ -79,7 +79,7 @@ router.put('/addParticipant/:id', (req, res) => {
   )
     .then((user) => res.status(202).json(user))
     .catch((err) =>
-      res.status(405).json({ err, message: 'Problema añadiendo usuario' })
+      res.status(405).json({ err, message: '❌ Problema añadiendo usuario' })
     )
 })
 
@@ -94,7 +94,7 @@ router.put('/deleteParticipant/:id', (req, res) => {
   )
     .then((user) => res.status(202).json(user))
     .catch((err) =>
-      res.status(405).json({ err, message: 'Problema borrando usuario' })
+      res.status(405).json({ err, message: '❌ Problema borrando usuario' })
     )
 })
 

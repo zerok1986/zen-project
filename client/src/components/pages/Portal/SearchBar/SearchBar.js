@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './SearchBar.css'
 
 const SearchBar = (props) => {
   const [inputText, setInput] = useState('')
@@ -16,6 +17,7 @@ const SearchBar = (props) => {
   return (
     <div className="searchbox-container">
       <input
+        className="searchbox"
         onChange={handleChange}
         value={inputText}
         type="text"
