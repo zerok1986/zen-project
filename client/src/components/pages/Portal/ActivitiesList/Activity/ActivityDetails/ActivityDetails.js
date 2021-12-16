@@ -11,7 +11,7 @@ const { formatDateFull } = require('../../../../../../utils')
 const activitiesService = new ActivitiesService()
 
 const ActivityDetails = (props) => {
-  const activityMap = document.querySelector('.map-container')
+  document.querySelector('.map-container').style = 'flex'
   const [actDetails, setActDetails] = useState({
     name: '',
     type: '',
@@ -29,7 +29,6 @@ const ActivityDetails = (props) => {
   const { outDetailsClick, loggedUser, showText } = useContext(UserContext)
 
   useEffect(() => {
-    activityMap.style = 'flex'
     const { id } = props.match.params
 
     activitiesService
