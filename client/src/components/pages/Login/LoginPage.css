@@ -2,3 +2,10 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.google-btn {
+  border: 1px solid black !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: #171717 !important;
+}

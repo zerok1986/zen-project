@@ -100,7 +100,7 @@ main {
   background-color: transparent !important;
   color: #171717 !important;
   box-shadow: 0;
-  margin-top: 2.7rem;
+  margin-top: 1.7rem;
 }
 .btn-confirmed-address {
   font-size: 0.7rem !important;
@@ -169,6 +169,13 @@ main {
 }
 .col-portal-right {
   text-align: right !important;
+}
+.modal-content {
+  font-family: Poppins !important;
+  background-color: rgba(253, 253, 253, 0.9) !important;
+  border: 1px solid rgb(0, 0, 0) !important;
+  color: #020e13 !important;
+  border-radius: 0 !important;
 }
 
 @media (min-width: 990px) {
