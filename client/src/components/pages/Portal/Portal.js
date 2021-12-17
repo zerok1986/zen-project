@@ -210,32 +210,38 @@ const Portal = () => {
     <div className="portal-container">
       <div>
         {!detailsClick &&
-          (loggedUser.role === 'PROFESOR' ? (
-            <Row className="portal-buttons">
-              <Col className="col-portal-buttons col-portal-left">
-                <Button className="btn-create-map" onClick={openModal}>
-                  Crear actividad
-                </Button>
-              </Col>
-              <Col className="col-portal-buttons col-portal-right">
-                <Button className="btn-create-map" onClick={showMap}>
-                  Mapa de actividades
-                </Button>
-              </Col>
-            </Row>
+          (loggedUser.role !== 'GOD' ? (
+            loggedUser.role === 'PROFESOR' ? (
+              <Row className="portal-buttons">
+                <Col className="col-portal-buttons col-portal-left">
+                  <Button className="btn-create-map" onClick={openModal}>
+                    Crear actividad
+                  </Button>
+                </Col>
+                <Col className="col-portal-buttons col-portal-right">
+                  <Button className="btn-create-map" onClick={showMap}>
+                    Mapa de actividades
+                  </Button>
+                </Col>
+              </Row>
+            ) : (
+              <Row className="portal-buttons">
+                <Col className="col-portal-buttons col-portal-left">
+                  <Button className="btn-create-map" onClick={openModal}>
+                    Filtrar actividades
+                  </Button>
+                </Col>
+                <Col className="col-portal-buttons col-portal-right">
+                  <Button className="btn-create-map" onClick={showMap}>
+                    Mapa de actividades
+                  </Button>
+                </Col>
+              </Row>
+            )
           ) : (
-            <Row className="portal-buttons">
-              <Col className="col-portal-buttons col-portal-left">
-                <Button className="btn-create-map" onClick={openModal}>
-                  Filtrar actividades
-                </Button>
-              </Col>
-              <Col className="col-portal-buttons col-portal-right">
-                <Button className="btn-create-map" onClick={showMap}>
-                  Mapa de actividades
-                </Button>
-              </Col>
-            </Row>
+            <>
+              <h2>💻 Admin: {loggedUser.name} 💻</h2>
+            </>
           ))}
 
         <Switch>
