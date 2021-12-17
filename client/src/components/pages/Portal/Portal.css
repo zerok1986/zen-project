@@ -8,6 +8,7 @@
 
 main {
   background-color: #faf8f5;
+  min-height: 81vh;
 }
 .portal-container div {
   text-align: center;
