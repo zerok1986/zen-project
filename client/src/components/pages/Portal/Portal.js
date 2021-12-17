@@ -259,7 +259,7 @@ const Portal = () => {
 
         <Modal show={showModal} backdrop="static" onHide={closeModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Filtrar por</Modal.Title>
+            <Modal.Title>Actividad</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {loggedUser.role === 'PROFESOR' ? (
