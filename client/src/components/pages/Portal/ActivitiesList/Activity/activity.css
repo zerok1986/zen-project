@@ -1,10 +1,7 @@
 .activity-card {
-  /* border: 1px solid black;
-   */
   border: 1px solid rgba(0, 0, 0, 0.11);
-  box-shadow: 0 0 30px 0 rgba(190, 189, 189, 0.281);
-  /* margin-bottom: 0.9rem; */
-  margin: 0.9rem auto;
+  box-shadow: 0 0 30px 0 #bebdbd48;
+  margin: 0 auto 0.9rem auto;
   display: flex;
   align-items: center;
   justify-content: space-between;

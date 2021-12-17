@@ -1,7 +1,7 @@
 .mapDetails-container {
   display: flex;
   justify-content: center;
-  padding: 50px 0;
+  padding: 20px 0;
 }
 .title-left {
   text-align: left !important;
