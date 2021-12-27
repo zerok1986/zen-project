@@ -63,6 +63,8 @@ _TODO_
 
 ## Variables de entorno del servidor 📦
 
+Crear un archivo .env en el servidor con los siguientes datos:
+
  - PORT=5000
  - ORIGIN=http://localhost:3000
  - SESS_SECRET=migatoeselmejorgato
