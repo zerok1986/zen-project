@@ -59,11 +59,21 @@ _TODO_
 
 ### Instalación 🔧
 
-`npm install` o `npm i`
+`npm install` o `npm i` en el servidor y en el cliente
+
+## Variables de entorno del servidor 📦
+
+ - PORT=5000
+ - ORIGIN=http://localhost:3000
+ - SESS_SECRET=migatoeselmejorgato
+ - DB_REMOTE=Ask us to get access to the DB!
+ - CLOUDINARY_NAME=Your Cloudinary Name
+ - CLOUDINARY_KEY=Your Clodinary Key
+ - CLOUDINARY_SECRET=Your Cloudinary Secret
 
 ## Despliegue 📦
 
-`npm run start`
+`npm run dev` en el servidor y `npm start` en el cliente
 
 ## Construido con 🛠️
 
